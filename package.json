@@ -8,7 +8,7 @@
     "start": "parcel",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
-    "build": "parcel build"
+    "build": "parcel build src/index.html --public-url ."
   },
   "author": "Wilhelm Felk",
   "license": "ISC",
