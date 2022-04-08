@@ -24958,17 +24958,24 @@ var _focusModeButton = require("./buttons/FocusModeButton/FocusModeButton");
 var _focusModeButtonDefault = parcelHelpers.interopDefault(_focusModeButton);
 var _currentBooks = require("./panels/CurrentBooks/CurrentBooks");
 var _currentBooksDefault = parcelHelpers.interopDefault(_currentBooks);
+var _daysWQ = require("./panels/DaysWQ/DaysWQ");
+var _daysWQDefault = parcelHelpers.interopDefault(_daysWQ);
 function App() {
     return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_jsxDevRuntime.Fragment, {
         children: [
             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_currentBooksDefault.default, {}, void 0, false, {
                 fileName: "src/components/App.jsx",
-                lineNumber: 7,
+                lineNumber: 8,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_daysWQDefault.default, {}, void 0, false, {
+                fileName: "src/components/App.jsx",
+                lineNumber: 9,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_focusModeButtonDefault.default, {}, void 0, false, {
                 fileName: "src/components/App.jsx",
-                lineNumber: 8,
+                lineNumber: 10,
                 columnNumber: 7
             }, this)
         ]
@@ -24984,7 +24991,7 @@ $RefreshReg$(_c, "App");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","./buttons/FocusModeButton/FocusModeButton":"lWsvH","./panels/CurrentBooks/CurrentBooks":"huZEU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"lWsvH":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","./buttons/FocusModeButton/FocusModeButton":"lWsvH","./panels/CurrentBooks/CurrentBooks":"huZEU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./panels/DaysWQ/DaysWQ":"eQOY7"}],"lWsvH":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$bb88 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -47317,8 +47324,11 @@ const CurrentBooks = ()=>{
                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Typography, {
                         variant: "h2",
                         component: "h2",
-                        children: "Current Books"
-                    }, void 0, false, {
+                        children: [
+                            "Current Book",
+                            booksList.length > 1 ? "s" : null
+                        ]
+                    }, void 0, true, {
                         fileName: "src/components/panels/CurrentBooks/CurrentBooks.jsx",
                         lineNumber: 61,
                         columnNumber: 9
@@ -87023,6 +87033,260 @@ var _jsxRuntime = require("react/jsx-runtime");
 var _default = (0, _createSvgIcon.default)(/*#__PURE__*/ (0, _jsxRuntime.jsx)("path", {
     d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"
 }), 'Help');
+exports.default = _default;
+
+},{"@babel/runtime/helpers/interopRequireDefault":"7XM86","./utils/createSvgIcon":"lVV9C","react/jsx-runtime":"6AEwr"}],"eQOY7":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$7eab = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$7eab.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _material = require("@mui/material");
+var _forwardButton = require("../../buttons/ForwardButton");
+var _forwardButtonDefault = parcelHelpers.interopDefault(_forwardButton);
+var _copyButton = require("../../buttons/CopyButton");
+var _copyButtonDefault = parcelHelpers.interopDefault(_copyButton);
+var _s = $RefreshSig$();
+const DaysWQ = ()=>{
+    _s();
+    const [wofd, setWofd] = _react.useState({});
+    const [qofd, setQofd] = _react.useState({});
+    let searchString = "house";
+    const fetchWofd = (searchTerm)=>{
+        fetch(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${searchTerm}?key=49a4f377-61f9-43e6-9416-aabfbe90942a`).then((res)=>res.json()
+        ).then((json)=>{
+            console.log("Wofd", json);
+            dissectFetchedWofd(json);
+        });
+    };
+    const fetchQofd = ()=>{
+        fetch("https://type.fit/api/quotes").then((res)=>res.json()
+        ).then((json)=>{
+            const randomNum = Math.ceil(Math.random() * 1642);
+            dissectedFetchedQofd(json[randomNum]);
+        });
+    };
+    const dissectFetchedWofd = (fetchedWofd)=>{
+        const fetch = fetchedWofd[0];
+        const dissectedWofd = {
+            headword: fetch.hwi.hw,
+            shortDef: fetch.shortdef[0]
+        };
+        setWofd(dissectedWofd);
+    };
+    const dissectedFetchedQofd = (fetchedQofd)=>{
+        const fetch = fetchedQofd;
+        const dissectedQofd = {
+            text: fetch.text,
+            author: fetch.author
+        };
+        setQofd(dissectedQofd);
+    };
+    _react.useEffect(()=>fetchWofd(searchString)
+    , []);
+    _react.useEffect(fetchQofd, []);
+    return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Card, {
+        sx: {
+            width: "25%",
+            display: "flex",
+            flexFlow: "column wrap",
+            justifyContent: "space-evenly",
+            alignItems: "stretch"
+        },
+        children: [
+            /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
+                sx: {
+                    display: "flex",
+                    flexFlow: "row wrap",
+                    justifyContent: "space-between"
+                },
+                children: [
+                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Typography, {
+                        variant: "h2",
+                        children: "Word of the Day"
+                    }, void 0, false, {
+                        fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
+                        lineNumber: 69,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_forwardButtonDefault.default, {
+                        searchString: searchString
+                    }, void 0, false, {
+                        fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
+                        lineNumber: 70,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
+                lineNumber: 62,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
+                sx: {
+                    display: "flex",
+                    flexFlow: "column wrap",
+                    justifyContent: "center",
+                    alignItems: "flex-end"
+                },
+                children: [
+                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
+                        sx: {
+                            display: "flex",
+                            flexFlow: "row nowrap",
+                            justifyContent: "flex-end",
+                            alignItems: "center"
+                        },
+                        children: [
+                            /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_copyButtonDefault.default, {
+                                text: wofd.headword
+                            }, void 0, false, {
+                                fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
+                                lineNumber: 88,
+                                columnNumber: 11
+                            }, undefined),
+                            /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Typography, {
+                                variant: "h3",
+                                children: wofd.headword
+                            }, void 0, false, {
+                                fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
+                                lineNumber: 89,
+                                columnNumber: 11
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
+                        lineNumber: 80,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Typography, {
+                        align: "right",
+                        children: wofd.shortDef
+                    }, void 0, false, {
+                        fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
+                        lineNumber: 91,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
+                lineNumber: 72,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
+                children: [
+                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Link, {
+                        href: "https://dictionaryapi.com/",
+                        target: "_blank",
+                        underline: "none",
+                        children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Typography, {
+                            children: "Powered by Merriam-Webster"
+                        }, void 0, false, {
+                            fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
+                            lineNumber: 99,
+                            columnNumber: 11
+                        }, undefined)
+                    }, void 0, false, {
+                        fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
+                        lineNumber: 94,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Pagination, {}, void 0, false, {
+                        fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
+                        lineNumber: 101,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
+                lineNumber: 93,
+                columnNumber: 7
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
+        lineNumber: 53,
+        columnNumber: 5
+    }, undefined);
+};
+_s(DaysWQ, "yigU044S/k4T7glEyPhVhO/M0Kw=");
+_c = DaysWQ;
+exports.default = DaysWQ;
+var _c;
+$RefreshReg$(_c, "DaysWQ");
+
+  $parcel$ReactRefreshHelpers$7eab.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@mui/material":"40376","../../buttons/ForwardButton":"fCil3","../../buttons/CopyButton":"g0Osb","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"fCil3":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$8e1a = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$8e1a.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _openInNew = require("@mui/icons-material/OpenInNew");
+var _openInNewDefault = parcelHelpers.interopDefault(_openInNew);
+var _material = require("@mui/material");
+var _buttonEffects = require("../../helpers/buttonEffects");
+var _buttonEffectsDefault = parcelHelpers.interopDefault(_buttonEffects);
+const ForwardButton = (props)=>{
+    const { unhovered , hovered  } = _buttonEffectsDefault.default;
+    return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Link, {
+        href: `https://www.merriam-webster.com/dictionary/${props.searchString}`,
+        target: "_blank",
+        children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.IconButton, {
+            sx: hovered,
+            children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_openInNewDefault.default, {
+                sx: unhovered
+            }, void 0, false, {
+                fileName: "src/components/buttons/ForwardButton.jsx",
+                lineNumber: 13,
+                columnNumber: 9
+            }, undefined)
+        }, void 0, false, {
+            fileName: "src/components/buttons/ForwardButton.jsx",
+            lineNumber: 12,
+            columnNumber: 7
+        }, undefined)
+    }, void 0, false, {
+        fileName: "src/components/buttons/ForwardButton.jsx",
+        lineNumber: 8,
+        columnNumber: 5
+    }, undefined);
+};
+_c = ForwardButton;
+exports.default = ForwardButton;
+var _c;
+$RefreshReg$(_c, "ForwardButton");
+
+  $parcel$ReactRefreshHelpers$8e1a.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","@mui/icons-material/OpenInNew":"bRpYE","@mui/material":"40376","../../helpers/buttonEffects":"7XAtO","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"bRpYE":[function(require,module,exports) {
+"use strict";
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = void 0;
+var _createSvgIcon = _interopRequireDefault(require("./utils/createSvgIcon"));
+var _jsxRuntime = require("react/jsx-runtime");
+var _default = (0, _createSvgIcon.default)(/*#__PURE__*/ (0, _jsxRuntime.jsx)("path", {
+    d: "M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
+}), 'OpenInNew');
 exports.default = _default;
 
 },{"@babel/runtime/helpers/interopRequireDefault":"7XM86","./utils/createSvgIcon":"lVV9C","react/jsx-runtime":"6AEwr"}]},["kn9T2","7nZVA","8lqZg"], "8lqZg", "parcelRequire907e")

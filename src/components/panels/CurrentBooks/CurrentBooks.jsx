@@ -59,7 +59,7 @@ const CurrentBooks = () => {
         }}
       >
         <Typography variant="h2" component="h2">
-          Current Books
+          Current Book{booksList.length > 1 ? "s" : null}
         </Typography>
         <CardActions>
           <AddBtn onAddClick={handleAddClick} />
