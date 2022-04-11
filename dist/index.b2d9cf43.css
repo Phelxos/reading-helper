@@ -16,6 +16,10 @@ html, body {
   overflow: hidden;
 }
 
+html ::-webkit-scrollbar, body ::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   -webkit-font-smoothing: antialiased;
   line-height: 1.5;

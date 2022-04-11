@@ -4,13 +4,18 @@ import buttonEffects from "../../helpers/buttonEffects";
 
 const ForwardButton = (props) => {
   const { unhovered, hovered } = buttonEffects;
+  const { type, searchString } = props.input;
   return (
     <Link
-      href={`https://www.merriam-webster.com/dictionary/${props.searchString}`}
+      href={
+        type === "word"
+          ? `https://www.merriam-webster.com/dictionary/${searchString}`
+          : `https://www.google.com/search?q=${searchString}`
+      }
       target="_blank"
     >
       <IconButton sx={hovered}>
-        <OpenInNewIcon sx={unhovered} />
+        <OpenInNewIcon sx={unhovered} fontSize={props.size} />
       </IconButton>
     </Link>
   );

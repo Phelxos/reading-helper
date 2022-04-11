@@ -87054,16 +87054,17 @@ var _copyButtonDefault = parcelHelpers.interopDefault(_copyButton);
 var _s = $RefreshSig$();
 const DaysWQ = ()=>{
     _s();
-    const [wofd, setWofd] = _react.useState({});
-    const [qofd, setQofd] = _react.useState({});
-    let searchString = "house";
-    const fetchWofd = (searchTerm)=>{
-        fetch(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${searchTerm}?key=49a4f377-61f9-43e6-9416-aabfbe90942a`).then((res)=>res.json()
-        ).then((json)=>{
-            console.log("Wofd", json);
-            dissectFetchedWofd(json);
-        });
-    };
+    const [wofd, setWofd] = _react.useState({
+        heading: "Word",
+        reference: "Merriam-Webster",
+        website: "https://dictionaryapi.com/"
+    });
+    const [qofd, setQofd] = _react.useState({
+        heading: "Quote",
+        reference: "Type.fit",
+        website: "https://type.fit/api/quotes"
+    });
+    const [page, setPage] = _react.useState(1);
     const fetchQofd = ()=>{
         fetch("https://type.fit/api/quotes").then((res)=>res.json()
         ).then((json)=>{
@@ -87074,6 +87075,7 @@ const DaysWQ = ()=>{
     const dissectFetchedWofd = (fetchedWofd)=>{
         const fetch = fetchedWofd[0];
         const dissectedWofd = {
+            ...wofd,
             headword: fetch.hwi.hw,
             shortDef: fetch.shortdef[0]
         };
@@ -87082,21 +87084,38 @@ const DaysWQ = ()=>{
     const dissectedFetchedQofd = (fetchedQofd)=>{
         const fetch = fetchedQofd;
         const dissectedQofd = {
+            ...qofd,
             text: fetch.text,
             author: fetch.author
         };
         setQofd(dissectedQofd);
     };
-    _react.useEffect(()=>fetchWofd(searchString)
-    , []);
+    const handlePageChange = (e)=>{
+        const value = parseInt(e.target.innerText, 10);
+        setPage(value);
+    };
+    _react.useEffect(()=>{
+        async function fetchWofd() {
+            await fetch("https://random-word-api.herokuapp.com/word").then((res)=>res.json()
+            ).then((randomWord)=>randomWord[0]
+            ).then((searchTerm)=>fetch(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${searchTerm}?key=49a4f377-61f9-43e6-9416-aabfbe90942a`).then((res)=>res.json()
+                ).then((json)=>{
+                    dissectFetchedWofd(json);
+                })
+            );
+        }
+        fetchWofd();
+    }, []);
     _react.useEffect(fetchQofd, []);
     return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Card, {
         sx: {
             width: "25%",
+            height: "auto",
             display: "flex",
             flexFlow: "column wrap",
-            justifyContent: "space-evenly",
-            alignItems: "stretch"
+            justifyContent: "space-between",
+            alignItems: "stretch",
+            padding: "2rem"
         },
         children: [
             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
@@ -87107,24 +87126,35 @@ const DaysWQ = ()=>{
                 },
                 children: [
                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Typography, {
-                        variant: "h2",
-                        children: "Word of the Day"
-                    }, void 0, false, {
+                        component: "h2",
+                        variant: "h4",
+                        children: [
+                            page === 1 ? wofd.heading : qofd.heading,
+                            " of the Day"
+                        ]
+                    }, void 0, true, {
                         fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                        lineNumber: 69,
+                        lineNumber: 91,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_forwardButtonDefault.default, {
-                        searchString: searchString
+                        size: "large",
+                        input: page === 1 ? {
+                            type: "word",
+                            searchString: wofd.headword
+                        } : {
+                            type: "quote",
+                            searchString: qofd.text
+                        }
                     }, void 0, false, {
                         fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                        lineNumber: 70,
+                        lineNumber: 94,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                lineNumber: 62,
+                lineNumber: 84,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
@@ -87132,7 +87162,8 @@ const DaysWQ = ()=>{
                     display: "flex",
                     flexFlow: "column wrap",
                     justifyContent: "center",
-                    alignItems: "flex-end"
+                    alignItems: "flex-end",
+                    margin: "2rem 0"
                 },
                 children: [
                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
@@ -87140,81 +87171,107 @@ const DaysWQ = ()=>{
                             display: "flex",
                             flexFlow: "row nowrap",
                             justifyContent: "flex-end",
-                            alignItems: "center"
+                            alignItems: "center",
+                            height: 100
                         },
                         children: [
                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_copyButtonDefault.default, {
-                                text: wofd.headword
+                                text: page === 1 ? wofd.headword : qofd.text
                             }, void 0, false, {
                                 fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                                lineNumber: 88,
+                                lineNumber: 121,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Typography, {
-                                variant: "h3",
-                                children: wofd.headword
+                                align: "right",
+                                component: page === 1 ? "h2" : "p",
+                                variant: page === 1 ? "h1" : "h5",
+                                children: wofd.headword === undefined ? "Loading…" : page === 1 ? wofd.headword : qofd.text
                             }, void 0, false, {
                                 fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                                lineNumber: 89,
+                                lineNumber: 122,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                        lineNumber: 80,
+                        lineNumber: 112,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Typography, {
                         align: "right",
-                        children: wofd.shortDef
+                        component: "p",
+                        variant: page === 1 ? "subtitle1" : "h4",
+                        children: page === 1 ? wofd.shortDef : qofd.author !== null ? qofd.author : "Unknown"
                     }, void 0, false, {
                         fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                        lineNumber: 91,
+                        lineNumber: 134,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                lineNumber: 72,
+                lineNumber: 103,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
+                sx: {
+                    display: "flex",
+                    flexFlow: "row nowrap",
+                    justifyContent: "space-between",
+                    alignItems: "flex-end"
+                },
                 children: [
                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Link, {
-                        href: "https://dictionaryapi.com/",
+                        href: page === 1 ? wofd.website : qofd.website,
                         target: "_blank",
                         underline: "none",
                         children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Typography, {
-                            children: "Powered by Merriam-Webster"
-                        }, void 0, false, {
+                            variant: "subtitle2",
+                            component: "p",
+                            sx: {
+                                opacity: 0.25
+                            },
+                            children: [
+                                "Powered by ",
+                                page === 1 ? wofd.reference : qofd.reference
+                            ]
+                        }, void 0, true, {
                             fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                            lineNumber: 99,
+                            lineNumber: 159,
                             columnNumber: 11
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                        lineNumber: 94,
+                        lineNumber: 154,
                         columnNumber: 9
                     }, undefined),
-                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Pagination, {}, void 0, false, {
+                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Pagination, {
+                        count: 2,
+                        page: page,
+                        onChange: handlePageChange,
+                        shape: "circular",
+                        hidePrevButton: true,
+                        hideNextButton: true
+                    }, void 0, false, {
                         fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                        lineNumber: 101,
+                        lineNumber: 163,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                lineNumber: 93,
+                lineNumber: 146,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-        lineNumber: 53,
+        lineNumber: 73,
         columnNumber: 5
     }, undefined);
 };
-_s(DaysWQ, "yigU044S/k4T7glEyPhVhO/M0Kw=");
+_s(DaysWQ, "bSHmIaWxjqQI3idpfS+oa8BP0rM=");
 _c = DaysWQ;
 exports.default = DaysWQ;
 var _c;
@@ -87242,26 +87299,28 @@ var _buttonEffects = require("../../helpers/buttonEffects");
 var _buttonEffectsDefault = parcelHelpers.interopDefault(_buttonEffects);
 const ForwardButton = (props)=>{
     const { unhovered , hovered  } = _buttonEffectsDefault.default;
+    const { type , searchString  } = props.input;
     return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Link, {
-        href: `https://www.merriam-webster.com/dictionary/${props.searchString}`,
+        href: type === "word" ? `https://www.merriam-webster.com/dictionary/${searchString}` : `https://www.google.com/search?q=${searchString}`,
         target: "_blank",
         children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.IconButton, {
             sx: hovered,
             children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_openInNewDefault.default, {
-                sx: unhovered
+                sx: unhovered,
+                fontSize: props.size
             }, void 0, false, {
                 fileName: "src/components/buttons/ForwardButton.jsx",
-                lineNumber: 13,
+                lineNumber: 18,
                 columnNumber: 9
             }, undefined)
         }, void 0, false, {
             fileName: "src/components/buttons/ForwardButton.jsx",
-            lineNumber: 12,
+            lineNumber: 17,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/buttons/ForwardButton.jsx",
-        lineNumber: 8,
+        lineNumber: 9,
         columnNumber: 5
     }, undefined);
 };
