@@ -24991,7 +24991,7 @@ $RefreshReg$(_c, "App");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","./buttons/FocusModeButton/FocusModeButton":"lWsvH","./panels/CurrentBooks/CurrentBooks":"huZEU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./panels/DaysWQ/DaysWQ":"eQOY7"}],"lWsvH":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","./buttons/FocusModeButton/FocusModeButton":"lWsvH","./panels/CurrentBooks/CurrentBooks":"huZEU","./panels/DaysWQ/DaysWQ":"eQOY7","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"lWsvH":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$bb88 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -87076,7 +87076,7 @@ const DaysWQ = ()=>{
         const fetch = fetchedWofd[0];
         const dissectedWofd = {
             ...wofd,
-            headword: fetch.hwi.hw,
+            headword: fetch.hwi.hw.split("*").join(""),
             shortDef: fetch.shortdef[0]
         };
         setWofd(dissectedWofd);
@@ -87111,6 +87111,7 @@ const DaysWQ = ()=>{
         sx: {
             width: "25%",
             height: "auto",
+            minHeight: "fit-content",
             display: "flex",
             flexFlow: "column wrap",
             justifyContent: "space-between",
@@ -87134,7 +87135,7 @@ const DaysWQ = ()=>{
                         ]
                     }, void 0, true, {
                         fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                        lineNumber: 91,
+                        lineNumber: 92,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_forwardButtonDefault.default, {
@@ -87148,13 +87149,13 @@ const DaysWQ = ()=>{
                         }
                     }, void 0, false, {
                         fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                        lineNumber: 94,
+                        lineNumber: 95,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                lineNumber: 84,
+                lineNumber: 85,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
@@ -87172,30 +87173,34 @@ const DaysWQ = ()=>{
                             flexFlow: "row nowrap",
                             justifyContent: "flex-end",
                             alignItems: "center",
-                            height: 100
+                            height: "fit-content",
+                            mb: "2rem"
                         },
                         children: [
                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_copyButtonDefault.default, {
                                 text: page === 1 ? wofd.headword : qofd.text
                             }, void 0, false, {
                                 fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                                lineNumber: 121,
+                                lineNumber: 123,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Typography, {
+                                sx: {
+                                    wordBreak: "break-all"
+                                },
                                 align: "right",
                                 component: page === 1 ? "h2" : "p",
                                 variant: page === 1 ? "h1" : "h5",
                                 children: wofd.headword === undefined ? "Loading…" : page === 1 ? wofd.headword : qofd.text
                             }, void 0, false, {
                                 fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                                lineNumber: 122,
+                                lineNumber: 124,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                        lineNumber: 112,
+                        lineNumber: 113,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Typography, {
@@ -87205,13 +87210,13 @@ const DaysWQ = ()=>{
                         children: page === 1 ? wofd.shortDef : qofd.author !== null ? qofd.author : "Unknown"
                     }, void 0, false, {
                         fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                        lineNumber: 134,
+                        lineNumber: 137,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                lineNumber: 103,
+                lineNumber: 104,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
@@ -87238,12 +87243,12 @@ const DaysWQ = ()=>{
                             ]
                         }, void 0, true, {
                             fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                            lineNumber: 159,
+                            lineNumber: 162,
                             columnNumber: 11
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                        lineNumber: 154,
+                        lineNumber: 157,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Pagination, {
@@ -87255,13 +87260,13 @@ const DaysWQ = ()=>{
                         hideNextButton: true
                     }, void 0, false, {
                         fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                        lineNumber: 163,
+                        lineNumber: 166,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                lineNumber: 146,
+                lineNumber: 149,
                 columnNumber: 7
             }, undefined)
         ]
@@ -87307,7 +87312,7 @@ const ForwardButton = (props)=>{
             sx: hovered,
             children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_openInNewDefault.default, {
                 sx: unhovered,
-                fontSize: props.size
+                fontSize: props.sizen
             }, void 0, false, {
                 fileName: "src/components/buttons/ForwardButton.jsx",
                 lineNumber: 18,
