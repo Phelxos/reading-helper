@@ -15,7 +15,7 @@ const ForwardButton = (props) => {
       target="_blank"
     >
       <IconButton sx={hovered}>
-        <OpenInNewIcon sx={unhovered} fontSize={props.size} />
+        <OpenInNewIcon sx={unhovered} fontSize={props.sizen} />
       </IconButton>
     </Link>
   );

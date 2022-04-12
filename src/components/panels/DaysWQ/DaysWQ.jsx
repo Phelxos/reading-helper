@@ -29,7 +29,7 @@ const DaysWQ = () => {
     const fetch = fetchedWofd[0];
     const dissectedWofd = {
       ...wofd,
-      headword: fetch.hwi.hw,
+      headword: fetch.hwi.hw.split("*").join(""),
       shortDef: fetch.shortdef[0],
     };
     setWofd(dissectedWofd);
@@ -74,6 +74,7 @@ const DaysWQ = () => {
       sx={{
         width: "25%",
         height: "auto",
+        minHeight: "fit-content",
         display: "flex",
         flexFlow: "column wrap",
         justifyContent: "space-between",
@@ -115,11 +116,13 @@ const DaysWQ = () => {
             flexFlow: "row nowrap",
             justifyContent: "flex-end",
             alignItems: "center",
-            height: 100,
+            height: "fit-content",
+            mb: "2rem",
           }}
         >
           <CopyButton text={page === 1 ? wofd.headword : qofd.text} />
           <Typography
+            sx={{ wordBreak: "break-all" }}
             align="right"
             component={page === 1 ? "h2" : "p"}
             variant={page === 1 ? "h1" : "h5"}
