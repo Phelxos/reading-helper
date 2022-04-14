@@ -48,6 +48,9 @@ const CurrentBooks = () => {
         backgroundColor: "#C1B098",
         display: "flex",
         flexDirection: "column",
+        "::-webkit-scrollbar": {
+          display: "none",
+        },
       }}
     >
       <Box
