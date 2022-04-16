@@ -36,14 +36,20 @@ const Bestseller = () => {
   const fetchLinkCover = async (isbn) => {
     const res = await fetch(googleApi(isbn));
     const json = await res.json();
-    return json.items[0].volumeInfo.imageLinks.smallThumbnail;
+    if (json.error.code !== 429) {
+      return json.items[0].volumeInfo.imageLinks.smallThumbnail;
+    } else {
+      console.log(
+        "The daily limit for Google Books' API calls has been reached. A default cover will be displayed for the cards of the bestsellers books."
+      );
+      return null;
+    }
   };
 
   useEffect(() => {
     fetch(nytimesApi)
       .then((res) => res.json())
       .then((json) => {
-        console.log(json.results.lists);
         const fetchedBookList = json.results.lists[listNameNumber].books;
         const promises = fetchedBookList.map(async (item) => {
           const linkCover = await fetchLinkCover(item.primary_isbn13);
