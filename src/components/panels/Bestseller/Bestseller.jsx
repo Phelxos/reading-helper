@@ -1,16 +1,36 @@
-import { Box, Card, CardMedia, IconButton, Typography } from "@mui/material";
+import {
+  Box,
+  Card,
+  CardMedia,
+  IconButton,
+  Menu,
+  MenuItem,
+  Typography,
+} from "@mui/material";
 import ArrowDropDownCircleIcon from "@mui/icons-material/ArrowDropDownCircle";
 import { useEffect, useState } from "react";
 
 const Bestseller = () => {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [bestsellerList, setBestsellerList] = useState([]);
+  const [listNameNumber, setListNameNumber] = useState(0);
+  const nytApiKey = "VGTHTRB7qDzUPZN73Z5NtZ5Mh06p68xS";
   const googleApiKey = "AIzaSyArxFW_EwixEUGj48zkoIhG6yS-8dOuGMA";
   const defaultCoverLink =
     "https://images.unsplash.com/photo-1528459105426-b9548367069b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=728&q=80";
-  const nytimesApi =
-    "https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=VGTHTRB7qDzUPZN73Z5NtZ5Mh06p68xS";
+  const nytimesApi = `https://api.nytimes.com/svc/books/v3/lists/full-overview.json?api-key=${nytApiKey}`;
   const googleApi = (query) => {
     return `https://www.googleapis.com/books/v1/volumes?q=isbn:${query}&key=${googleApiKey}`;
+  };
+
+  const handleMenuClick = (e) => {
+    setAnchorEl(e.currentTarget);
+    setMenuOpen(true);
+  };
+
+  const handleMenuClose = () => {
+    setMenuOpen(false);
   };
 
   const fetchLinkCover = async (isbn) => {
@@ -23,21 +43,21 @@ const Bestseller = () => {
     fetch(nytimesApi)
       .then((res) => res.json())
       .then((json) => {
-        const fetchedBookList = json.results.books;
-        setBestsellerList(
-          fetchedBookList.map(async (item) => {
-            const linkCover = await fetchLinkCover(item.isbns[0].isbn13);
-            return {
-              title: item.title,
-              authors: item.author,
-              ranking: item.rank,
-              cover: linkCover,
-            };
-          })
-        );
-      });
+        console.log(json.results.lists);
+        const fetchedBookList = json.results.lists[listNameNumber].books;
+        const promises = fetchedBookList.map(async (item) => {
+          const linkCover = await fetchLinkCover(item.primary_isbn13);
+          return {
+            title: item.title,
+            authors: item.author,
+            ranking: item.rank,
+            cover: linkCover,
+          };
+        });
+        return Promise.all(promises);
+      })
+      .then((books) => setBestsellerList(books));
   }, []);
-  console.log(bestsellerList);
 
   return (
     <Card
@@ -60,12 +80,26 @@ const Bestseller = () => {
           flexGrow: 1,
         }}
       >
-        <Typography component="h2" variant="h3">
-          Bestseller
-        </Typography>
-        <IconButton>
-          <ArrowDropDownCircleIcon />
-        </IconButton>
+        <Box
+          sx={{
+            display: "flex",
+            flexFlow: "row nowrap",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <Typography component="h2" variant="h3">
+            Bestseller
+          </Typography>
+          <IconButton onClick={handleMenuClick}>
+            <ArrowDropDownCircleIcon />
+          </IconButton>
+        </Box>
+        <Menu anchorEl={anchorEl} open={menuOpen} onClose={handleMenuClose}>
+          <Box>
+            <MenuItem onClick={handleMenuClose}>Test</MenuItem>
+          </Box>
+        </Menu>
       </Box>
       <Box
         sx={{
