@@ -13,11 +13,10 @@ const Bestseller = () => {
     return `https://www.googleapis.com/books/v1/volumes?q=isbn:${query}&key=${googleApiKey}`;
   };
 
-  fetchLinkCover = async (isbn) => {
+  const fetchLinkCover = async (isbn) => {
     const res = await fetch(googleApi(isbn));
     const json = await res.json();
-    console.log(json);
-    return json;
+    return json.items[0].volumeInfo.imageLinks.smallThumbnail;
   };
 
   useEffect(() => {
@@ -25,22 +24,19 @@ const Bestseller = () => {
       .then((res) => res.json())
       .then((json) => {
         const fetchedBookList = json.results.books;
-        console.log(fetchedBookList);
         setBestsellerList(
-          fetchedBookList.map((item) => {
-            console.log(item.isbns[0].isbn13);
-            const linkCover = fetchLinkCover(item.isbns[0].isbn13);
-            console.log("link cover", linkCover);
+          fetchedBookList.map(async (item) => {
+            const linkCover = await fetchLinkCover(item.isbns[0].isbn13);
             return {
               title: item.title,
               authors: item.author,
               ranking: item.rank,
+              cover: linkCover,
             };
           })
         );
       });
   }, []);
-
   console.log(bestsellerList);
 
   return (
