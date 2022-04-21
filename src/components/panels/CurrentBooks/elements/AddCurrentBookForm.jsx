@@ -40,7 +40,8 @@ const AddCurrentBookForm = (props) => {
             borderRadius: "1rem",
             margin: "0 3rem",
             padding: "3rem",
-            border: "1px solid #77959E",
+            border: "1px solid",
+            borderColor: "booksLists.formBlueGrey",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
@@ -149,7 +150,7 @@ const AddCurrentBookForm = (props) => {
                       sx={{
                         fontSize: "1rem",
                         ml: ".5rem",
-                        color: "#77959E",
+                        color: "booksLists.formBlueGrey",
                         "&:hover": { color: "black" },
                         transition: "all .5s",
                       }}

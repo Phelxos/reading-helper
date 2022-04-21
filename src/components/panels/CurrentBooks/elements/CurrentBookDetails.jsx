@@ -28,7 +28,7 @@ const CurrentBookDetails = (props) => {
         },
         flexGrow: 1,
         ml: "1rem",
-        backgroundColor: "#968873",
+        backgroundColor: "booksLists.cardLight",
         borderRadius: "1rem",
       }}
     >

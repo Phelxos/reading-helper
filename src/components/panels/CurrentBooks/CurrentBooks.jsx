@@ -45,12 +45,13 @@ const CurrentBooks = () => {
       sx={{
         width: "40%",
         padding: "1rem 2rem",
-        backgroundColor: "#C1B098",
+        backgroundColor: "booksLists.cardBgr",
         display: "flex",
         flexDirection: "column",
         "::-webkit-scrollbar": {
           display: "none",
         },
+        scrollbarWidth: "none",
       }}
     >
       <Box
@@ -59,6 +60,7 @@ const CurrentBooks = () => {
           justifyContent: "space-between",
           alignItems: "center",
           paddingBottom: "1rem",
+          scrollbarWidth: "none",
         }}
       >
         <Typography variant="h2" component="h2">
@@ -76,6 +78,7 @@ const CurrentBooks = () => {
       ) : (
         <>
           <CurrentBookContent
+            sx={{ scrollbarWidth: "none" }}
             list={booksList}
             handleDeleteClick={handleDeleteClick}
           />
