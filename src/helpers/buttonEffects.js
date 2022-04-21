@@ -1,5 +1,5 @@
 const buttonEffects = {
-  unhovered: { opacity: 0.125, transition: "all 0.25s" },
+  unhovered: { opacity: 0.25, transition: "all 0.25s" },
   hovered: [
     {
       "&:hover > *": {

@@ -11,7 +11,7 @@ function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <Grid container spacing={4} sx={{ padding: "2rem" }}>
+        <Grid container spacing={4} sx={{ padding: "4rem 2rem" }}>
           <Grid item lg={8} xs={12}>
             <CurrentBooks />
           </Grid>

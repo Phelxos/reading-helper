@@ -5,4 +5,10 @@ const boxShadow = {
   },
 };
 
-export default boxShadow;
+const textShadows = {
+  bottom: {
+    ts: "2px 2px 4px rgba(0, 0, 0, 0.71)",
+  },
+};
+
+export { boxShadow, textShadows };

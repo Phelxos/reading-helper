@@ -24998,7 +24998,7 @@ function App() {
                     container: true,
                     spacing: 4,
                     sx: {
-                        padding: "2rem"
+                        padding: "4rem 2rem"
                     },
                     children: [
                         /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Grid, {
@@ -86300,7 +86300,7 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 const buttonEffects = {
     unhovered: {
-        opacity: 0.125,
+        opacity: 0.25,
         transition: "all 0.25s"
     },
     hovered: [
@@ -86361,7 +86361,10 @@ const CopyButton = (props)=>{
     return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactCopyToClipboard.CopyToClipboard, {
         text: props.text,
         children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.IconButton, {
-            sx: hovered,
+            sx: {
+                ...hovered,
+                color: `${props.color}`
+            },
             children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_contentCopyDefault.default, {
                 sx: unhovered
             }, void 0, false, {
@@ -87141,7 +87144,9 @@ var _forwardButton = require("../../buttons/ForwardButton");
 var _forwardButtonDefault = parcelHelpers.interopDefault(_forwardButton);
 var _copyButton = require("../../buttons/CopyButton");
 var _copyButtonDefault = parcelHelpers.interopDefault(_copyButton);
+var _shadows = require("../../../helpers/shadows");
 var _s = $RefreshSig$();
+const { ts  } = _shadows.textShadows.bottom;
 const DaysWQ = ()=>{
     _s();
     const [wofd, setWofd] = _react.useState({
@@ -87199,9 +87204,8 @@ const DaysWQ = ()=>{
     _react.useEffect(fetchQofd, []);
     return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Card, {
         sx: {
-            height: "250px",
             display: "flex",
-            flexFlow: "column wrap",
+            flexFlow: "column nowrap",
             justifyContent: "space-between",
             alignItems: "stretch",
             padding: "2rem",
@@ -87213,7 +87217,7 @@ const DaysWQ = ()=>{
             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
                 sx: {
                     display: "flex",
-                    flexFlow: "row wrap",
+                    flexFlow: "row nowrap",
                     justifyContent: "space-between"
                 },
                 children: [
@@ -87223,11 +87227,18 @@ const DaysWQ = ()=>{
                         children: [
                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
                                 component: "span",
+                                sx: {
+                                    fontSize: "4rem",
+                                    fontWeight: 700,
+                                    width: 90,
+                                    display: "inline-block",
+                                    textAlign: "center"
+                                },
                                 color: page === 1 ? "wqofd.fontGreen" : "wqofd.fontRed",
                                 children: page === 1 ? wofd.heading : qofd.heading
                             }, void 0, false, {
                                 fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                                lineNumber: 94,
+                                lineNumber: 96,
                                 columnNumber: 11
                             }, undefined),
                             " ",
@@ -87235,11 +87246,13 @@ const DaysWQ = ()=>{
                         ]
                     }, void 0, true, {
                         fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                        lineNumber: 93,
+                        lineNumber: 95,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_forwardButtonDefault.default, {
                         size: "large",
+                        color: page === 1 ? "wqofd.fontGreen" : "wqofd.fontRed",
+                        opacity: page === 1 ? 0.75 : 0.5,
                         input: page === 1 ? {
                             type: "word",
                             searchString: wofd.headword
@@ -87249,13 +87262,13 @@ const DaysWQ = ()=>{
                         }
                     }, void 0, false, {
                         fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                        lineNumber: 102,
+                        lineNumber: 111,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                lineNumber: 86,
+                lineNumber: 88,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
@@ -87274,49 +87287,56 @@ const DaysWQ = ()=>{
                             justifyContent: "flex-end",
                             alignItems: "center",
                             height: "fit-content",
-                            mb: "2rem"
+                            m: "3rem 0"
                         },
                         children: [
                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_copyButtonDefault.default, {
-                                text: page === 1 ? wofd.headword : qofd.text
+                                text: page === 1 ? wofd.headword : qofd.text,
+                                color: "wqofd.font"
                             }, void 0, false, {
                                 fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                                lineNumber: 130,
+                                lineNumber: 141,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Typography, {
                                 sx: {
-                                    wordBreak: "break-all"
+                                    textShadow: `${page === 1 ? ts : ""}`
                                 },
                                 align: "right",
                                 component: page === 1 ? "h2" : "p",
-                                variant: page === 1 ? "h1" : "h5",
+                                variant: page === 1 ? "h1" : "h4",
                                 children: wofd.headword === undefined ? "Loading…" : page === 1 ? wofd.headword : qofd.text
                             }, void 0, false, {
                                 fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                                lineNumber: 131,
+                                lineNumber: 145,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                        lineNumber: 120,
+                        lineNumber: 131,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Typography, {
                         align: "right",
                         component: "p",
+                        sx: {
+                            fontSize: `${page === 1 ? "2rem" : "3rem"}`,
+                            fontStyle: `${page === 1 ? "italic" : "normal"}`,
+                            textShadow: `${page === 1 ? "" : ts}`,
+                            wordWrap: "break-word"
+                        },
                         variant: page === 1 ? "subtitle1" : "h4",
                         children: page === 1 ? wofd.shortDef : qofd.author !== null ? qofd.author : "Unknown"
                     }, void 0, false, {
                         fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                        lineNumber: 144,
+                        lineNumber: 160,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                lineNumber: 111,
+                lineNumber: 122,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
@@ -87335,7 +87355,8 @@ const DaysWQ = ()=>{
                             variant: "subtitle2",
                             component: "p",
                             sx: {
-                                opacity: 0.25
+                                opacity: 0.25,
+                                color: "black"
                             },
                             children: [
                                 "Powered by ",
@@ -87343,12 +87364,12 @@ const DaysWQ = ()=>{
                             ]
                         }, void 0, true, {
                             fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                            lineNumber: 169,
+                            lineNumber: 191,
                             columnNumber: 11
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                        lineNumber: 164,
+                        lineNumber: 186,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Pagination, {
@@ -87360,19 +87381,19 @@ const DaysWQ = ()=>{
                         hideNextButton: true
                     }, void 0, false, {
                         fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                        lineNumber: 173,
+                        lineNumber: 199,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                lineNumber: 156,
+                lineNumber: 178,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-        lineNumber: 73,
+        lineNumber: 76,
         columnNumber: 5
     }, undefined);
 };
@@ -87387,7 +87408,7 @@ $RefreshReg$(_c, "DaysWQ");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@mui/material":"40376","../../buttons/ForwardButton":"fCil3","../../buttons/CopyButton":"g0Osb","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"fCil3":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@mui/material":"40376","../../buttons/ForwardButton":"fCil3","../../buttons/CopyButton":"g0Osb","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../../helpers/shadows":"dGMhz"}],"fCil3":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$8e1a = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -87409,10 +87430,16 @@ const ForwardButton = (props)=>{
         href: type === "word" ? `https://www.merriam-webster.com/dictionary/${searchString}` : `https://www.google.com/search?q=${searchString}`,
         target: "_blank",
         children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.IconButton, {
-            sx: hovered,
+            sx: {
+                ...hovered,
+                color: `${props.color}`
+            },
             children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_openInNewDefault.default, {
-                sx: unhovered,
-                fontSize: props.sizen
+                sx: {
+                    ...unhovered,
+                    opacity: `${props.opacity}`
+                },
+                fontSize: props.size
             }, void 0, false, {
                 fileName: "src/components/buttons/ForwardButton.jsx",
                 lineNumber: 18,
@@ -87453,7 +87480,25 @@ var _default = (0, _createSvgIcon.default)(/*#__PURE__*/ (0, _jsxRuntime.jsx)("p
 }), 'OpenInNew');
 exports.default = _default;
 
-},{"@babel/runtime/helpers/interopRequireDefault":"7XM86","./utils/createSvgIcon":"lVV9C","react/jsx-runtime":"6AEwr"}],"h1GVI":[function(require,module,exports) {
+},{"@babel/runtime/helpers/interopRequireDefault":"7XM86","./utils/createSvgIcon":"lVV9C","react/jsx-runtime":"6AEwr"}],"dGMhz":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "boxShadow", ()=>boxShadow
+);
+parcelHelpers.export(exports, "textShadows", ()=>textShadows
+);
+const boxShadow = {
+    1: {
+        boxShadow: "0px 0.4px 2.2px rgba(0, 0, 0, 0.35), 0px 0.8px 4.9px rgba(0, 0, 0, 0.276), 0px 1.3px 8.2px rgba(0, 0, 0, 0.241), 0px 2px 12.4px rgba(0, 0, 0, 0.216), 0px 2.9px 17.9px rgba(0, 0, 0, 0.195), 0px 4.1px 25.3px rgba(0, 0, 0, 0.175), 0px 5.8px 35.9px rgba(0, 0, 0, 0.155), 0px 8.4px 52.2px rgba(0, 0, 0, 0.134), 0px 12.9px 80.4px rgba(0, 0, 0, 0.109), 0px 23px 143px rgba(0, 0, 0, 0.074)"
+    }
+};
+const textShadows = {
+    bottom: {
+        ts: "2px 2px 4px rgba(0, 0, 0, 0.71)"
+    }
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"h1GVI":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$be50 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;

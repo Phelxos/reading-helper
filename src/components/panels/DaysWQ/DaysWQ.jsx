@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { Box, Card, Pagination, Typography, Link } from "@mui/material";
 import ForwardButton from "../../buttons/ForwardButton";
 import CopyButton from "../../buttons/CopyButton";
+import { textShadows } from "../../../helpers/shadows";
+
+const { ts } = textShadows.bottom;
 
 const DaysWQ = () => {
   const [wofd, setWofd] = useState({
@@ -72,9 +75,8 @@ const DaysWQ = () => {
   return (
     <Card
       sx={{
-        height: "250px",
         display: "flex",
-        flexFlow: "column wrap",
+        flexFlow: "column nowrap",
         justifyContent: "space-between",
         alignItems: "stretch",
         padding: "2rem",
@@ -86,13 +88,20 @@ const DaysWQ = () => {
       <Box
         sx={{
           display: "flex",
-          flexFlow: "row wrap",
+          flexFlow: "row nowrap",
           justifyContent: "space-between",
         }}
       >
         <Typography component="h2" variant="h3">
           <Box
             component="span"
+            sx={{
+              fontSize: "4rem",
+              fontWeight: 700,
+              width: 90,
+              display: "inline-block",
+              textAlign: "center",
+            }}
             color={page === 1 ? "wqofd.fontGreen" : "wqofd.fontRed"}
           >
             {page === 1 ? wofd.heading : qofd.heading}
@@ -101,6 +110,8 @@ const DaysWQ = () => {
         </Typography>
         <ForwardButton
           size="large"
+          color={page === 1 ? "wqofd.fontGreen" : "wqofd.fontRed"}
+          opacity={page === 1 ? 0.75 : 0.5}
           input={
             page === 1
               ? { type: "word", searchString: wofd.headword }
@@ -124,15 +135,20 @@ const DaysWQ = () => {
             justifyContent: "flex-end",
             alignItems: "center",
             height: "fit-content",
-            mb: "2rem",
+            m: "3rem 0",
           }}
         >
-          <CopyButton text={page === 1 ? wofd.headword : qofd.text} />
+          <CopyButton
+            text={page === 1 ? wofd.headword : qofd.text}
+            color={"wqofd.font"}
+          />
           <Typography
-            sx={{ wordBreak: "break-all" }}
+            sx={{
+              textShadow: `${page === 1 ? ts : ""}`,
+            }}
             align="right"
             component={page === 1 ? "h2" : "p"}
-            variant={page === 1 ? "h1" : "h5"}
+            variant={page === 1 ? "h1" : "h4"}
           >
             {wofd.headword === undefined
               ? "Loading…"
@@ -144,6 +160,12 @@ const DaysWQ = () => {
         <Typography
           align="right"
           component="p"
+          sx={{
+            fontSize: `${page === 1 ? "2rem" : "3rem"}`,
+            fontStyle: `${page === 1 ? "italic" : "normal"}`,
+            textShadow: `${page === 1 ? "" : ts}`,
+            wordWrap: "break-word",
+          }}
           variant={page === 1 ? "subtitle1" : "h4"}
         >
           {page === 1
@@ -166,7 +188,11 @@ const DaysWQ = () => {
           target="_blank"
           underline="none"
         >
-          <Typography variant="subtitle2" component="p" sx={{ opacity: 0.25 }}>
+          <Typography
+            variant="subtitle2"
+            component="p"
+            sx={{ opacity: 0.25, color: "black" }}
+          >
             Powered by {page === 1 ? wofd.reference : qofd.reference}
           </Typography>
         </Link>
