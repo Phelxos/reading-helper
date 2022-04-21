@@ -95,8 +95,9 @@ const Bestseller = () => {
         flexFlow: "row nowrap",
         justifyContent: "space-between",
         alignItems: "center",
-        width: 0.5,
         padding: "2rem",
+        backgroundColor: "booksLists.cardBgr",
+        borderRadius: "1rem",
       }}
     >
       <Box
@@ -179,8 +180,10 @@ const Bestseller = () => {
                 alignItems: "stretch",
                 margin: "1rem",
                 padding: "1rem",
-                minWidth: 0.3,
-                backgroundColor: "lightblue",
+                minWidth: "fit-content",
+                backgroundColor: "booksLists.cardDark",
+                borderRadius: "1rem",
+                color: "snow",
               }}
             >
               <Typography
@@ -200,8 +203,21 @@ const Bestseller = () => {
                   padding: "1rem",
                 }}
               >
-                <Typography align="right">{book.title}</Typography>
-                <Typography align="right">{book.authors}</Typography>
+                <Typography
+                  sx={{
+                    fontSize: "2rem",
+                    fontWeight: 100,
+                  }}
+                  align="right"
+                >
+                  {book.title}
+                </Typography>
+                <Typography
+                  sx={{ fontSize: "1.25rem", fontWeight: 500 }}
+                  align="right"
+                >
+                  {book.authors}
+                </Typography>
               </Box>
               <CardMedia
                 component="img"

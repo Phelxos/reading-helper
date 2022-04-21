@@ -43,7 +43,6 @@ const CurrentBooks = () => {
   return (
     <Card
       sx={{
-        width: "40%",
         padding: "1rem 2rem",
         backgroundColor: "booksLists.cardBgr",
         display: "flex",
@@ -52,6 +51,7 @@ const CurrentBooks = () => {
           display: "none",
         },
         scrollbarWidth: "none",
+        borderRadius: "1rem",
       }}
     >
       <Box

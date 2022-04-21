@@ -72,14 +72,15 @@ const DaysWQ = () => {
   return (
     <Card
       sx={{
-        width: "25%",
-        height: "auto",
-        minHeight: "fit-content",
+        height: "250px",
         display: "flex",
         flexFlow: "column wrap",
         justifyContent: "space-between",
         alignItems: "stretch",
         padding: "2rem",
+        backgroundColor: "wqofd.cardBgr",
+        borderRadius: "1rem",
+        color: "wqofd.font",
       }}
     >
       <Box
@@ -89,8 +90,14 @@ const DaysWQ = () => {
           justifyContent: "space-between",
         }}
       >
-        <Typography component="h2" variant="h4">
-          {page === 1 ? wofd.heading : qofd.heading} of the Day
+        <Typography component="h2" variant="h3">
+          <Box
+            component="span"
+            color={page === 1 ? "wqofd.fontGreen" : "wqofd.fontRed"}
+          >
+            {page === 1 ? wofd.heading : qofd.heading}
+          </Box>{" "}
+          of the Day
         </Typography>
         <ForwardButton
           size="large"

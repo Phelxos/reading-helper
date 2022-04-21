@@ -24994,29 +24994,64 @@ function App() {
         children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.ThemeProvider, {
             theme: _styles.theme,
             children: [
-                /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_currentBooksDefault.default, {}, void 0, false, {
+                /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Grid, {
+                    container: true,
+                    spacing: 4,
+                    sx: {
+                        padding: "2rem"
+                    },
+                    children: [
+                        /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Grid, {
+                            item: true,
+                            lg: 8,
+                            xs: 12,
+                            children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_currentBooksDefault.default, {}, void 0, false, {
+                                fileName: "src/components/App.jsx",
+                                lineNumber: 16,
+                                columnNumber: 13
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "src/components/App.jsx",
+                            lineNumber: 15,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Grid, {
+                            item: true,
+                            lg: 4,
+                            xs: 12,
+                            children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_daysWQDefault.default, {}, void 0, false, {
+                                fileName: "src/components/App.jsx",
+                                lineNumber: 19,
+                                columnNumber: 13
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "src/components/App.jsx",
+                            lineNumber: 18,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Grid, {
+                            item: true,
+                            lg: 8,
+                            xs: 12,
+                            children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_bestsellerDefault.default, {}, void 0, false, {
+                                fileName: "src/components/App.jsx",
+                                lineNumber: 22,
+                                columnNumber: 13
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "src/components/App.jsx",
+                            lineNumber: 21,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
                     fileName: "src/components/App.jsx",
                     lineNumber: 14,
                     columnNumber: 9
                 }, this),
-                /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_otherBooksDefault.default, {}, void 0, false, {
-                    fileName: "src/components/App.jsx",
-                    lineNumber: 15,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_bestsellerDefault.default, {}, void 0, false, {
-                    fileName: "src/components/App.jsx",
-                    lineNumber: 16,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_daysWQDefault.default, {}, void 0, false, {
-                    fileName: "src/components/App.jsx",
-                    lineNumber: 17,
-                    columnNumber: 9
-                }, this),
                 /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_focusModeButtonDefault.default, {}, void 0, false, {
                     fileName: "src/components/App.jsx",
-                    lineNumber: 18,
+                    lineNumber: 25,
                     columnNumber: 9
                 }, this)
             ]
@@ -47352,7 +47387,6 @@ const CurrentBooks = ()=>{
     };
     return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Card, {
         sx: {
-            width: "40%",
             padding: "1rem 2rem",
             backgroundColor: "booksLists.cardBgr",
             display: "flex",
@@ -47360,7 +47394,8 @@ const CurrentBooks = ()=>{
             "::-webkit-scrollbar": {
                 display: "none"
             },
-            scrollbarWidth: "none"
+            scrollbarWidth: "none",
+            borderRadius: "1rem"
         },
         children: [
             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
@@ -87164,14 +87199,15 @@ const DaysWQ = ()=>{
     _react.useEffect(fetchQofd, []);
     return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Card, {
         sx: {
-            width: "25%",
-            height: "auto",
-            minHeight: "fit-content",
+            height: "250px",
             display: "flex",
             flexFlow: "column wrap",
             justifyContent: "space-between",
             alignItems: "stretch",
-            padding: "2rem"
+            padding: "2rem",
+            backgroundColor: "wqofd.cardBgr",
+            borderRadius: "1rem",
+            color: "wqofd.font"
         },
         children: [
             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
@@ -87183,14 +87219,23 @@ const DaysWQ = ()=>{
                 children: [
                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Typography, {
                         component: "h2",
-                        variant: "h4",
+                        variant: "h3",
                         children: [
-                            page === 1 ? wofd.heading : qofd.heading,
-                            " of the Day"
+                            /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
+                                component: "span",
+                                color: page === 1 ? "wqofd.fontGreen" : "wqofd.fontRed",
+                                children: page === 1 ? wofd.heading : qofd.heading
+                            }, void 0, false, {
+                                fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
+                                lineNumber: 94,
+                                columnNumber: 11
+                            }, undefined),
+                            " ",
+                            "of the Day"
                         ]
                     }, void 0, true, {
                         fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                        lineNumber: 92,
+                        lineNumber: 93,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_forwardButtonDefault.default, {
@@ -87204,13 +87249,13 @@ const DaysWQ = ()=>{
                         }
                     }, void 0, false, {
                         fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                        lineNumber: 95,
+                        lineNumber: 102,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                lineNumber: 85,
+                lineNumber: 86,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
@@ -87236,7 +87281,7 @@ const DaysWQ = ()=>{
                                 text: page === 1 ? wofd.headword : qofd.text
                             }, void 0, false, {
                                 fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                                lineNumber: 123,
+                                lineNumber: 130,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Typography, {
@@ -87249,13 +87294,13 @@ const DaysWQ = ()=>{
                                 children: wofd.headword === undefined ? "Loading…" : page === 1 ? wofd.headword : qofd.text
                             }, void 0, false, {
                                 fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                                lineNumber: 124,
+                                lineNumber: 131,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                        lineNumber: 113,
+                        lineNumber: 120,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Typography, {
@@ -87265,13 +87310,13 @@ const DaysWQ = ()=>{
                         children: page === 1 ? wofd.shortDef : qofd.author !== null ? qofd.author : "Unknown"
                     }, void 0, false, {
                         fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                        lineNumber: 137,
+                        lineNumber: 144,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                lineNumber: 104,
+                lineNumber: 111,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
@@ -87298,12 +87343,12 @@ const DaysWQ = ()=>{
                             ]
                         }, void 0, true, {
                             fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                            lineNumber: 162,
+                            lineNumber: 169,
                             columnNumber: 11
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                        lineNumber: 157,
+                        lineNumber: 164,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Pagination, {
@@ -87315,13 +87360,13 @@ const DaysWQ = ()=>{
                         hideNextButton: true
                     }, void 0, false, {
                         fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                        lineNumber: 166,
+                        lineNumber: 173,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                lineNumber: 149,
+                lineNumber: 156,
                 columnNumber: 7
             }, undefined)
         ]
@@ -87497,8 +87542,9 @@ const Bestseller = ()=>{
             flexFlow: "row nowrap",
             justifyContent: "space-between",
             alignItems: "center",
-            width: 0.5,
-            padding: "2rem"
+            padding: "2rem",
+            backgroundColor: "booksLists.cardBgr",
+            borderRadius: "1rem"
         },
         children: [
             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
@@ -87525,25 +87571,25 @@ const Bestseller = ()=>{
                                 children: "Bestseller"
                             }, void 0, false, {
                                 fileName: "src/components/panels/Bestseller/Bestseller.jsx",
-                                lineNumber: 120,
+                                lineNumber: 121,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.IconButton, {
                                 onClick: handleMenuClick,
                                 children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_arrowDropDownCircleDefault.default, {}, void 0, false, {
                                     fileName: "src/components/panels/Bestseller/Bestseller.jsx",
-                                    lineNumber: 124,
+                                    lineNumber: 125,
                                     columnNumber: 13
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/components/panels/Bestseller/Bestseller.jsx",
-                                lineNumber: 123,
+                                lineNumber: 124,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/panels/Bestseller/Bestseller.jsx",
-                        lineNumber: 112,
+                        lineNumber: 113,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Menu, {
@@ -87560,7 +87606,7 @@ const Bestseller = ()=>{
                                 children: "Fiction"
                             }, void 0, false, {
                                 fileName: "src/components/panels/Bestseller/Bestseller.jsx",
-                                lineNumber: 133,
+                                lineNumber: 134,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.MenuItem, {
@@ -87571,7 +87617,7 @@ const Bestseller = ()=>{
                                 children: "Combined Print & E-Book Fiction"
                             }, void 0, false, {
                                 fileName: "src/components/panels/Bestseller/Bestseller.jsx",
-                                lineNumber: 134,
+                                lineNumber: 135,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.MenuItem, {
@@ -87582,7 +87628,7 @@ const Bestseller = ()=>{
                                 children: "Hardcover Fiction"
                             }, void 0, false, {
                                 fileName: "src/components/panels/Bestseller/Bestseller.jsx",
-                                lineNumber: 142,
+                                lineNumber: 143,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.MenuItem, {
@@ -87593,19 +87639,19 @@ const Bestseller = ()=>{
                                 children: "Paperback Trade Fiction"
                             }, void 0, false, {
                                 fileName: "src/components/panels/Bestseller/Bestseller.jsx",
-                                lineNumber: 150,
+                                lineNumber: 151,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/panels/Bestseller/Bestseller.jsx",
-                        lineNumber: 127,
+                        lineNumber: 128,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/panels/Bestseller/Bestseller.jsx",
-                lineNumber: 102,
+                lineNumber: 103,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
@@ -87627,8 +87673,10 @@ const Bestseller = ()=>{
                             alignItems: "stretch",
                             margin: "1rem",
                             padding: "1rem",
-                            minWidth: 0.3,
-                            backgroundColor: "lightblue"
+                            minWidth: "fit-content",
+                            backgroundColor: "booksLists.cardDark",
+                            borderRadius: "1rem",
+                            color: "snow"
                         },
                         children: [
                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Typography, {
@@ -87640,7 +87688,7 @@ const Bestseller = ()=>{
                                 children: book.ranking
                             }, void 0, false, {
                                 fileName: "src/components/panels/Bestseller/Bestseller.jsx",
-                                lineNumber: 186,
+                                lineNumber: 189,
                                 columnNumber: 15
                             }, undefined),
                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
@@ -87654,25 +87702,33 @@ const Bestseller = ()=>{
                                 },
                                 children: [
                                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Typography, {
+                                        sx: {
+                                            fontSize: "2rem",
+                                            fontWeight: 100
+                                        },
                                         align: "right",
                                         children: book.title
                                     }, void 0, false, {
                                         fileName: "src/components/panels/Bestseller/Bestseller.jsx",
-                                        lineNumber: 203,
+                                        lineNumber: 206,
                                         columnNumber: 17
                                     }, undefined),
                                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Typography, {
+                                        sx: {
+                                            fontSize: "1.25rem",
+                                            fontWeight: 500
+                                        },
                                         align: "right",
                                         children: book.authors
                                     }, void 0, false, {
                                         fileName: "src/components/panels/Bestseller/Bestseller.jsx",
-                                        lineNumber: 204,
+                                        lineNumber: 215,
                                         columnNumber: 17
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/panels/Bestseller/Bestseller.jsx",
-                                lineNumber: 193,
+                                lineNumber: 196,
                                 columnNumber: 15
                             }, undefined),
                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.CardMedia, {
@@ -87683,19 +87739,19 @@ const Bestseller = ()=>{
                                 }
                             }, void 0, false, {
                                 fileName: "src/components/panels/Bestseller/Bestseller.jsx",
-                                lineNumber: 206,
+                                lineNumber: 222,
                                 columnNumber: 15
                             }, undefined)
                         ]
                     }, index, true, {
                         fileName: "src/components/panels/Bestseller/Bestseller.jsx",
-                        lineNumber: 173,
+                        lineNumber: 174,
                         columnNumber: 13
                     }, undefined);
                 })
             }, void 0, false, {
                 fileName: "src/components/panels/Bestseller/Bestseller.jsx",
-                lineNumber: 160,
+                lineNumber: 161,
                 columnNumber: 7
             }, undefined)
         ]
@@ -87766,9 +87822,6 @@ parcelHelpers.export(exports, "theme", ()=>theme
 var _material = require("@mui/material");
 const theme = _material.createTheme({
     palette: {
-        background: {
-            card: "#C2B29A"
-        },
         booksLists: {
             cardBgr: "#C2B29A",
             cardLight: "#978974",
@@ -87776,6 +87829,12 @@ const theme = _material.createTheme({
             cardLukelight: "#857A68",
             cardGrey: "#918F86",
             formBlueGrey: "#77959E"
+        },
+        wqofd: {
+            cardBgr: "#9c9c94",
+            fontGreen: "#3b8082",
+            fontRed: "#890F0D",
+            font: "snow"
         }
     }
 });
