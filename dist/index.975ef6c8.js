@@ -47421,7 +47421,8 @@ const CurrentBooks = ()=>{
                     }, undefined),
                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.CardActions, {
                         children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_addBtnDefault.default, {
-                            onAddClick: handleAddClick
+                            onAddClick: handleAddClick,
+                            displayCancelBtn: showAddForm
                         }, void 0, false, {
                             fileName: "src/components/panels/CurrentBooks/CurrentBooks.jsx",
                             lineNumber: 70,
@@ -47506,22 +47507,32 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _material = require("@mui/material");
 var _addCircle = require("@mui/icons-material/AddCircle");
 var _addCircleDefault = parcelHelpers.interopDefault(_addCircle);
+var _cancel = require("@mui/icons-material/Cancel");
+var _cancelDefault = parcelHelpers.interopDefault(_cancel);
 const AddBtn = (props)=>{
     return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.IconButton, {
         "aria-label": "add a book",
         onClick: props.onAddClick,
-        children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_addCircleDefault.default, {
+        children: props.displayCancelBtn ? /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_cancelDefault.default, {
             sx: {
                 fontSize: 36
             }
         }, void 0, false, {
             fileName: "src/components/panels/CurrentBooks/elements/AddBtn.jsx",
-            lineNumber: 7,
-            columnNumber: 7
+            lineNumber: 9,
+            columnNumber: 9
+        }, undefined) : /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_addCircleDefault.default, {
+            sx: {
+                fontSize: 36
+            }
+        }, void 0, false, {
+            fileName: "src/components/panels/CurrentBooks/elements/AddBtn.jsx",
+            lineNumber: 11,
+            columnNumber: 9
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/panels/CurrentBooks/elements/AddBtn.jsx",
-        lineNumber: 6,
+        lineNumber: 7,
         columnNumber: 5
     }, undefined);
 };
@@ -47535,7 +47546,7 @@ $RefreshReg$(_c, "AddBtn");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@mui/material":"40376","@mui/icons-material/AddCircle":"4IOBx","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"40376":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","@mui/material":"40376","@mui/icons-material/AddCircle":"4IOBx","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","@mui/icons-material/Cancel":"gIdZz"}],"40376":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "colors", ()=>_colors
@@ -85892,7 +85903,21 @@ Object.defineProperty(exports, "default", {
 });
 var _utils = require("@mui/material/utils");
 
-},{"@mui/material/utils":"9bp9M"}],"jQM0n":[function(require,module,exports) {
+},{"@mui/material/utils":"9bp9M"}],"gIdZz":[function(require,module,exports) {
+"use strict";
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = void 0;
+var _createSvgIcon = _interopRequireDefault(require("./utils/createSvgIcon"));
+var _jsxRuntime = require("react/jsx-runtime");
+var _default = (0, _createSvgIcon.default)(/*#__PURE__*/ (0, _jsxRuntime.jsx)("path", {
+    d: "M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"
+}), 'Cancel');
+exports.default = _default;
+
+},{"@babel/runtime/helpers/interopRequireDefault":"7XM86","./utils/createSvgIcon":"lVV9C","react/jsx-runtime":"6AEwr"}],"jQM0n":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$dd53 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -87408,7 +87433,7 @@ $RefreshReg$(_c, "DaysWQ");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@mui/material":"40376","../../buttons/ForwardButton":"fCil3","../../buttons/CopyButton":"g0Osb","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../../helpers/shadows":"dGMhz"}],"fCil3":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@mui/material":"40376","../../buttons/ForwardButton":"fCil3","../../buttons/CopyButton":"g0Osb","../../../helpers/shadows":"dGMhz","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"fCil3":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$8e1a = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;

@@ -67,7 +67,7 @@ const CurrentBooks = () => {
           Current Book{booksList.length > 1 ? "s" : null}
         </Typography>
         <CardActions>
-          <AddBtn onAddClick={handleAddClick} />
+          <AddBtn onAddClick={handleAddClick} displayCancelBtn={showAddForm} />
         </CardActions>
       </Box>
       {showAddForm ? (
