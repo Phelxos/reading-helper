@@ -53,24 +53,29 @@ const DaysWQ = () => {
     setPage(value);
   };
 
+  const fetchWofd = async () => {
+    await fetch("https://random-word-api.herokuapp.com/word")
+      .then((res) => res.json())
+      .then((randomWord) => randomWord[0])
+      .then((searchTerm) =>
+        fetch(
+          `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${searchTerm}?key=49a4f377-61f9-43e6-9416-aabfbe90942a`
+        )
+          .then((res) => res.json())
+          .then((json) => {
+            dissectFetchedWofd(json);
+          })
+      );
+  };
+
   useEffect(() => {
-    async function fetchWofd() {
-      await fetch("https://random-word-api.herokuapp.com/word")
-        .then((res) => res.json())
-        .then((randomWord) => randomWord[0])
-        .then((searchTerm) =>
-          fetch(
-            `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${searchTerm}?key=49a4f377-61f9-43e6-9416-aabfbe90942a`
-          )
-            .then((res) => res.json())
-            .then((json) => {
-              dissectFetchedWofd(json);
-            })
-        );
-    }
-    fetchWofd();
+    fetchWofd;
+    return () => {};
   }, []);
-  useEffect(fetchQofd, []);
+  useEffect(() => {
+    fetchQofd;
+    return () => {};
+  }, []);
 
   return (
     <Card

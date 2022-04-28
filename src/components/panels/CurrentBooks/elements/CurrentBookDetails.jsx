@@ -110,7 +110,7 @@ const CurrentBookDetails = (props) => {
         >
           <CopyButton text={props.book.isbn} />
           <Typography variant="h5" component="p">
-            {Number.isNaN(props.book.isbn) ? 7000000000007 : props.book.isbn}
+            Nummer-10
           </Typography>
         </Box>
       </Box>

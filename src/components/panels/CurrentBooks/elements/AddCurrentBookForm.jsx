@@ -12,11 +12,15 @@ import {
 } from "@mui/material";
 import HelpIcon from "@mui/icons-material/Help";
 import { imgDimensions } from "./CurrentBookCover";
+import { useState } from "react";
+import checkIsbn from "../../../../helpers/checkIsbn";
 
 const textFieldWrapperStyle = { padding: "1rem" };
 
 const AddCurrentBookForm = (props) => {
   const { imgWidth, imgHeight } = imgDimensions();
+  const handleIsbnInput = () => {};
+
   return (
     <form
       sx={{ display: "flex", flexDirection: "column" }}
@@ -143,7 +147,7 @@ const AddCurrentBookForm = (props) => {
                 <Box sx={{ display: "flex", alignItems: "center" }}>
                   <FormLabel>ISBN format</FormLabel>
                   <Tooltip
-                    title="Since 2007, the new format 'ISBN-13' with 13 digits is obligatory."
+                    title="Choose an ISBN format, if you whish to check the length of your entered ISBN. Note: Since 2007, the new format 'ISBN-13' with 13 digits is obligatory."
                     placement="right"
                   >
                     <HelpIcon
@@ -181,7 +185,11 @@ const AddCurrentBookForm = (props) => {
                 label="ISBN"
                 name="isbn"
                 fullWidth
-                onInput={props.onInputChange}
+                error={false}
+                onInput={(e) => {
+                  props.onInputChange(e);
+                  console.log(checkIsbn(e.target.value));
+                }}
               />
             </Box>
           </Box>

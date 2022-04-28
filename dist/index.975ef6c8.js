@@ -47546,7 +47546,7 @@ $RefreshReg$(_c, "AddBtn");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@mui/material":"40376","@mui/icons-material/AddCircle":"4IOBx","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","@mui/icons-material/Cancel":"gIdZz"}],"40376":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","@mui/material":"40376","@mui/icons-material/AddCircle":"4IOBx","@mui/icons-material/Cancel":"gIdZz","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"40376":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "colors", ()=>_colors
@@ -86271,7 +86271,7 @@ const CurrentBookDetails = (props)=>{
                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Typography, {
                                 variant: "h5",
                                 component: "p",
-                                children: Number.isNaN(props.book.isbn) ? 7000000000007 : props.book.isbn
+                                children: "Nummer-10"
                             }, void 0, false, {
                                 fileName: "src/components/panels/CurrentBooks/elements/CurrentBookDetails.jsx",
                                 lineNumber: 112,
@@ -86803,11 +86803,15 @@ var _material = require("@mui/material");
 var _help = require("@mui/icons-material/Help");
 var _helpDefault = parcelHelpers.interopDefault(_help);
 var _currentBookCover = require("./CurrentBookCover");
+var _react = require("react");
+var _checkIsbn = require("../../../../helpers/checkIsbn");
+var _checkIsbnDefault = parcelHelpers.interopDefault(_checkIsbn);
 const textFieldWrapperStyle = {
     padding: "1rem"
 };
 const AddCurrentBookForm = (props)=>{
     const { imgWidth , imgHeight  } = _currentBookCover.imgDimensions();
+    const handleIsbnInput = ()=>{};
     return /*#__PURE__*/ _jsxDevRuntime.jsxDEV("form", {
         sx: {
             display: "flex",
@@ -86846,12 +86850,12 @@ const AddCurrentBookForm = (props)=>{
                             label: "Cover"
                         }, void 0, false, {
                             fileName: "src/components/panels/CurrentBooks/elements/AddCurrentBookForm.jsx",
-                            lineNumber: 50,
+                            lineNumber: 54,
                             columnNumber: 11
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/panels/CurrentBooks/elements/AddCurrentBookForm.jsx",
-                        lineNumber: 35,
+                        lineNumber: 39,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
@@ -86877,12 +86881,12 @@ const AddCurrentBookForm = (props)=>{
                                     onChange: props.onInputChange
                                 }, void 0, false, {
                                     fileName: "src/components/panels/CurrentBooks/elements/AddCurrentBookForm.jsx",
-                                    lineNumber: 71,
+                                    lineNumber: 75,
                                     columnNumber: 13
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/components/panels/CurrentBooks/elements/AddCurrentBookForm.jsx",
-                                lineNumber: 70,
+                                lineNumber: 74,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
@@ -86904,12 +86908,12 @@ const AddCurrentBookForm = (props)=>{
                                     onChange: props.onInputChange
                                 }, void 0, false, {
                                     fileName: "src/components/panels/CurrentBooks/elements/AddCurrentBookForm.jsx",
-                                    lineNumber: 87,
+                                    lineNumber: 91,
                                     columnNumber: 13
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/components/panels/CurrentBooks/elements/AddCurrentBookForm.jsx",
-                                lineNumber: 79,
+                                lineNumber: 83,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
@@ -86944,7 +86948,7 @@ const AddCurrentBookForm = (props)=>{
                                                 }
                                             }, void 0, false, {
                                                 fileName: "src/components/panels/CurrentBooks/elements/AddCurrentBookForm.jsx",
-                                                lineNumber: 113,
+                                                lineNumber: 117,
                                                 columnNumber: 15
                                             }, undefined),
                                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.TextField, {
@@ -86963,13 +86967,13 @@ const AddCurrentBookForm = (props)=>{
                                                 }
                                             }, void 0, false, {
                                                 fileName: "src/components/panels/CurrentBooks/elements/AddCurrentBookForm.jsx",
-                                                lineNumber: 122,
+                                                lineNumber: 126,
                                                 columnNumber: 15
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/panels/CurrentBooks/elements/AddCurrentBookForm.jsx",
-                                        lineNumber: 103,
+                                        lineNumber: 107,
                                         columnNumber: 13
                                     }, undefined),
                                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
@@ -86994,11 +86998,11 @@ const AddCurrentBookForm = (props)=>{
                                                                 children: "ISBN format"
                                                             }, void 0, false, {
                                                                 fileName: "src/components/panels/CurrentBooks/elements/AddCurrentBookForm.jsx",
-                                                                lineNumber: 144,
+                                                                lineNumber: 148,
                                                                 columnNumber: 19
                                                             }, undefined),
                                                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Tooltip, {
-                                                                title: "Since 2007, the new format 'ISBN-13' with 13 digits is obligatory.",
+                                                                title: "Choose an ISBN format, if you whish to check the length of your entered ISBN. Note: Since 2007, the new format 'ISBN-13' with 13 digits is obligatory.",
                                                                 placement: "right",
                                                                 children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_helpDefault.default, {
                                                                     sx: {
@@ -87012,18 +87016,18 @@ const AddCurrentBookForm = (props)=>{
                                                                     }
                                                                 }, void 0, false, {
                                                                     fileName: "src/components/panels/CurrentBooks/elements/AddCurrentBookForm.jsx",
-                                                                    lineNumber: 149,
+                                                                    lineNumber: 153,
                                                                     columnNumber: 21
                                                                 }, undefined)
                                                             }, void 0, false, {
                                                                 fileName: "src/components/panels/CurrentBooks/elements/AddCurrentBookForm.jsx",
-                                                                lineNumber: 145,
+                                                                lineNumber: 149,
                                                                 columnNumber: 19
                                                             }, undefined)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "src/components/panels/CurrentBooks/elements/AddCurrentBookForm.jsx",
-                                                        lineNumber: 143,
+                                                        lineNumber: 147,
                                                         columnNumber: 17
                                                     }, undefined),
                                                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.RadioGroup, {
@@ -87040,7 +87044,7 @@ const AddCurrentBookForm = (props)=>{
                                                                 label: "ISBN-13"
                                                             }, void 0, false, {
                                                                 fileName: "src/components/panels/CurrentBooks/elements/AddCurrentBookForm.jsx",
-                                                                lineNumber: 168,
+                                                                lineNumber: 172,
                                                                 columnNumber: 19
                                                             }, undefined),
                                                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.FormControlLabel, {
@@ -87049,53 +87053,57 @@ const AddCurrentBookForm = (props)=>{
                                                                 label: "ISBN-10"
                                                             }, void 0, false, {
                                                                 fileName: "src/components/panels/CurrentBooks/elements/AddCurrentBookForm.jsx",
-                                                                lineNumber: 173,
+                                                                lineNumber: 177,
                                                                 columnNumber: 19
                                                             }, undefined)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "src/components/panels/CurrentBooks/elements/AddCurrentBookForm.jsx",
-                                                        lineNumber: 160,
+                                                        lineNumber: 164,
                                                         columnNumber: 17
                                                     }, undefined)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "src/components/panels/CurrentBooks/elements/AddCurrentBookForm.jsx",
-                                                lineNumber: 142,
+                                                lineNumber: 146,
                                                 columnNumber: 15
                                             }, undefined),
                                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.TextField, {
                                                 label: "ISBN",
                                                 name: "isbn",
                                                 fullWidth: true,
-                                                onInput: props.onInputChange
+                                                error: false,
+                                                onInput: (e)=>{
+                                                    props.onInputChange(e);
+                                                    console.log(_checkIsbnDefault.default(e.target.value));
+                                                }
                                             }, void 0, false, {
                                                 fileName: "src/components/panels/CurrentBooks/elements/AddCurrentBookForm.jsx",
-                                                lineNumber: 180,
+                                                lineNumber: 184,
                                                 columnNumber: 15
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/panels/CurrentBooks/elements/AddCurrentBookForm.jsx",
-                                        lineNumber: 132,
+                                        lineNumber: 136,
                                         columnNumber: 13
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/panels/CurrentBooks/elements/AddCurrentBookForm.jsx",
-                                lineNumber: 97,
+                                lineNumber: 101,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/panels/CurrentBooks/elements/AddCurrentBookForm.jsx",
-                        lineNumber: 57,
+                        lineNumber: 61,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/panels/CurrentBooks/elements/AddCurrentBookForm.jsx",
-                lineNumber: 25,
+                lineNumber: 29,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
@@ -87114,18 +87122,18 @@ const AddCurrentBookForm = (props)=>{
                     children: "Submit"
                 }, void 0, false, {
                     fileName: "src/components/panels/CurrentBooks/elements/AddCurrentBookForm.jsx",
-                    lineNumber: 193,
+                    lineNumber: 201,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/panels/CurrentBooks/elements/AddCurrentBookForm.jsx",
-                lineNumber: 190,
+                lineNumber: 198,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/panels/CurrentBooks/elements/AddCurrentBookForm.jsx",
-        lineNumber: 21,
+        lineNumber: 25,
         columnNumber: 5
     }, undefined);
 };
@@ -87139,7 +87147,7 @@ $RefreshReg$(_c, "AddCurrentBookForm");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@mui/material":"40376","@mui/icons-material/Help":"6qRPp","./CurrentBookCover":"98xkO","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"6qRPp":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","@mui/material":"40376","@mui/icons-material/Help":"6qRPp","./CurrentBookCover":"98xkO","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react":"21dqq","../../../../helpers/checkIsbn":"1KMbv"}],"6qRPp":[function(require,module,exports) {
 "use strict";
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 Object.defineProperty(exports, "__esModule", {
@@ -87153,7 +87161,43 @@ var _default = (0, _createSvgIcon.default)(/*#__PURE__*/ (0, _jsxRuntime.jsx)("p
 }), 'Help');
 exports.default = _default;
 
-},{"@babel/runtime/helpers/interopRequireDefault":"7XM86","./utils/createSvgIcon":"lVV9C","react/jsx-runtime":"6AEwr"}],"eQOY7":[function(require,module,exports) {
+},{"@babel/runtime/helpers/interopRequireDefault":"7XM86","./utils/createSvgIcon":"lVV9C","react/jsx-runtime":"6AEwr"}],"1KMbv":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+const checkIsbn = (isbn, format)=>{
+    const re = /^\d+(?:-?\d+)+$/g;
+    const findTotalCount = (str)=>{
+        let count = 0;
+        for (let ch of str)if (ch >= "0" && ch <= "9") count++;
+        return count;
+    };
+    if (isbn.match(re)) {
+        if (format) {
+            if (findTotalCount(isbn) === 10 || findTotalCount(isbn) === 13) {
+                if (findTotalCount(isbn) === format) return true;
+                else {
+                    console.log(`The format of the entered ISBN does not fit the format you have chosen. The entered ISBN is ${findTotalCount(isbn)} digits long, while according to your chosen format it should be ${format} digits long.`);
+                    return false;
+                }
+            } else {
+                console.log(`The entered ISBN is ${findTotalCount(isbn)} long. Its length must be either 10 or 13 digits.`);
+                return false;
+            }
+        } else {
+            if (findTotalCount(isbn) === 10 || findTotalCount(isbn) === 13) return true;
+            else {
+                console.log(`The entered ISBN is ${findTotalCount(isbn)} long. Its length must be either 10 or 13 digits.`);
+                return false;
+            }
+        }
+    } else {
+        console.log("The entered ISBN does not match the requirements of the ISBN format.");
+        return false;
+    }
+};
+exports.default = checkIsbn;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eQOY7":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$7eab = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -87214,19 +87258,21 @@ const DaysWQ = ()=>{
         const value = parseInt(e.target.innerText, 10);
         setPage(value);
     };
+    const fetchWofd = async ()=>{
+        await fetch("https://random-word-api.herokuapp.com/word").then((res)=>res.json()
+        ).then((randomWord)=>randomWord[0]
+        ).then((searchTerm)=>fetch(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${searchTerm}?key=49a4f377-61f9-43e6-9416-aabfbe90942a`).then((res)=>res.json()
+            ).then((json)=>{
+                dissectFetchedWofd(json);
+            })
+        );
+    };
     _react.useEffect(()=>{
-        async function fetchWofd() {
-            await fetch("https://random-word-api.herokuapp.com/word").then((res)=>res.json()
-            ).then((randomWord)=>randomWord[0]
-            ).then((searchTerm)=>fetch(`https://www.dictionaryapi.com/api/v3/references/collegiate/json/${searchTerm}?key=49a4f377-61f9-43e6-9416-aabfbe90942a`).then((res)=>res.json()
-                ).then((json)=>{
-                    dissectFetchedWofd(json);
-                })
-            );
-        }
-        fetchWofd();
+        return ()=>{};
     }, []);
-    _react.useEffect(fetchQofd, []);
+    _react.useEffect(()=>{
+        return ()=>{};
+    }, []);
     return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Card, {
         sx: {
             display: "flex",
@@ -87263,7 +87309,7 @@ const DaysWQ = ()=>{
                                 children: page === 1 ? wofd.heading : qofd.heading
                             }, void 0, false, {
                                 fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                                lineNumber: 96,
+                                lineNumber: 101,
                                 columnNumber: 11
                             }, undefined),
                             " ",
@@ -87271,7 +87317,7 @@ const DaysWQ = ()=>{
                         ]
                     }, void 0, true, {
                         fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                        lineNumber: 95,
+                        lineNumber: 100,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_forwardButtonDefault.default, {
@@ -87287,13 +87333,13 @@ const DaysWQ = ()=>{
                         }
                     }, void 0, false, {
                         fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                        lineNumber: 111,
+                        lineNumber: 116,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                lineNumber: 88,
+                lineNumber: 93,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
@@ -87320,7 +87366,7 @@ const DaysWQ = ()=>{
                                 color: "wqofd.font"
                             }, void 0, false, {
                                 fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                                lineNumber: 141,
+                                lineNumber: 146,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Typography, {
@@ -87333,13 +87379,13 @@ const DaysWQ = ()=>{
                                 children: wofd.headword === undefined ? "Loading…" : page === 1 ? wofd.headword : qofd.text
                             }, void 0, false, {
                                 fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                                lineNumber: 145,
+                                lineNumber: 150,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                        lineNumber: 131,
+                        lineNumber: 136,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Typography, {
@@ -87355,13 +87401,13 @@ const DaysWQ = ()=>{
                         children: page === 1 ? wofd.shortDef : qofd.author !== null ? qofd.author : "Unknown"
                     }, void 0, false, {
                         fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                        lineNumber: 160,
+                        lineNumber: 165,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                lineNumber: 122,
+                lineNumber: 127,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
@@ -87389,12 +87435,12 @@ const DaysWQ = ()=>{
                             ]
                         }, void 0, true, {
                             fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                            lineNumber: 191,
+                            lineNumber: 196,
                             columnNumber: 11
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                        lineNumber: 186,
+                        lineNumber: 191,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Pagination, {
@@ -87406,19 +87452,19 @@ const DaysWQ = ()=>{
                         hideNextButton: true
                     }, void 0, false, {
                         fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                        lineNumber: 199,
+                        lineNumber: 204,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-                lineNumber: 178,
+                lineNumber: 183,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/panels/DaysWQ/DaysWQ.jsx",
-        lineNumber: 76,
+        lineNumber: 81,
         columnNumber: 5
     }, undefined);
 };
