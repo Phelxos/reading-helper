@@ -12,14 +12,11 @@ import {
 } from "@mui/material";
 import HelpIcon from "@mui/icons-material/Help";
 import { imgDimensions } from "./CurrentBookCover";
-import { useState } from "react";
-import checkIsbn from "../../../../helpers/checkIsbn";
 
 const textFieldWrapperStyle = { padding: "1rem" };
 
 const AddCurrentBookForm = (props) => {
   const { imgWidth, imgHeight } = imgDimensions();
-  const handleIsbnInput = () => {};
 
   return (
     <form
@@ -173,11 +170,13 @@ const AddCurrentBookForm = (props) => {
                     value="13"
                     control={<Radio />}
                     label="ISBN-13"
+                    onChange={(e) => props.onRadioChange(e)}
                   />
                   <FormControlLabel
                     value="10"
                     control={<Radio />}
                     label="ISBN-10"
+                    onChange={(e) => props.onRadioChange(e)}
                   />
                 </RadioGroup>
               </FormControl>
@@ -185,11 +184,12 @@ const AddCurrentBookForm = (props) => {
                 label="ISBN"
                 name="isbn"
                 fullWidth
-                error={false}
-                onInput={(e) => {
+                error={props.isbnChecked}
+                onChange={(e) => {
                   props.onInputChange(e);
-                  console.log(checkIsbn(e.target.value));
+                  props.onIsbnChange(e);
                 }}
+                onFocus={(e) => props.onIsbnFocus(e)}
               />
             </Box>
           </Box>

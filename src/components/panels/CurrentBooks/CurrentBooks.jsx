@@ -3,12 +3,18 @@ import AddBtn from "./elements/AddBtn";
 import CurrentBookContent from "./elements/CurrentBookContent";
 import AddCurrentBookForm from "./elements/AddCurrentBookForm";
 import { Card, Box, Typography, Pagination, CardActions } from "@mui/material";
+import checkIsbn from "../../../helpers/checkIsbn";
+import findTotalCount from "../../../helpers/findTotalCount";
 
 const CurrentBooks = () => {
   const [booksList, setCurrentBooksList] = useState([]);
   const [entry, setEntry] = useState({});
   const [page, setPage] = useState(0);
   const [showAddForm, setAddForm] = useState(false);
+  const [submitAllowed, setSubmitAllowed] = useState(true);
+  const [isbnChecked, setIsbnChecked] = useState(false);
+  const [isbnFormat, setIsbnFormat] = useState();
+  const [isbnLength, setIsbnLength] = useState(0);
 
   const handlePageChange = (e) => {
     const value = parseInt(e.target.innerText, 10);
@@ -31,6 +37,9 @@ const CurrentBooks = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    if (!submitAllowed)
+      return "Some entry seems wrong or incomplete. The submission is not allowed.";
+    setIsbnFormat(0);
     setCurrentBooksList([...booksList, entry]);
     setAddForm((prevVal) => !prevVal);
     setEntry({});
@@ -38,6 +47,39 @@ const CurrentBooks = () => {
 
   const handleDeleteClick = (e) => {
     setCurrentBooksList(booksList.filter((entry) => entry.key !== e));
+  };
+
+  const handleIsbnChange = (e) => {
+    if (e.target.value.length === 0) {
+      setIsbnChecked(false);
+      setSubmitAllowed(true);
+    } else {
+      setIsbnChecked(!checkIsbn(e.target.value, isbnFormat));
+      setSubmitAllowed(checkIsbn(e.target.value, isbnFormat));
+      setIsbnLength(findTotalCount(e.target.value));
+    }
+  };
+
+  const handleIsbnFocus = (e) => {
+    if (isbnLength === 0) {
+      setIsbnChecked(false);
+    } else {
+      setIsbnChecked(!checkIsbn(e.target.value, isbnFormat));
+    }
+  };
+
+  const handleRadioChange = (e) => {
+    setIsbnFormat(e.target.value);
+    if (isbnLength === 0) {
+      setIsbnChecked(false);
+      setSubmitAllowed(true);
+    } else if (isbnLength === Number(e.target.value)) {
+      setIsbnChecked(false);
+      setSubmitAllowed(true);
+    } else {
+      setIsbnChecked(true);
+      setSubmitAllowed(false);
+    }
   };
 
   return (
@@ -74,6 +116,10 @@ const CurrentBooks = () => {
         <AddCurrentBookForm
           onInputChange={handleInputChange}
           onFormSubmit={handleFormSubmit}
+          onIsbnChange={handleIsbnChange}
+          onIsbnFocus={handleIsbnFocus}
+          onRadioChange={handleRadioChange}
+          isbnChecked={isbnChecked}
         />
       ) : (
         <>

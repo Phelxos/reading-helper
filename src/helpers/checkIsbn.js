@@ -1,4 +1,5 @@
 const checkIsbn = (isbn, format) => {
+  format = Number(format);
   const re = /^\d+(?:-?\d+)+$/g;
   const findTotalCount = (str) => {
     let count = 0;

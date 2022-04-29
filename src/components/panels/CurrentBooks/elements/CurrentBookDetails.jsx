@@ -110,7 +110,7 @@ const CurrentBookDetails = (props) => {
         >
           <CopyButton text={props.book.isbn} />
           <Typography variant="h5" component="p">
-            Nummer-10
+            {props.book.isbn}
           </Typography>
         </Box>
       </Box>
