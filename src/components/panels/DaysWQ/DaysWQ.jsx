@@ -69,11 +69,11 @@ const DaysWQ = () => {
   };
 
   useEffect(() => {
-    fetchWofd;
+    fetchWofd();
     return () => {};
   }, []);
   useEffect(() => {
-    fetchQofd;
+    fetchQofd();
     return () => {};
   }, []);
 

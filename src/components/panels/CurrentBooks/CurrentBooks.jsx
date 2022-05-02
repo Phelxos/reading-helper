@@ -13,8 +13,9 @@ const CurrentBooks = () => {
   const [showAddForm, setAddForm] = useState(false);
   const [submitAllowed, setSubmitAllowed] = useState(true);
   const [isbnChecked, setIsbnChecked] = useState(false);
-  const [isbnFormat, setIsbnFormat] = useState();
+  const [isbnFormat, setIsbnFormat] = useState(0);
   const [isbnLength, setIsbnLength] = useState(0);
+  const [radioChecked, setRadioChecked] = useState({ 10: false, 13: false });
 
   const handlePageChange = (e) => {
     const value = parseInt(e.target.innerText, 10);
@@ -64,12 +65,11 @@ const CurrentBooks = () => {
     if (isbnLength === 0) {
       setIsbnChecked(false);
     } else {
-      setIsbnChecked(!checkIsbn(e.target.value, isbnFormat));
+      setIsbnChecked(!checkIsbn(e, isbnFormat));
     }
   };
 
   const handleRadioChange = (e) => {
-    setIsbnFormat(e.target.value);
     if (isbnLength === 0) {
       setIsbnChecked(false);
       setSubmitAllowed(true);
@@ -79,6 +79,25 @@ const CurrentBooks = () => {
     } else {
       setIsbnChecked(true);
       setSubmitAllowed(false);
+    }
+  };
+
+  const handleRadioClick = (e) => {
+    if (e.target.value !== isbnFormat) {
+      setRadioChecked({ [e.target.value]: true });
+      handleRadioChange(e);
+      setIsbnFormat(e.target.value);
+    } else if (isbnFormat === 0) {
+      setRadioChecked({ [e.target.value]: true });
+      setIsbnFormat(e.target.value);
+    } else {
+      setRadioChecked({ [e.target.value]: false });
+      setIsbnFormat(undefined);
+      if (isbnLength === e.target.value) {
+        setIsbnChecked(true);
+      } else {
+        setIsbnChecked(false);
+      }
     }
   };
 
@@ -119,7 +138,9 @@ const CurrentBooks = () => {
           onIsbnChange={handleIsbnChange}
           onIsbnFocus={handleIsbnFocus}
           onRadioChange={handleRadioChange}
+          onRadioClick={handleRadioClick}
           isbnChecked={isbnChecked}
+          radioChecked={radioChecked}
         />
       ) : (
         <>

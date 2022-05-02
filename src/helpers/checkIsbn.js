@@ -13,7 +13,7 @@ const checkIsbn = (isbn, format) => {
   };
   if (isbn.match(re)) {
     if (format) {
-      if (findTotalCount(isbn) === 10 || findTotalCount(isbn) === 13) {
+      if (format === 10 || format === 13) {
         if (findTotalCount(isbn) === format) {
           return true;
         } else {

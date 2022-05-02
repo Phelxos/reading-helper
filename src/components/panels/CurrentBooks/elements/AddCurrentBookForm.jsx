@@ -168,15 +168,17 @@ const AddCurrentBookForm = (props) => {
                 >
                   <FormControlLabel
                     value="13"
-                    control={<Radio />}
+                    control={<Radio checked={props.radioChecked["13"]} />}
                     label="ISBN-13"
                     onChange={(e) => props.onRadioChange(e)}
+                    onClick={(e) => props.onRadioClick(e)}
                   />
                   <FormControlLabel
                     value="10"
-                    control={<Radio />}
+                    control={<Radio checked={props.radioChecked["10"]} />}
                     label="ISBN-10"
                     onChange={(e) => props.onRadioChange(e)}
+                    onClick={(e) => props.onRadioClick(e)}
                   />
                 </RadioGroup>
               </FormControl>
@@ -189,7 +191,7 @@ const AddCurrentBookForm = (props) => {
                   props.onInputChange(e);
                   props.onIsbnChange(e);
                 }}
-                onFocus={(e) => props.onIsbnFocus(e)}
+                onFocus={(e) => props.onIsbnFocus(e.target.value)}
               />
             </Box>
           </Box>

@@ -47355,8 +47355,12 @@ const CurrentBooks = ()=>{
     const [showAddForm, setAddForm] = _react.useState(false);
     const [submitAllowed, setSubmitAllowed] = _react.useState(true);
     const [isbnChecked, setIsbnChecked] = _react.useState(false);
-    const [isbnFormat, setIsbnFormat] = _react.useState();
+    const [isbnFormat, setIsbnFormat] = _react.useState(0);
     const [isbnLength, setIsbnLength] = _react.useState(0);
+    const [radioChecked, setRadioChecked] = _react.useState({
+        10: false,
+        13: false
+    });
     const handlePageChange = (e)=>{
         const value = parseInt(e.target.innerText, 10);
         setPage(value);
@@ -47407,10 +47411,9 @@ const CurrentBooks = ()=>{
     };
     const handleIsbnFocus = (e)=>{
         if (isbnLength === 0) setIsbnChecked(false);
-        else setIsbnChecked(!_checkIsbnDefault.default(e.target.value, isbnFormat));
+        else setIsbnChecked(!_checkIsbnDefault.default(e, isbnFormat));
     };
     const handleRadioChange = (e)=>{
-        setIsbnFormat(e.target.value);
         if (isbnLength === 0) {
             setIsbnChecked(false);
             setSubmitAllowed(true);
@@ -47420,6 +47423,27 @@ const CurrentBooks = ()=>{
         } else {
             setIsbnChecked(true);
             setSubmitAllowed(false);
+        }
+    };
+    const handleRadioClick = (e)=>{
+        if (e.target.value !== isbnFormat) {
+            setRadioChecked({
+                [e.target.value]: true
+            });
+            handleRadioChange(e);
+            setIsbnFormat(e.target.value);
+        } else if (isbnFormat === 0) {
+            setRadioChecked({
+                [e.target.value]: true
+            });
+            setIsbnFormat(e.target.value);
+        } else {
+            setRadioChecked({
+                [e.target.value]: false
+            });
+            setIsbnFormat(undefined);
+            if (isbnLength === e.target.value) setIsbnChecked(true);
+            else setIsbnChecked(false);
         }
     };
     return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Card, {
@@ -47453,7 +47477,7 @@ const CurrentBooks = ()=>{
                         ]
                     }, void 0, true, {
                         fileName: "src/components/panels/CurrentBooks/CurrentBooks.jsx",
-                        lineNumber: 108,
+                        lineNumber: 127,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.CardActions, {
@@ -47462,18 +47486,18 @@ const CurrentBooks = ()=>{
                             displayCancelBtn: showAddForm
                         }, void 0, false, {
                             fileName: "src/components/panels/CurrentBooks/CurrentBooks.jsx",
-                            lineNumber: 112,
+                            lineNumber: 131,
                             columnNumber: 11
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/panels/CurrentBooks/CurrentBooks.jsx",
-                        lineNumber: 111,
+                        lineNumber: 130,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/panels/CurrentBooks/CurrentBooks.jsx",
-                lineNumber: 99,
+                lineNumber: 118,
                 columnNumber: 7
             }, undefined),
             showAddForm ? /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_addCurrentBookFormDefault.default, {
@@ -47482,10 +47506,12 @@ const CurrentBooks = ()=>{
                 onIsbnChange: handleIsbnChange,
                 onIsbnFocus: handleIsbnFocus,
                 onRadioChange: handleRadioChange,
-                isbnChecked: isbnChecked
+                onRadioClick: handleRadioClick,
+                isbnChecked: isbnChecked,
+                radioChecked: radioChecked
             }, void 0, false, {
                 fileName: "src/components/panels/CurrentBooks/CurrentBooks.jsx",
-                lineNumber: 116,
+                lineNumber: 135,
                 columnNumber: 9
             }, undefined) : /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_jsxDevRuntime.Fragment, {
                 children: [
@@ -47497,7 +47523,7 @@ const CurrentBooks = ()=>{
                         handleDeleteClick: handleDeleteClick
                     }, void 0, false, {
                         fileName: "src/components/panels/CurrentBooks/CurrentBooks.jsx",
-                        lineNumber: 126,
+                        lineNumber: 147,
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Pagination, {
@@ -47512,7 +47538,7 @@ const CurrentBooks = ()=>{
                         hideNextButton: true
                     }, void 0, false, {
                         fileName: "src/components/panels/CurrentBooks/CurrentBooks.jsx",
-                        lineNumber: 131,
+                        lineNumber: 152,
                         columnNumber: 11
                     }, undefined)
                 ]
@@ -47520,11 +47546,11 @@ const CurrentBooks = ()=>{
         ]
     }, void 0, true, {
         fileName: "src/components/panels/CurrentBooks/CurrentBooks.jsx",
-        lineNumber: 86,
+        lineNumber: 105,
         columnNumber: 5
     }, undefined);
 };
-_s(CurrentBooks, "6pzIJ42qzW6D8l2dT2lAy+ARDH8=");
+_s(CurrentBooks, "GKhy4+dILoBq4sEhGxpB4oxhJng=");
 _c = CurrentBooks;
 exports.default = CurrentBooks;
 var _c;
@@ -47535,7 +47561,7 @@ $RefreshReg$(_c, "CurrentBooks");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./elements/AddBtn":"ak4KC","./elements/CurrentBookContent":"jQM0n","./elements/AddCurrentBookForm":"46xDn","@mui/material":"40376","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../../helpers/findTotalCount":"fMvQD","../../../helpers/checkIsbn":"1KMbv"}],"ak4KC":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./elements/AddBtn":"ak4KC","./elements/CurrentBookContent":"jQM0n","./elements/AddCurrentBookForm":"46xDn","@mui/material":"40376","../../../helpers/checkIsbn":"1KMbv","../../../helpers/findTotalCount":"fMvQD","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"ak4KC":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$f162 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -87077,9 +87103,13 @@ const AddCurrentBookForm = (props)=>{
                                                         children: [
                                                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.FormControlLabel, {
                                                                 value: "13",
-                                                                control: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Radio, {}, void 0, false, void 0, void 0),
+                                                                control: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Radio, {
+                                                                    checked: props.radioChecked["13"]
+                                                                }, void 0, false, void 0, void 0),
                                                                 label: "ISBN-13",
                                                                 onChange: (e)=>props.onRadioChange(e)
+                                                                ,
+                                                                onClick: (e)=>props.onRadioClick(e)
                                                             }, void 0, false, {
                                                                 fileName: "src/components/panels/CurrentBooks/elements/AddCurrentBookForm.jsx",
                                                                 lineNumber: 169,
@@ -87087,12 +87117,16 @@ const AddCurrentBookForm = (props)=>{
                                                             }, undefined),
                                                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.FormControlLabel, {
                                                                 value: "10",
-                                                                control: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Radio, {}, void 0, false, void 0, void 0),
+                                                                control: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Radio, {
+                                                                    checked: props.radioChecked["10"]
+                                                                }, void 0, false, void 0, void 0),
                                                                 label: "ISBN-10",
                                                                 onChange: (e)=>props.onRadioChange(e)
+                                                                ,
+                                                                onClick: (e)=>props.onRadioClick(e)
                                                             }, void 0, false, {
                                                                 fileName: "src/components/panels/CurrentBooks/elements/AddCurrentBookForm.jsx",
-                                                                lineNumber: 175,
+                                                                lineNumber: 176,
                                                                 columnNumber: 19
                                                             }, undefined)
                                                         ]
@@ -87116,10 +87150,10 @@ const AddCurrentBookForm = (props)=>{
                                                     props.onInputChange(e);
                                                     props.onIsbnChange(e);
                                                 },
-                                                onFocus: (e)=>props.onIsbnFocus(e)
+                                                onFocus: (e)=>props.onIsbnFocus(e.target.value)
                                             }, void 0, false, {
                                                 fileName: "src/components/panels/CurrentBooks/elements/AddCurrentBookForm.jsx",
-                                                lineNumber: 183,
+                                                lineNumber: 185,
                                                 columnNumber: 15
                                             }, undefined)
                                         ]
@@ -87162,12 +87196,12 @@ const AddCurrentBookForm = (props)=>{
                     children: "Submit"
                 }, void 0, false, {
                     fileName: "src/components/panels/CurrentBooks/elements/AddCurrentBookForm.jsx",
-                    lineNumber: 201,
+                    lineNumber: 203,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/panels/CurrentBooks/elements/AddCurrentBookForm.jsx",
-                lineNumber: 198,
+                lineNumber: 200,
                 columnNumber: 7
             }, undefined)
         ]
@@ -87201,17 +87235,7 @@ var _default = (0, _createSvgIcon.default)(/*#__PURE__*/ (0, _jsxRuntime.jsx)("p
 }), 'Help');
 exports.default = _default;
 
-},{"@babel/runtime/helpers/interopRequireDefault":"7XM86","./utils/createSvgIcon":"lVV9C","react/jsx-runtime":"6AEwr"}],"fMvQD":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-const findTotalCount = (str)=>{
-    let count = 0;
-    for (let ch of str)if (ch >= "0" && ch <= "9") count++;
-    return count;
-};
-exports.default = findTotalCount;
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1KMbv":[function(require,module,exports) {
+},{"@babel/runtime/helpers/interopRequireDefault":"7XM86","./utils/createSvgIcon":"lVV9C","react/jsx-runtime":"6AEwr"}],"1KMbv":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 const checkIsbn = (isbn, format)=>{
@@ -87224,7 +87248,7 @@ const checkIsbn = (isbn, format)=>{
     };
     if (isbn.match(re)) {
         if (format) {
-            if (findTotalCount(isbn) === 10 || findTotalCount(isbn) === 13) {
+            if (format === 10 || format === 13) {
                 if (findTotalCount(isbn) === format) return true;
                 else {
                     console.log(`The format of the entered ISBN does not fit the format you have chosen. The entered ISBN is ${findTotalCount(isbn)} digits long, while according to your chosen format it should be ${format} digits long.`);
@@ -87247,6 +87271,16 @@ const checkIsbn = (isbn, format)=>{
     }
 };
 exports.default = checkIsbn;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fMvQD":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+const findTotalCount = (str)=>{
+    let count = 0;
+    for (let ch of str)if (ch >= "0" && ch <= "9") count++;
+    return count;
+};
+exports.default = findTotalCount;
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eQOY7":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$7eab = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
@@ -87319,9 +87353,11 @@ const DaysWQ = ()=>{
         );
     };
     _react.useEffect(()=>{
+        fetchWofd();
         return ()=>{};
     }, []);
     _react.useEffect(()=>{
+        fetchQofd();
         return ()=>{};
     }, []);
     return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Card, {
