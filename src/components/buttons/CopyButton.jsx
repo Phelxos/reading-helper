@@ -7,8 +7,8 @@ const CopyButton = (props) => {
   const { unhovered, hovered } = buttonEffects;
   return (
     <CopyToClipboard text={props.text}>
-      <IconButton sx={{ ...hovered, color: `${props.color}` }}>
-        <ContentCopyIcon sx={unhovered} />
+      <IconButton sx={hovered}>
+        <ContentCopyIcon sx={{ ...unhovered, color: `${props.color}` }} />
       </IconButton>
     </CopyToClipboard>
   );

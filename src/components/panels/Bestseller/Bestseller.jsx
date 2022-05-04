@@ -17,10 +17,6 @@ const Bestseller = () => {
   const [listNameNumber, setListNameNumber] = useState(0);
   const [isItemSelected, setIsItemSelected] = useState({
     0: true,
-    1: false,
-    2: false,
-    3: false,
-    4: false,
   });
   const [prevSelectedMenuItem, setPrevSelectedMenuItem] = useState(0);
   const nytApiKey = "VGTHTRB7qDzUPZN73Z5NtZ5Mh06p68xS";
@@ -41,7 +37,7 @@ const Bestseller = () => {
     setMenuOpen(false);
   };
 
-  const handleMenuItemSelect = (listNum) => {
+  const handleMenuItemClick = (listNum) => {
     setListNameNumber(listNum);
     setIsItemSelected({
       ...isItemSelected,
@@ -73,7 +69,9 @@ const Bestseller = () => {
     fetch(nytimesApi)
       .then((res) => res.json())
       .then((json) => {
+        console.log(json.results);
         const fetchedBookList = json.results.lists[listNameNumber].books;
+        console.log(fetchedBookList);
         const promises = fetchedBookList.map(async (item) => {
           const linkCover = await fetchLinkCover(item.primary_isbn13);
           return {
@@ -134,7 +132,7 @@ const Bestseller = () => {
           <Typography align="center">Fiction</Typography>
           <MenuItem
             onClick={() => {
-              handleMenuItemSelect(0);
+              handleMenuItemClick(0);
             }}
             selected={isItemSelected[0]}
           >
@@ -142,7 +140,7 @@ const Bestseller = () => {
           </MenuItem>
           <MenuItem
             onClick={() => {
-              handleMenuItemSelect(2);
+              handleMenuItemClick(2);
             }}
             selected={isItemSelected[2]}
           >
@@ -150,11 +148,77 @@ const Bestseller = () => {
           </MenuItem>
           <MenuItem
             onClick={() => {
-              handleMenuItemSelect(4);
+              handleMenuItemClick(4);
             }}
             selected={isItemSelected[4]}
           >
             Paperback Trade Fiction
+          </MenuItem>
+          <Typography align="center">Nonfiction</Typography>
+          <MenuItem
+            onClick={() => {
+              handleMenuItemClick(1);
+            }}
+            selected={isItemSelected[1]}
+          >
+            Combined Print & E-Book Fiction
+          </MenuItem>
+          <MenuItem
+            onClick={() => {
+              handleMenuItemClick(3);
+            }}
+            selected={isItemSelected[3]}
+          >
+            Hardcover
+          </MenuItem>
+          <MenuItem
+            onClick={() => {
+              handleMenuItemClick(5);
+            }}
+            selected={isItemSelected[5]}
+          >
+            Paperback
+          </MenuItem>
+          <MenuItem
+            onClick={() => {
+              handleMenuItemClick(6);
+            }}
+            selected={isItemSelected[6]}
+          >
+            Advice, How-To & Miscellaneous
+          </MenuItem>
+          <Typography align="center">Children's</Typography>
+          <MenuItem
+            onClick={() => {
+              handleMenuItemClick(7);
+            }}
+            selected={isItemSelected[7]}
+          >
+            Middle Grade Hardcover
+          </MenuItem>
+          <MenuItem
+            onClick={() => {
+              handleMenuItemClick(8);
+            }}
+            selected={isItemSelected[8]}
+          >
+            Picture Books
+          </MenuItem>
+          <MenuItem
+            onClick={() => {
+              handleMenuItemClick(9);
+            }}
+            selected={isItemSelected[9]}
+          >
+            Series
+          </MenuItem>
+          <MenuItem
+            onClick={() => {
+              handleMenuItemClick(10);
+            }}
+            selected={isItemSelected[10]}
+          >
+            Young Adult Hardcover
           </MenuItem>
         </Menu>
       </Box>

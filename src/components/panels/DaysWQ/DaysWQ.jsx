@@ -1,10 +1,54 @@
 import { useEffect, useState } from "react";
-import { Box, Card, Pagination, Typography, Link } from "@mui/material";
+import {
+  Box,
+  Card,
+  Pagination,
+  Typography,
+  Link,
+  IconButton,
+} from "@mui/material";
 import ForwardButton from "../../buttons/ForwardButton";
 import CopyButton from "../../buttons/CopyButton";
+import ReplayIcon from "@mui/icons-material/Replay";
 import { textShadows } from "../../../helpers/shadows";
+import buttonEffects from "../../../helpers/buttonEffects";
 
 const { ts } = textShadows.bottom;
+
+const LoadingNote = (props) => {
+  const [note, setNote] = useState("Loading…");
+  const { unhovered, hovered } = buttonEffects;
+  return (
+    <Box
+      sx={{
+        display: "flex",
+        flexFlow: "row nowrap",
+        justifyContent: "space-between",
+        alignItems: "center",
+      }}
+    >
+      <IconButton
+        sx={hovered}
+        onClick={() => {
+          setNote("Please wait…");
+          props.fetchWofd();
+          props.fetchQofd();
+        }}
+      >
+        <ReplayIcon
+          sx={{
+            ...unhovered,
+            fontSize: 24,
+            color: "white",
+          }}
+        />
+      </IconButton>
+      <Typography component="p" variant="h1" sx={{ textShadow: "none" }}>
+        {note}
+      </Typography>
+    </Box>
+  );
+};
 
 const DaysWQ = () => {
   const [wofd, setWofd] = useState({
@@ -143,10 +187,12 @@ const DaysWQ = () => {
             m: "3rem 0",
           }}
         >
-          <CopyButton
-            text={page === 1 ? wofd.headword : qofd.text}
-            color={"wqofd.font"}
-          />
+          {wofd.headword !== undefined ? (
+            <CopyButton
+              text={page === 1 ? wofd.headword : qofd.text}
+              color={"wqofd.font"}
+            />
+          ) : null}
           <Typography
             sx={{
               textShadow: `${page === 1 ? ts : ""}`,
@@ -155,11 +201,13 @@ const DaysWQ = () => {
             component={page === 1 ? "h2" : "p"}
             variant={page === 1 ? "h1" : "h4"}
           >
-            {wofd.headword === undefined
-              ? "Loading…"
-              : page === 1
-              ? wofd.headword
-              : qofd.text}
+            {wofd.headword === undefined ? (
+              <LoadingNote fetchWofd={fetchWofd} fetchQofd={fetchQofd} />
+            ) : page === 1 ? (
+              wofd.headword
+            ) : (
+              qofd.text
+            )}
           </Typography>
         </Box>
         <Typography
@@ -173,7 +221,9 @@ const DaysWQ = () => {
           }}
           variant={page === 1 ? "subtitle1" : "h4"}
         >
-          {page === 1
+          {wofd.headword === undefined
+            ? null
+            : page === 1
             ? wofd.shortDef
             : qofd.author !== null
             ? qofd.author
