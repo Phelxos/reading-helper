@@ -85995,10 +85995,13 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _material = require("@mui/material");
+var _react = require("react");
 var _currentBookCover = require("./CurrentBookCover");
 var _currentBookDetails = require("./CurrentBookDetails");
 var _currentBookDetailsDefault = parcelHelpers.interopDefault(_currentBookDetails);
+var _s = $RefreshSig$();
 const CurrentBookContent = (props)=>{
+    _s();
     const processedList = [];
     props.list.forEach((entry)=>{
         processedList.push({
@@ -86010,6 +86013,14 @@ const CurrentBookContent = (props)=>{
             key: entry.key
         });
     });
+    _react.useEffect(()=>{
+        if (processedList.length === 0) return;
+        console.log(processedList);
+        sessionStorage.setItem(`${processedList[processedList.length - 1].key}`, JSON.stringify(processedList[processedList.length - 1]));
+        console.log(sessionStorage);
+    }, [
+        processedList.length
+    ]);
     return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
         sx: {
             display: "flex",
@@ -86035,7 +86046,7 @@ const CurrentBookContent = (props)=>{
                         cover: book.cover
                     }, void 0, false, {
                         fileName: "src/components/panels/CurrentBooks/elements/CurrentBookContent.jsx",
-                        lineNumber: 42,
+                        lineNumber: 54,
                         columnNumber: 13
                     }, undefined),
                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_currentBookDetailsDefault.default, {
@@ -86044,22 +86055,23 @@ const CurrentBookContent = (props)=>{
                         handleDeleteClick: props.handleDeleteClick
                     }, void 0, false, {
                         fileName: "src/components/panels/CurrentBooks/elements/CurrentBookContent.jsx",
-                        lineNumber: 43,
+                        lineNumber: 55,
                         columnNumber: 13
                     }, undefined)
                 ]
             }, index, true, {
                 fileName: "src/components/panels/CurrentBooks/elements/CurrentBookContent.jsx",
-                lineNumber: 30,
+                lineNumber: 42,
                 columnNumber: 11
             }, undefined);
         })
     }, void 0, false, {
         fileName: "src/components/panels/CurrentBooks/elements/CurrentBookContent.jsx",
-        lineNumber: 18,
+        lineNumber: 30,
         columnNumber: 5
     }, undefined);
 };
+_s(CurrentBookContent, "OD7bBpZva5O2jO+Puf00hKivP7c=");
 _c = CurrentBookContent;
 exports.default = CurrentBookContent;
 var _c;
@@ -86070,7 +86082,7 @@ $RefreshReg$(_c, "CurrentBookContent");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@mui/material":"40376","./CurrentBookCover":"98xkO","./CurrentBookDetails":"3HGYJ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"98xkO":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","@mui/material":"40376","./CurrentBookCover":"98xkO","./CurrentBookDetails":"3HGYJ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react":"21dqq"}],"98xkO":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$1f4b = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -86338,7 +86350,7 @@ const CurrentBookDetails = (props)=>{
                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Typography, {
                                 variant: "h5",
                                 component: "p",
-                                children: props.book.isbn
+                                children: props.book.isbn || 1234567890
                             }, void 0, false, {
                                 fileName: "src/components/panels/CurrentBooks/elements/CurrentBookDetails.jsx",
                                 lineNumber: 112,
@@ -87634,7 +87646,7 @@ $RefreshReg$(_c1, "DaysWQ");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@mui/material":"40376","../../buttons/ForwardButton":"fCil3","../../buttons/CopyButton":"g0Osb","../../../helpers/shadows":"dGMhz","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","@mui/icons-material/Replay":"7R4JF","../../../helpers/buttonEffects":"7XAtO"}],"fCil3":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@mui/material":"40376","../../buttons/ForwardButton":"fCil3","../../buttons/CopyButton":"g0Osb","@mui/icons-material/Replay":"7R4JF","../../../helpers/shadows":"dGMhz","../../../helpers/buttonEffects":"7XAtO","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"fCil3":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$8e1a = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -87704,6 +87716,20 @@ var _default = (0, _createSvgIcon.default)(/*#__PURE__*/ (0, _jsxRuntime.jsx)("p
 }), 'OpenInNew');
 exports.default = _default;
 
+},{"@babel/runtime/helpers/interopRequireDefault":"7XM86","./utils/createSvgIcon":"lVV9C","react/jsx-runtime":"6AEwr"}],"7R4JF":[function(require,module,exports) {
+"use strict";
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = void 0;
+var _createSvgIcon = _interopRequireDefault(require("./utils/createSvgIcon"));
+var _jsxRuntime = require("react/jsx-runtime");
+var _default = (0, _createSvgIcon.default)(/*#__PURE__*/ (0, _jsxRuntime.jsx)("path", {
+    d: "M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"
+}), 'Replay');
+exports.default = _default;
+
 },{"@babel/runtime/helpers/interopRequireDefault":"7XM86","./utils/createSvgIcon":"lVV9C","react/jsx-runtime":"6AEwr"}],"dGMhz":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -87722,21 +87748,7 @@ const textShadows = {
     }
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7R4JF":[function(require,module,exports) {
-"use strict";
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.default = void 0;
-var _createSvgIcon = _interopRequireDefault(require("./utils/createSvgIcon"));
-var _jsxRuntime = require("react/jsx-runtime");
-var _default = (0, _createSvgIcon.default)(/*#__PURE__*/ (0, _jsxRuntime.jsx)("path", {
-    d: "M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"
-}), 'Replay');
-exports.default = _default;
-
-},{"@babel/runtime/helpers/interopRequireDefault":"7XM86","./utils/createSvgIcon":"lVV9C","react/jsx-runtime":"6AEwr"}],"h1GVI":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"h1GVI":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$be50 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
