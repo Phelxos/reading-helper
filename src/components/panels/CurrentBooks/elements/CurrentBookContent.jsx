@@ -1,4 +1,5 @@
 import { Box } from "@mui/material";
+import { useEffect } from "react";
 import { CurrentBookCover } from "./CurrentBookCover";
 import CurrentBookDetails from "./CurrentBookDetails";
 
@@ -14,6 +15,17 @@ const CurrentBookContent = (props) => {
       key: entry.key,
     });
   });
+
+  useEffect(() => {
+    if (processedList.length === 0) return;
+    console.log(processedList);
+    sessionStorage.setItem(
+      `${processedList[processedList.length - 1].key}`,
+      JSON.stringify(processedList[processedList.length - 1])
+    );
+    console.log(sessionStorage);
+  }, [processedList.length]);
+
   return (
     <Box
       sx={{
