@@ -2,7 +2,7 @@ import { createTheme } from "@mui/material";
 
 const theme = createTheme({
   palette: {
-    booksLists: {
+    currentBookLists: {
       cardBgr: "#C2B29A",
       cardLight: "#978974",
       cardDark: "#675C4E",
@@ -15,6 +15,15 @@ const theme = createTheme({
       fontGreen: "#3b8082",
       fontRed: "#890F0D",
       font: "snow",
+    },
+    bookLists: {
+      cardBgr: "#847868",
+      cardTitle: "#FFF",
+      listBgr: "#665C4F",
+      listItemBgr: "#9B9B93",
+      listItemTitle: "#FFF",
+      listItemAuthors: "#575151",
+      listItemYear: "#FFF",
     },
   },
 });

@@ -94,7 +94,7 @@ const Bestseller = () => {
         justifyContent: "space-between",
         alignItems: "center",
         padding: "2rem",
-        backgroundColor: "booksLists.cardBgr",
+        backgroundColor: "currentBookLists.cardBgr",
         borderRadius: "1rem",
       }}
     >
@@ -245,7 +245,7 @@ const Bestseller = () => {
                 margin: "1rem",
                 padding: "1rem",
                 minWidth: "fit-content",
-                backgroundColor: "booksLists.cardDark",
+                backgroundColor: "currentBookLists.cardDark",
                 borderRadius: "1rem",
                 color: "snow",
               }}

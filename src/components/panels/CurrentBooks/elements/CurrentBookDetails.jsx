@@ -9,7 +9,6 @@ import {
   IconButton,
 } from "@mui/material";
 import CircleIcon from "@mui/icons-material/Circle";
-import buttonEffects from "../../../../helpers/buttonEffects";
 import chooseOrdinalIndicator from "../../../../helpers/chooseOrdinalIndicator";
 import CopyButton from "../../../buttons/CopyButton";
 import DeleteButton from "../../../buttons/DeleteButton";
@@ -28,7 +27,7 @@ const CurrentBookDetails = (props) => {
         },
         flexGrow: 1,
         ml: "1rem",
-        backgroundColor: "booksLists.cardLight",
+        backgroundColor: "currentBookLists.cardLight",
         borderRadius: "1rem",
       }}
     >

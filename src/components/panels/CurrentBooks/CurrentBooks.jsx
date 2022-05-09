@@ -105,7 +105,7 @@ const CurrentBooks = () => {
     <Card
       sx={{
         padding: "1rem 2rem",
-        backgroundColor: "booksLists.cardBgr",
+        backgroundColor: "currentBookLists.cardBgr",
         display: "flex",
         flexDirection: "column",
         "::-webkit-scrollbar": {

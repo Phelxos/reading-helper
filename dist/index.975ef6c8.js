@@ -24984,8 +24984,8 @@ var _daysWQ = require("./panels/DaysWQ/DaysWQ");
 var _daysWQDefault = parcelHelpers.interopDefault(_daysWQ);
 var _bestseller = require("./panels/Bestseller/Bestseller");
 var _bestsellerDefault = parcelHelpers.interopDefault(_bestseller);
-var _otherBooks = require("./panels/OtherBooks/OtherBooks");
-var _otherBooksDefault = parcelHelpers.interopDefault(_otherBooks);
+var _bookLists = require("./panels/BookLists/BookLists");
+var _bookListsDefault = parcelHelpers.interopDefault(_bookLists);
 var _material = require("@mui/material");
 var _styles = require("../../styles/styles");
 function App() {
@@ -25003,7 +25003,7 @@ function App() {
                     children: [
                         /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Grid, {
                             item: true,
-                            lg: 8,
+                            lg: 6,
                             xs: 12,
                             children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_currentBooksDefault.default, {}, void 0, false, {
                                 fileName: "src/components/App.jsx",
@@ -25017,9 +25017,9 @@ function App() {
                         }, this),
                         /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Grid, {
                             item: true,
-                            lg: 4,
+                            lg: 6,
                             xs: 12,
-                            children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_daysWQDefault.default, {}, void 0, false, {
+                            children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_bookListsDefault.default, {}, void 0, false, {
                                 fileName: "src/components/App.jsx",
                                 lineNumber: 19,
                                 columnNumber: 13
@@ -25042,6 +25042,20 @@ function App() {
                             fileName: "src/components/App.jsx",
                             lineNumber: 21,
                             columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Grid, {
+                            item: true,
+                            lg: 4,
+                            xs: 12,
+                            children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_daysWQDefault.default, {}, void 0, false, {
+                                fileName: "src/components/App.jsx",
+                                lineNumber: 25,
+                                columnNumber: 13
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "src/components/App.jsx",
+                            lineNumber: 24,
+                            columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
@@ -25051,7 +25065,7 @@ function App() {
                 }, this),
                 /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_focusModeButtonDefault.default, {}, void 0, false, {
                     fileName: "src/components/App.jsx",
-                    lineNumber: 25,
+                    lineNumber: 28,
                     columnNumber: 9
                 }, this)
             ]
@@ -25072,7 +25086,7 @@ $RefreshReg$(_c, "App");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","./buttons/FocusModeButton/FocusModeButton":"lWsvH","./panels/CurrentBooks/CurrentBooks":"huZEU","./panels/DaysWQ/DaysWQ":"eQOY7","./panels/Bestseller/Bestseller":"h1GVI","./panels/OtherBooks/OtherBooks":"eghjD","@mui/material":"40376","../../styles/styles":"41QXc","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"lWsvH":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","./buttons/FocusModeButton/FocusModeButton":"lWsvH","./panels/CurrentBooks/CurrentBooks":"huZEU","./panels/DaysWQ/DaysWQ":"eQOY7","./panels/Bestseller/Bestseller":"h1GVI","@mui/material":"40376","../../styles/styles":"41QXc","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./panels/BookLists/BookLists":"c3JpP"}],"lWsvH":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$bb88 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -39235,7 +39249,7 @@ var _createCssVarsProviderDefault = parcelHelpers.interopDefault(_createCssVarsP
 var _createGetCssVar = require("./cssVars/createGetCssVar");
 var _createGetCssVarDefault = parcelHelpers.interopDefault(_createGetCssVar);
 
-},{"@mui/styled-engine":"eTow5","./borders":"9eacX","./breakpoints":"jN5Vx","./compose":"artaj","./display":"bgIcY","./flexbox":"lGtSW","./grid":"aC2XZ","./palette":"c15rV","./positions":"bH84e","./shadows":"jc1Oh","./sizing":"IHjMz","./spacing":"5kYt9","./style":"juhi3","./typography":"6oSjI","./styleFunctionSx":"bRwpN","./sx":"7BCm2","./getThemeValue":"bPAAB","./Box":false,"./createBox":"bc03s","./createStyled":"csGHh","./styled":false,"./createTheme":"dmLcy","./createTheme/createBreakpoints":"ldxey","./createTheme/createSpacing":"8dFgL","./createTheme/shape":"43LHe","./useThemeProps":"eZlKz","./useTheme":"h9QTR","./useThemeWithoutDefault":"9Xcu1","./colorManipulator":"cIbr0","./ThemeProvider":"4OCq3","./cssVars/createCssVarsProvider":"6uVnP","./cssVars/createGetCssVar":"Qc961","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eTow5":[function(require,module,exports) {
+},{"@mui/styled-engine":"eTow5","./borders":"9eacX","./breakpoints":"jN5Vx","./compose":"artaj","./display":"bgIcY","./flexbox":"lGtSW","./grid":"aC2XZ","./palette":"c15rV","./positions":"bH84e","./shadows":"jc1Oh","./sizing":"IHjMz","./spacing":"5kYt9","./style":"juhi3","./typography":"6oSjI","./styleFunctionSx":"bRwpN","./sx":"7BCm2","./getThemeValue":"bPAAB","./Box":"doQe9","./createBox":"bc03s","./createStyled":"csGHh","./styled":"jOYYI","./createTheme":"dmLcy","./createTheme/createBreakpoints":"ldxey","./createTheme/createSpacing":"8dFgL","./createTheme/shape":"43LHe","./useThemeProps":"eZlKz","./useTheme":"h9QTR","./useThemeWithoutDefault":"9Xcu1","./colorManipulator":"cIbr0","./ThemeProvider":"4OCq3","./cssVars/createCssVarsProvider":"6uVnP","./cssVars/createGetCssVar":"Qc961","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eTow5":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "ThemeContext", ()=>_react.ThemeContext
@@ -43053,7 +43067,23 @@ function sx(styles) {
 }
 exports.default = sx;
 
-},{"../styleFunctionSx":"bRwpN","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bc03s":[function(require,module,exports) {
+},{"../styleFunctionSx":"bRwpN","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"doQe9":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>_boxDefault.default
+);
+var _box = require("./Box");
+var _boxDefault = parcelHelpers.interopDefault(_box);
+
+},{"./Box":"f1LqV","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"f1LqV":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _createBox = require("../createBox");
+var _createBoxDefault = parcelHelpers.interopDefault(_createBox);
+const Box = _createBoxDefault.default();
+exports.default = Box;
+
+},{"../createBox":"bc03s","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bc03s":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _extends = require("@babel/runtime/helpers/esm/extends");
@@ -43626,7 +43656,15 @@ function propsToClassKey(props) {
 }
 exports.default = propsToClassKey;
 
-},{"@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"adHgr","@mui/utils":"cttLn","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eZlKz":[function(require,module,exports) {
+},{"@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"adHgr","@mui/utils":"cttLn","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jOYYI":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _createStyled = require("./createStyled");
+var _createStyledDefault = parcelHelpers.interopDefault(_createStyled);
+const styled = _createStyledDefault.default();
+exports.default = styled;
+
+},{"./createStyled":"csGHh","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eZlKz":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>_useThemePropsDefault.default
@@ -47449,7 +47487,7 @@ const CurrentBooks = ()=>{
     return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Card, {
         sx: {
             padding: "1rem 2rem",
-            backgroundColor: "booksLists.cardBgr",
+            backgroundColor: "currentBookLists.cardBgr",
             display: "flex",
             flexDirection: "column",
             "::-webkit-scrollbar": {
@@ -86082,7 +86120,7 @@ $RefreshReg$(_c, "CurrentBookContent");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@mui/material":"40376","./CurrentBookCover":"98xkO","./CurrentBookDetails":"3HGYJ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react":"21dqq"}],"98xkO":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","@mui/material":"40376","react":"21dqq","./CurrentBookCover":"98xkO","./CurrentBookDetails":"3HGYJ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"98xkO":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$1f4b = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -86145,8 +86183,6 @@ var _react = require("react");
 var _material = require("@mui/material");
 var _circle = require("@mui/icons-material/Circle");
 var _circleDefault = parcelHelpers.interopDefault(_circle);
-var _buttonEffects = require("../../../../helpers/buttonEffects");
-var _buttonEffectsDefault = parcelHelpers.interopDefault(_buttonEffects);
 var _chooseOrdinalIndicator = require("../../../../helpers/chooseOrdinalIndicator");
 var _chooseOrdinalIndicatorDefault = parcelHelpers.interopDefault(_chooseOrdinalIndicator);
 var _copyButton = require("../../../buttons/CopyButton");
@@ -86166,7 +86202,7 @@ const CurrentBookDetails = (props)=>{
             },
             flexGrow: 1,
             ml: "1rem",
-            backgroundColor: "booksLists.cardLight",
+            backgroundColor: "currentBookLists.cardLight",
             borderRadius: "1rem"
         },
         children: [
@@ -86182,12 +86218,12 @@ const CurrentBookDetails = (props)=>{
                             id: props.id
                         }, void 0, false, {
                             fileName: "src/components/panels/CurrentBooks/elements/CurrentBookDetails.jsx",
-                            lineNumber: 37,
+                            lineNumber: 36,
                             columnNumber: 11
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/panels/CurrentBooks/elements/CurrentBookDetails.jsx",
-                        lineNumber: 36,
+                        lineNumber: 35,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
@@ -86200,7 +86236,7 @@ const CurrentBookDetails = (props)=>{
                                 text: props.book.title
                             }, void 0, false, {
                                 fileName: "src/components/panels/CurrentBooks/elements/CurrentBookDetails.jsx",
-                                lineNumber: 40,
+                                lineNumber: 39,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Typography, {
@@ -86213,19 +86249,19 @@ const CurrentBookDetails = (props)=>{
                                 children: props.book.title
                             }, void 0, false, {
                                 fileName: "src/components/panels/CurrentBooks/elements/CurrentBookDetails.jsx",
-                                lineNumber: 41,
+                                lineNumber: 40,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/panels/CurrentBooks/elements/CurrentBookDetails.jsx",
-                        lineNumber: 39,
+                        lineNumber: 38,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/panels/CurrentBooks/elements/CurrentBookDetails.jsx",
-                lineNumber: 35,
+                lineNumber: 34,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.List, {
@@ -86249,7 +86285,7 @@ const CurrentBookDetails = (props)=>{
                                 text: author
                             }, void 0, false, {
                                 fileName: "src/components/panels/CurrentBooks/elements/CurrentBookDetails.jsx",
-                                lineNumber: 67,
+                                lineNumber: 66,
                                 columnNumber: 15
                             }, undefined),
                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.ListItemText, {
@@ -86262,7 +86298,7 @@ const CurrentBookDetails = (props)=>{
                                 children: author
                             }, void 0, false, {
                                 fileName: "src/components/panels/CurrentBooks/elements/CurrentBookDetails.jsx",
-                                lineNumber: 68,
+                                lineNumber: 67,
                                 columnNumber: 15
                             }, undefined),
                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_circleDefault.default, {
@@ -86272,19 +86308,19 @@ const CurrentBookDetails = (props)=>{
                                 }
                             }, void 0, false, {
                                 fileName: "src/components/panels/CurrentBooks/elements/CurrentBookDetails.jsx",
-                                lineNumber: 74,
+                                lineNumber: 73,
                                 columnNumber: 15
                             }, undefined)
                         ]
                     }, index, true, {
                         fileName: "src/components/panels/CurrentBooks/elements/CurrentBookDetails.jsx",
-                        lineNumber: 60,
+                        lineNumber: 59,
                         columnNumber: 13
                     }, undefined);
                 })
             }, void 0, false, {
                 fileName: "src/components/panels/CurrentBooks/elements/CurrentBookDetails.jsx",
-                lineNumber: 51,
+                lineNumber: 50,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
@@ -86315,7 +86351,7 @@ const CurrentBookDetails = (props)=>{
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/panels/CurrentBooks/elements/CurrentBookDetails.jsx",
-                                lineNumber: 94,
+                                lineNumber: 93,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Typography, {
@@ -86324,13 +86360,13 @@ const CurrentBookDetails = (props)=>{
                                 children: Number.isNaN(props.book.releaseYear) ? 1000 : props.book.releaseYear
                             }, void 0, false, {
                                 fileName: "src/components/panels/CurrentBooks/elements/CurrentBookDetails.jsx",
-                                lineNumber: 98,
+                                lineNumber: 97,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/panels/CurrentBooks/elements/CurrentBookDetails.jsx",
-                        lineNumber: 86,
+                        lineNumber: 85,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
@@ -86344,7 +86380,7 @@ const CurrentBookDetails = (props)=>{
                                 text: props.book.isbn
                             }, void 0, false, {
                                 fileName: "src/components/panels/CurrentBooks/elements/CurrentBookDetails.jsx",
-                                lineNumber: 111,
+                                lineNumber: 110,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Typography, {
@@ -86353,25 +86389,25 @@ const CurrentBookDetails = (props)=>{
                                 children: props.book.isbn || 1234567890
                             }, void 0, false, {
                                 fileName: "src/components/panels/CurrentBooks/elements/CurrentBookDetails.jsx",
-                                lineNumber: 112,
+                                lineNumber: 111,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/panels/CurrentBooks/elements/CurrentBookDetails.jsx",
-                        lineNumber: 104,
+                        lineNumber: 103,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/panels/CurrentBooks/elements/CurrentBookDetails.jsx",
-                lineNumber: 79,
+                lineNumber: 78,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/panels/CurrentBooks/elements/CurrentBookDetails.jsx",
-        lineNumber: 19,
+        lineNumber: 18,
         columnNumber: 5
     }, undefined);
 };
@@ -86385,7 +86421,7 @@ $RefreshReg$(_c, "CurrentBookDetails");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@mui/material":"40376","@mui/icons-material/Circle":"cx6oL","../../../../helpers/buttonEffects":"7XAtO","../../../../helpers/chooseOrdinalIndicator":"jzCMG","../../../buttons/CopyButton":"g0Osb","../../../buttons/DeleteButton":"iXPPa","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"cx6oL":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@mui/material":"40376","@mui/icons-material/Circle":"cx6oL","../../../../helpers/chooseOrdinalIndicator":"jzCMG","../../../buttons/CopyButton":"g0Osb","../../../buttons/DeleteButton":"iXPPa","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"cx6oL":[function(require,module,exports) {
 "use strict";
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 Object.defineProperty(exports, "__esModule", {
@@ -86399,25 +86435,7 @@ var _default = (0, _createSvgIcon.default)(/*#__PURE__*/ (0, _jsxRuntime.jsx)("p
 }), 'Circle');
 exports.default = _default;
 
-},{"@babel/runtime/helpers/interopRequireDefault":"7XM86","./utils/createSvgIcon":"lVV9C","react/jsx-runtime":"6AEwr"}],"7XAtO":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-const buttonEffects = {
-    unhovered: {
-        opacity: 0.25,
-        transition: "all 0.25s"
-    },
-    hovered: [
-        {
-            "&:hover > *": {
-                opacity: 1
-            }
-        }, 
-    ]
-};
-exports.default = buttonEffects;
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jzCMG":[function(require,module,exports) {
+},{"@babel/runtime/helpers/interopRequireDefault":"7XM86","./utils/createSvgIcon":"lVV9C","react/jsx-runtime":"6AEwr"}],"jzCMG":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 const chooseOrdinalIndicator = (num1)=>{
@@ -86807,7 +86825,25 @@ var _default = (0, _createSvgIcon.default)(/*#__PURE__*/ (0, _jsxRuntime.jsx)("p
 }), 'ContentCopy');
 exports.default = _default;
 
-},{"@babel/runtime/helpers/interopRequireDefault":"7XM86","./utils/createSvgIcon":"lVV9C","react/jsx-runtime":"6AEwr"}],"iXPPa":[function(require,module,exports) {
+},{"@babel/runtime/helpers/interopRequireDefault":"7XM86","./utils/createSvgIcon":"lVV9C","react/jsx-runtime":"6AEwr"}],"7XAtO":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+const buttonEffects = {
+    unhovered: {
+        opacity: 0.25,
+        transition: "all 0.25s"
+    },
+    hovered: [
+        {
+            "&:hover > *": {
+                opacity: 1
+            }
+        }, 
+    ]
+};
+exports.default = buttonEffects;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iXPPa":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$83c0 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -87836,7 +87872,7 @@ const Bestseller = ()=>{
             justifyContent: "space-between",
             alignItems: "center",
             padding: "2rem",
-            backgroundColor: "booksLists.cardBgr",
+            backgroundColor: "currentBookLists.cardBgr",
             borderRadius: "1rem"
         },
         children: [
@@ -88071,7 +88107,7 @@ const Bestseller = ()=>{
                             margin: "1rem",
                             padding: "1rem",
                             minWidth: "fit-content",
-                            backgroundColor: "booksLists.cardDark",
+                            backgroundColor: "currentBookLists.cardDark",
                             borderRadius: "1rem",
                             color: "snow"
                         },
@@ -88183,35 +88219,7 @@ var _default = (0, _createSvgIcon.default)(/*#__PURE__*/ (0, _jsxRuntime.jsx)("p
 }), 'ArrowDropDownCircle');
 exports.default = _default;
 
-},{"@babel/runtime/helpers/interopRequireDefault":"7XM86","./utils/createSvgIcon":"lVV9C","react/jsx-runtime":"6AEwr"}],"eghjD":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$109b = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$109b.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _material = require("@mui/material");
-const OtherBooks = ()=>{
-    return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Card, {}, void 0, false, {
-        fileName: "src/components/panels/OtherBooks/OtherBooks.jsx",
-        lineNumber: 4,
-        columnNumber: 10
-    }, undefined);
-};
-_c = OtherBooks;
-exports.default = OtherBooks;
-var _c;
-$RefreshReg$(_c, "OtherBooks");
-
-  $parcel$ReactRefreshHelpers$109b.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","@mui/material":"40376","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"41QXc":[function(require,module,exports) {
+},{"@babel/runtime/helpers/interopRequireDefault":"7XM86","./utils/createSvgIcon":"lVV9C","react/jsx-runtime":"6AEwr"}],"41QXc":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "theme", ()=>theme
@@ -88219,7 +88227,7 @@ parcelHelpers.export(exports, "theme", ()=>theme
 var _material = require("@mui/material");
 const theme = _material.createTheme({
     palette: {
-        booksLists: {
+        currentBookLists: {
             cardBgr: "#C2B29A",
             cardLight: "#978974",
             cardDark: "#675C4E",
@@ -88232,10 +88240,280 @@ const theme = _material.createTheme({
             fontGreen: "#3b8082",
             fontRed: "#890F0D",
             font: "snow"
+        },
+        bookLists: {
+            cardBgr: "#847868",
+            cardTitle: "#FFF",
+            listBgr: "#665C4F",
+            listItemBgr: "#9B9B93",
+            listItemTitle: "#FFF",
+            listItemAuthors: "#575151",
+            listItemYear: "#FFF"
         }
     }
 });
 
-},{"@mui/material":"40376","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["kn9T2","7nZVA","8lqZg"], "8lqZg", "parcelRequire907e")
+},{"@mui/material":"40376","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"c3JpP":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$cc5e = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$cc5e.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _material = require("@mui/material");
+var _system = require("@mui/system");
+var _bookList = require("./elements/BookList");
+var _bookListDefault = parcelHelpers.interopDefault(_bookList);
+var _addBtn = require("../CurrentBooks/elements/AddBtn");
+var _addBtnDefault = parcelHelpers.interopDefault(_addBtn);
+const bookLists = [
+    {
+        name: "Read soon",
+        icon: "&#x1F4DA;",
+        books: [
+            {
+                title: "The Charterhouse of Parma",
+                year: 1839,
+                author: "Marie-Henri (Stendhal) Beyle"
+            },
+            {
+                title: "Wuthering Heights",
+                year: 1847,
+                author: "Emilfy Bronte"
+            },
+            {
+                title: "The Master and Magerita",
+                year: 1966,
+                author: "Mikhail Bulgakov"
+            }, 
+        ]
+    },
+    {
+        name: "Favourite Sci-Fi Books",
+        icon: "&#x1F680;",
+        books: [
+            {
+                title: "The Blazing World",
+                year: 1666,
+                author: "Margaret Cavendish"
+            },
+            {
+                title: "Frankenstein",
+                year: 1818,
+                author: "Mary Shelley"
+            },
+            {
+                title: "Foundation",
+                year: 1951,
+                author: "Isaac Asimov"
+            }, 
+        ]
+    }, 
+];
+const BookLists = ()=>{
+    return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Card, {
+        sx: {
+            padding: "1rem 2rem",
+            backgroundColor: "currentBookLists.cardBgr",
+            borderRadius: "1rem"
+        },
+        children: [
+            /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_system.Box, {
+                sx: {
+                    display: "flex",
+                    flexFlow: "row nowrap",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    pb: "1rem"
+                },
+                children: [
+                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Typography, {
+                        variant: "h2",
+                        component: "h2",
+                        children: "Lists"
+                    }, void 0, false, {
+                        fileName: "src/components/panels/BookLists/BookLists.jsx",
+                        lineNumber: 69,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_addBtnDefault.default, {}, void 0, false, {
+                        fileName: "src/components/panels/BookLists/BookLists.jsx",
+                        lineNumber: 72,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/panels/BookLists/BookLists.jsx",
+                lineNumber: 60,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_system.Box, {
+                children: [
+                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_system.Box, {
+                        children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_bookListDefault.default, {
+                            list: bookLists[0]
+                        }, void 0, false, {
+                            fileName: "src/components/panels/BookLists/BookLists.jsx",
+                            lineNumber: 76,
+                            columnNumber: 11
+                        }, undefined)
+                    }, void 0, false, {
+                        fileName: "src/components/panels/BookLists/BookLists.jsx",
+                        lineNumber: 75,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_system.Box, {}, void 0, false, {
+                        fileName: "src/components/panels/BookLists/BookLists.jsx",
+                        lineNumber: 78,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/panels/BookLists/BookLists.jsx",
+                lineNumber: 74,
+                columnNumber: 7
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "src/components/panels/BookLists/BookLists.jsx",
+        lineNumber: 53,
+        columnNumber: 5
+    }, undefined);
+};
+_c = BookLists;
+exports.default = BookLists;
+var _c;
+$RefreshReg$(_c, "BookLists");
+
+  $parcel$ReactRefreshHelpers$cc5e.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","@mui/material":"40376","@mui/system":"Q0Zql","./elements/BookList":"6xkzU","../CurrentBooks/elements/AddBtn":"ak4KC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"6xkzU":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$5a2c = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$5a2c.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _material = require("@mui/material");
+const BookList = (props)=>{
+    const { list  } = props;
+    return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Card, {
+        children: [
+            /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
+                sx: {
+                    display: "flex",
+                    flexFlow: "row nowrap",
+                    justifyContent: "center",
+                    alignItems: "center"
+                },
+                children: [
+                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Typography, {
+                        variant: "h3",
+                        component: "p",
+                        children: list.icon
+                    }, void 0, false, {
+                        fileName: "src/components/panels/BookLists/elements/BookList.jsx",
+                        lineNumber: 22,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Typography, {
+                        variant: "h3",
+                        component: "h3",
+                        children: list.name
+                    }, void 0, false, {
+                        fileName: "src/components/panels/BookLists/elements/BookList.jsx",
+                        lineNumber: 25,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/panels/BookLists/elements/BookList.jsx",
+                lineNumber: 14,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.List, {
+                children: list.books.map((book)=>{
+                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.ListItem, {
+                        children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.ListItemText, {
+                            children: [
+                                /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
+                                    children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Typography, {
+                                        children: book.title
+                                    }, void 0, false, {
+                                        fileName: "src/components/panels/BookLists/elements/BookList.jsx",
+                                        lineNumber: 34,
+                                        columnNumber: 17
+                                    }, undefined)
+                                }, void 0, false, {
+                                    fileName: "src/components/panels/BookLists/elements/BookList.jsx",
+                                    lineNumber: 33,
+                                    columnNumber: 15
+                                }, undefined),
+                                /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
+                                    children: [
+                                        /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Typography, {
+                                            children: book.year
+                                        }, void 0, false, {
+                                            fileName: "src/components/panels/BookLists/elements/BookList.jsx",
+                                            lineNumber: 37,
+                                            columnNumber: 17
+                                        }, undefined),
+                                        /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Typography, {
+                                            children: book.author
+                                        }, void 0, false, {
+                                            fileName: "src/components/panels/BookLists/elements/BookList.jsx",
+                                            lineNumber: 38,
+                                            columnNumber: 17
+                                        }, undefined)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/components/panels/BookLists/elements/BookList.jsx",
+                                    lineNumber: 36,
+                                    columnNumber: 15
+                                }, undefined)
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/components/panels/BookLists/elements/BookList.jsx",
+                            lineNumber: 32,
+                            columnNumber: 13
+                        }, undefined)
+                    }, void 0, false, {
+                        fileName: "src/components/panels/BookLists/elements/BookList.jsx",
+                        lineNumber: 31,
+                        columnNumber: 11
+                    }, undefined);
+                })
+            }, void 0, false, {
+                fileName: "src/components/panels/BookLists/elements/BookList.jsx",
+                lineNumber: 29,
+                columnNumber: 7
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "src/components/panels/BookLists/elements/BookList.jsx",
+        lineNumber: 13,
+        columnNumber: 5
+    }, undefined);
+};
+_c = BookList;
+exports.default = BookList;
+var _c;
+$RefreshReg$(_c, "BookList");
+
+  $parcel$ReactRefreshHelpers$5a2c.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","@mui/material":"40376","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}]},["kn9T2","7nZVA","8lqZg"], "8lqZg", "parcelRequire907e")
 
 //# sourceMappingURL=index.975ef6c8.js.map
