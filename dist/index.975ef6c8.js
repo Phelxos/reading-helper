@@ -25086,7 +25086,7 @@ $RefreshReg$(_c, "App");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","./buttons/FocusModeButton/FocusModeButton":"lWsvH","./panels/CurrentBooks/CurrentBooks":"huZEU","./panels/DaysWQ/DaysWQ":"eQOY7","./panels/Bestseller/Bestseller":"h1GVI","@mui/material":"40376","../../styles/styles":"41QXc","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./panels/BookLists/BookLists":"c3JpP"}],"lWsvH":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","./buttons/FocusModeButton/FocusModeButton":"lWsvH","./panels/CurrentBooks/CurrentBooks":"huZEU","./panels/DaysWQ/DaysWQ":"eQOY7","./panels/Bestseller/Bestseller":"h1GVI","./panels/BookLists/BookLists":"c3JpP","@mui/material":"40376","../../styles/styles":"41QXc","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"lWsvH":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$bb88 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -88219,41 +88219,7 @@ var _default = (0, _createSvgIcon.default)(/*#__PURE__*/ (0, _jsxRuntime.jsx)("p
 }), 'ArrowDropDownCircle');
 exports.default = _default;
 
-},{"@babel/runtime/helpers/interopRequireDefault":"7XM86","./utils/createSvgIcon":"lVV9C","react/jsx-runtime":"6AEwr"}],"41QXc":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "theme", ()=>theme
-);
-var _material = require("@mui/material");
-const theme = _material.createTheme({
-    palette: {
-        currentBookLists: {
-            cardBgr: "#C2B29A",
-            cardLight: "#978974",
-            cardDark: "#675C4E",
-            cardLukelight: "#857A68",
-            cardGrey: "#918F86",
-            formBlueGrey: "#77959E"
-        },
-        wqofd: {
-            cardBgr: "#9c9c94",
-            fontGreen: "#3b8082",
-            fontRed: "#890F0D",
-            font: "snow"
-        },
-        bookLists: {
-            cardBgr: "#847868",
-            cardTitle: "#FFF",
-            listBgr: "#665C4F",
-            listItemBgr: "#9B9B93",
-            listItemTitle: "#FFF",
-            listItemAuthors: "#575151",
-            listItemYear: "#FFF"
-        }
-    }
-});
-
-},{"@mui/material":"40376","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"c3JpP":[function(require,module,exports) {
+},{"@babel/runtime/helpers/interopRequireDefault":"7XM86","./utils/createSvgIcon":"lVV9C","react/jsx-runtime":"6AEwr"}],"c3JpP":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$cc5e = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -88514,6 +88480,40 @@ $RefreshReg$(_c, "BookList");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@mui/material":"40376","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}]},["kn9T2","7nZVA","8lqZg"], "8lqZg", "parcelRequire907e")
+},{"react/jsx-dev-runtime":"iTorj","@mui/material":"40376","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"41QXc":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "theme", ()=>theme
+);
+var _material = require("@mui/material");
+const theme = _material.createTheme({
+    palette: {
+        currentBookLists: {
+            cardBgr: "#C2B29A",
+            cardLight: "#978974",
+            cardDark: "#675C4E",
+            cardLukelight: "#857A68",
+            cardGrey: "#918F86",
+            formBlueGrey: "#77959E"
+        },
+        wqofd: {
+            cardBgr: "#9c9c94",
+            fontGreen: "#3b8082",
+            fontRed: "#890F0D",
+            font: "snow"
+        },
+        bookLists: {
+            cardBgr: "#847868",
+            cardTitle: "#FFF",
+            listBgr: "#665C4F",
+            listItemBgr: "#9B9B93",
+            listItemTitle: "#FFF",
+            listItemAuthors: "#575151",
+            listItemYear: "#FFF"
+        }
+    }
+});
+
+},{"@mui/material":"40376","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["kn9T2","7nZVA","8lqZg"], "8lqZg", "parcelRequire907e")
 
 //# sourceMappingURL=index.975ef6c8.js.map

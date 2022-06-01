@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   Box,
   Card,
@@ -8,54 +9,52 @@ import {
   Typography,
 } from "@mui/material";
 import ArrowDropDownCircleIcon from "@mui/icons-material/ArrowDropDownCircle";
-import { useEffect, useState } from "react";
+import APIs from "../../../helpers/apis";
 
 const Bestseller = () => {
+  const [bestsellersCategoriesList, setBestsellersCategoriesList] = useState(
+    []
+  );
   const [anchorEl, setAnchorEl] = useState(null);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [bestsellerList, setBestsellerList] = useState([]);
-  const [listNameNumber, setListNameNumber] = useState(0);
-  const [isItemSelected, setIsItemSelected] = useState({
-    0: true,
-  });
-  const [prevSelectedMenuItem, setPrevSelectedMenuItem] = useState(0);
-  const nytApiKey = "VGTHTRB7qDzUPZN73Z5NtZ5Mh06p68xS";
-  const googleApiKey = "AIzaSyArxFW_EwixEUGj48zkoIhG6yS-8dOuGMA";
-  const defaultCoverLink =
-    "https://images.unsplash.com/photo-1528459105426-b9548367069b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=728&q=80";
-  const nytimesApi = `https://api.nytimes.com/svc/books/v3/lists/full-overview.json?api-key=${nytApiKey}`;
-  const googleApi = (query) => {
-    return `https://www.googleapis.com/books/v1/volumes?q=isbn:${query}&key=${googleApiKey}`;
-  };
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [currentlySelectedMenuItem, setCurrentlySelectedItem] = useState(
+    "Combined Print and E-Book Fiction"
+  );
+  const [bestsellersList, setBestsellersList] = useState([]);
+  const [toBeFetchedListName, setToBeFetchedListName] = useState(0);
 
+  /* EVENT HANDLERS */
   const handleMenuClick = (e) => {
     setAnchorEl(e.currentTarget);
-    setMenuOpen(true);
+    setIsMenuOpen(true);
   };
 
   const handleMenuClose = () => {
-    setMenuOpen(false);
+    setIsMenuOpen(false);
   };
 
-  const handleMenuItemClick = (listNum) => {
-    setListNameNumber(listNum);
-    setIsItemSelected({
-      ...isItemSelected,
-      [listNum]: true,
-      [prevSelectedMenuItem]: false,
+  const handleMenuItemClick = (e) => {
+    /* I do not know why, but this is the path to select the list item's value. */
+    setCurrentlySelectedItem(e.target.attributes[3].nodeValue);
+    setIsMenuOpen(false);
+  };
+
+  console.log(currentlySelectedMenuItem);
+
+  /* handles the display of the books' covers */
+  const defaultCoverLink =
+    "https://images.unsplash.com/photo-1528459105426-b9548367069b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=728&q=80";
+
+  const fetchCoversLinks = async (isbn) => {
+    const res = await fetch(APIs.google.link(isbn)).catch((e) => {
+      console.log("fetchCoversLinks(): Something went wrong", e);
     });
-    setPrevSelectedMenuItem(listNum);
-    setMenuOpen(false);
-  };
-
-  const fetchLinkCover = async (isbn) => {
-    const res = await fetch(googleApi(isbn));
     const json = await res.json();
     if (json.items !== undefined) {
-      // return the link cover if the JSON object has an "items" prop
+      // returns the link cover if the JSON object has an "items" prop
       return json.items[0].volumeInfo.imageLinks.smallThumbnail;
     } else if (json.error.code === 429) {
-      // return null if the daily fetch limit has been reached
+      // returns null if the daily fetch limit has been reached
       console.log(
         "The daily limit for Google Books' API calls has been reached. A default cover will be displayed for the cards of the bestsellers books."
       );
@@ -65,15 +64,25 @@ const Bestseller = () => {
     }
   };
 
+  /* fetches the data of the bestsellers books 
+  form the currently select bestsellers' category list */
   useEffect(() => {
-    fetch(nytimesApi)
+    fetch(APIs.nytimes.link())
       .then((res) => res.json())
       .then((json) => {
-        console.log(json.results);
-        const fetchedBookList = json.results.lists[listNameNumber].books;
-        console.log(fetchedBookList);
+        setBestsellersCategoriesList(
+          json.results.lists.map((list) => list.list_name)
+        );
+        const fetchedBookList = json.results.lists[toBeFetchedListName].books;
         const promises = fetchedBookList.map(async (item) => {
-          const linkCover = await fetchLinkCover(item.primary_isbn13);
+          const linkCover = await fetchCoversLinks(item.primary_isbn13).catch(
+            (e) => {
+              console.log(
+                "useEffect(), fetchCoversLinks(): Something went wrong",
+                e
+              );
+            }
+          );
           return {
             title: item.title,
             authors: item.author,
@@ -83,8 +92,11 @@ const Bestseller = () => {
         });
         return Promise.all(promises);
       })
-      .then((books) => setBestsellerList(books));
-  }, [listNameNumber]);
+      .then((books) => setBestsellersList(books))
+      .catch((e) => {
+        console.log("useEffect(), fetch(): Something went wrong", e);
+      });
+  }, [toBeFetchedListName]);
 
   return (
     <Card
@@ -125,101 +137,23 @@ const Bestseller = () => {
         </Box>
         <Menu
           anchorEl={anchorEl}
-          open={menuOpen}
+          open={isMenuOpen}
           onClose={handleMenuClose}
           sx={{ display: "flex", flexFlow: "row nowrap" }}
         >
-          <Typography align="center">Fiction</Typography>
-          <MenuItem
-            onClick={() => {
-              handleMenuItemClick(0);
-            }}
-            selected={isItemSelected[0]}
-          >
-            Combined Print & E-Book Fiction
-          </MenuItem>
-          <MenuItem
-            onClick={() => {
-              handleMenuItemClick(2);
-            }}
-            selected={isItemSelected[2]}
-          >
-            Hardcover Fiction
-          </MenuItem>
-          <MenuItem
-            onClick={() => {
-              handleMenuItemClick(4);
-            }}
-            selected={isItemSelected[4]}
-          >
-            Paperback Trade Fiction
-          </MenuItem>
-          <Typography align="center">Nonfiction</Typography>
-          <MenuItem
-            onClick={() => {
-              handleMenuItemClick(1);
-            }}
-            selected={isItemSelected[1]}
-          >
-            Combined Print & E-Book Fiction
-          </MenuItem>
-          <MenuItem
-            onClick={() => {
-              handleMenuItemClick(3);
-            }}
-            selected={isItemSelected[3]}
-          >
-            Hardcover
-          </MenuItem>
-          <MenuItem
-            onClick={() => {
-              handleMenuItemClick(5);
-            }}
-            selected={isItemSelected[5]}
-          >
-            Paperback
-          </MenuItem>
-          <MenuItem
-            onClick={() => {
-              handleMenuItemClick(6);
-            }}
-            selected={isItemSelected[6]}
-          >
-            Advice, How-To & Miscellaneous
-          </MenuItem>
-          <Typography align="center">Children's</Typography>
-          <MenuItem
-            onClick={() => {
-              handleMenuItemClick(7);
-            }}
-            selected={isItemSelected[7]}
-          >
-            Middle Grade Hardcover
-          </MenuItem>
-          <MenuItem
-            onClick={() => {
-              handleMenuItemClick(8);
-            }}
-            selected={isItemSelected[8]}
-          >
-            Picture Books
-          </MenuItem>
-          <MenuItem
-            onClick={() => {
-              handleMenuItemClick(9);
-            }}
-            selected={isItemSelected[9]}
-          >
-            Series
-          </MenuItem>
-          <MenuItem
-            onClick={() => {
-              handleMenuItemClick(10);
-            }}
-            selected={isItemSelected[10]}
-          >
-            Young Adult Hardcover
-          </MenuItem>
+          {bestsellersCategoriesList.map((category) => {
+            return (
+              <MenuItem
+                selected={category === currentlySelectedMenuItem}
+                value={`${category}`}
+                onClick={(e) => {
+                  handleMenuItemClick(e);
+                }}
+              >
+                {category}
+              </MenuItem>
+            );
+          })}
         </Menu>
       </Box>
       <Box
@@ -233,7 +167,7 @@ const Bestseller = () => {
           padding: "1rem",
         }}
       >
-        {bestsellerList.map((book, index) => {
+        {bestsellersList.map((book, index) => {
           return (
             <Box
               key={index}
