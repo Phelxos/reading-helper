@@ -3,12 +3,14 @@ import {
   Box,
   Card,
   CardMedia,
+  Icon,
   IconButton,
   Menu,
   MenuItem,
   Typography,
 } from "@mui/material";
 import ArrowDropDownCircleIcon from "@mui/icons-material/ArrowDropDownCircle";
+import HourglassEmptyIcon from "@mui/icons-material/HourglassEmpty";
 import APIs from "../../../helpers/apis";
 import findListsIndex from "../../../helpers/findListsIndex";
 
@@ -22,6 +24,7 @@ const Bestseller = () => {
     "Combined Print and E-Book Fiction"
   );
   const [bestsellersList, setBestsellersList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   /* EVENT HANDLERS */
   const handleMenuClick = (e) => {
@@ -37,6 +40,7 @@ const Bestseller = () => {
     /* I do not know why, but this is the path to select the list item's value. */
     setCurrentlySelectedItem(e.target.attributes[3].nodeValue);
     setIsMenuOpen(false);
+    setIsLoading(true);
   };
 
   console.log(currentlySelectedMenuItem);
@@ -99,7 +103,10 @@ const Bestseller = () => {
         });
         return Promise.all(promises);
       })
-      .then((books) => setBestsellersList(books))
+      .then((books) => {
+        setBestsellersList(books);
+        setIsLoading(false);
+      })
       .catch((e) => {
         console.log("useEffect(), fetch(): Something went wrong", e);
       });
@@ -175,64 +182,84 @@ const Bestseller = () => {
           padding: "1rem",
         }}
       >
-        {bestsellersList.map((book, index) => {
-          return (
-            <Box
-              key={index}
-              sx={{
-                display: "flex",
-                flexFlow: "row nowrap",
-                justifyContent: "space-between",
-                alignItems: "stretch",
-                margin: "1rem",
-                padding: "1rem",
-                minWidth: "fit-content",
-                backgroundColor: "currentBookLists.cardDark",
-                borderRadius: "1rem",
-                color: "snow",
-              }}
-            >
-              <Typography
-                sx={{ alignSelf: "flex-end" }}
-                component="p"
-                variant="h2"
-              >
-                {book.ranking}
-              </Typography>
+        {isLoading ? (
+          <Box
+            sx={{
+              display: "flex",
+              flexFlow: "row nowrap",
+              justifyContent: "space-between",
+              alignItems: "stretch",
+              margin: "1rem",
+              padding: "1rem",
+              minWidth: "fit-content",
+              backgroundColor: "currentBookLists.cardDark",
+              borderRadius: "1rem",
+              color: "snow",
+            }}
+          >
+            <HourglassEmptyIcon />
+            <Typography>The daata is loading.</Typography>
+          </Box>
+        ) : (
+          bestsellersList.map((book, index) => {
+            return (
               <Box
+                key={index}
                 sx={{
                   display: "flex",
-                  flexFlow: "column nowrap",
-                  justifyContent: "flex-start",
-                  alignItems: "flex-end",
-                  flexGrow: 1,
+                  flexFlow: "row nowrap",
+                  justifyContent: "space-between",
+                  alignItems: "stretch",
+                  margin: "1rem",
                   padding: "1rem",
+                  minWidth: "fit-content",
+                  backgroundColor: "currentBookLists.cardDark",
+                  borderRadius: "1rem",
+                  color: "snow",
                 }}
               >
                 <Typography
+                  sx={{ alignSelf: "flex-end" }}
+                  component="p"
+                  variant="h2"
+                >
+                  {book.ranking}
+                </Typography>
+                <Box
                   sx={{
-                    fontSize: "2rem",
-                    fontWeight: 100,
+                    display: "flex",
+                    flexFlow: "column nowrap",
+                    justifyContent: "flex-start",
+                    alignItems: "flex-end",
+                    flexGrow: 1,
+                    padding: "1rem",
                   }}
-                  align="right"
                 >
-                  {book.title}
-                </Typography>
-                <Typography
-                  sx={{ fontSize: "1.25rem", fontWeight: 500 }}
-                  align="right"
-                >
-                  {book.authors}
-                </Typography>
+                  <Typography
+                    sx={{
+                      fontSize: "2rem",
+                      fontWeight: 100,
+                    }}
+                    align="right"
+                  >
+                    {book.title}
+                  </Typography>
+                  <Typography
+                    sx={{ fontSize: "1.25rem", fontWeight: 500 }}
+                    align="right"
+                  >
+                    {book.authors}
+                  </Typography>
+                </Box>
+                <CardMedia
+                  component="img"
+                  image={book.cover || defaultCoverLink}
+                  sx={{ width: "50px" }}
+                />
               </Box>
-              <CardMedia
-                component="img"
-                image={book.cover || defaultCoverLink}
-                sx={{ width: "50px" }}
-              />
-            </Box>
-          );
-        })}
+            );
+          })
+        )}
       </Box>
     </Card>
   );
