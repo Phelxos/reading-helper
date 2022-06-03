@@ -87800,6 +87800,8 @@ var _arrowDropDownCircle = require("@mui/icons-material/ArrowDropDownCircle");
 var _arrowDropDownCircleDefault = parcelHelpers.interopDefault(_arrowDropDownCircle);
 var _apis = require("../../../helpers/apis");
 var _apisDefault = parcelHelpers.interopDefault(_apis);
+var _findListsIndex = require("../../../helpers/findListsIndex");
+var _findListsIndexDefault = parcelHelpers.interopDefault(_findListsIndex);
 var _s = $RefreshSig$();
 const Bestseller = ()=>{
     _s();
@@ -87808,7 +87810,6 @@ const Bestseller = ()=>{
     const [isMenuOpen, setIsMenuOpen] = _react.useState(false);
     const [currentlySelectedMenuItem, setCurrentlySelectedItem] = _react.useState("Combined Print and E-Book Fiction");
     const [bestsellersList, setBestsellersList] = _react.useState([]);
-    const [toBeFetchedListName, setToBeFetchedListName] = _react.useState(0);
     /* EVENT HANDLERS */ const handleMenuClick = (e)=>{
         setAnchorEl(e.currentTarget);
         setIsMenuOpen(true);
@@ -87841,7 +87842,8 @@ const Bestseller = ()=>{
         ).then((json)=>{
             setBestsellersCategoriesList(json.results.lists.map((list)=>list.list_name
             ));
-            const fetchedBookList = json.results.lists[toBeFetchedListName].books;
+            console.log("find list's index", _findListsIndexDefault.default(json.results.lists, currentlySelectedMenuItem));
+            const fetchedBookList = json.results.lists[_findListsIndexDefault.default(json.results.lists, currentlySelectedMenuItem)].books;
             const promises = fetchedBookList.map(async (item)=>{
                 const linkCover = await fetchCoversLinks(item.primary_isbn13).catch((e)=>{
                     console.log("useEffect(), fetchCoversLinks(): Something went wrong", e);
@@ -87859,7 +87861,7 @@ const Bestseller = ()=>{
             console.log("useEffect(), fetch(): Something went wrong", e);
         });
     }, [
-        toBeFetchedListName
+        currentlySelectedMenuItem
     ]);
     return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Card, {
         sx: {
@@ -87896,25 +87898,25 @@ const Bestseller = ()=>{
                                 children: "Bestseller"
                             }, void 0, false, {
                                 fileName: "Documents/06-coding/projekte/reading-helper/src/components/panels/Bestseller/Bestseller.jsx",
-                                lineNumber: 131,
+                                lineNumber: 138,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.IconButton, {
                                 onClick: handleMenuClick,
                                 children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_arrowDropDownCircleDefault.default, {}, void 0, false, {
                                     fileName: "Documents/06-coding/projekte/reading-helper/src/components/panels/Bestseller/Bestseller.jsx",
-                                    lineNumber: 135,
+                                    lineNumber: 142,
                                     columnNumber: 13
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "Documents/06-coding/projekte/reading-helper/src/components/panels/Bestseller/Bestseller.jsx",
-                                lineNumber: 134,
+                                lineNumber: 141,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "Documents/06-coding/projekte/reading-helper/src/components/panels/Bestseller/Bestseller.jsx",
-                        lineNumber: 123,
+                        lineNumber: 130,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Menu, {
@@ -87925,7 +87927,7 @@ const Bestseller = ()=>{
                             display: "flex",
                             flexFlow: "row nowrap"
                         },
-                        children: bestsellersCategoriesList.map((category)=>{
+                        children: bestsellersCategoriesList.map((category, index)=>{
                             return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.MenuItem, {
                                 selected: category === currentlySelectedMenuItem,
                                 value: `${category}`,
@@ -87933,21 +87935,21 @@ const Bestseller = ()=>{
                                     handleMenuItemClick(e);
                                 },
                                 children: category
-                            }, void 0, false, {
+                            }, index, false, {
                                 fileName: "Documents/06-coding/projekte/reading-helper/src/components/panels/Bestseller/Bestseller.jsx",
-                                lineNumber: 146,
+                                lineNumber: 153,
                                 columnNumber: 15
                             }, undefined);
                         })
                     }, void 0, false, {
                         fileName: "Documents/06-coding/projekte/reading-helper/src/components/panels/Bestseller/Bestseller.jsx",
-                        lineNumber: 138,
+                        lineNumber: 145,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "Documents/06-coding/projekte/reading-helper/src/components/panels/Bestseller/Bestseller.jsx",
-                lineNumber: 113,
+                lineNumber: 120,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
@@ -87984,7 +87986,7 @@ const Bestseller = ()=>{
                                 children: book.ranking
                             }, void 0, false, {
                                 fileName: "Documents/06-coding/projekte/reading-helper/src/components/panels/Bestseller/Bestseller.jsx",
-                                lineNumber: 187,
+                                lineNumber: 195,
                                 columnNumber: 15
                             }, undefined),
                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
@@ -88006,7 +88008,7 @@ const Bestseller = ()=>{
                                         children: book.title
                                     }, void 0, false, {
                                         fileName: "Documents/06-coding/projekte/reading-helper/src/components/panels/Bestseller/Bestseller.jsx",
-                                        lineNumber: 204,
+                                        lineNumber: 212,
                                         columnNumber: 17
                                     }, undefined),
                                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Typography, {
@@ -88018,13 +88020,13 @@ const Bestseller = ()=>{
                                         children: book.authors
                                     }, void 0, false, {
                                         fileName: "Documents/06-coding/projekte/reading-helper/src/components/panels/Bestseller/Bestseller.jsx",
-                                        lineNumber: 213,
+                                        lineNumber: 221,
                                         columnNumber: 17
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "Documents/06-coding/projekte/reading-helper/src/components/panels/Bestseller/Bestseller.jsx",
-                                lineNumber: 194,
+                                lineNumber: 202,
                                 columnNumber: 15
                             }, undefined),
                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.CardMedia, {
@@ -88035,29 +88037,29 @@ const Bestseller = ()=>{
                                 }
                             }, void 0, false, {
                                 fileName: "Documents/06-coding/projekte/reading-helper/src/components/panels/Bestseller/Bestseller.jsx",
-                                lineNumber: 220,
+                                lineNumber: 228,
                                 columnNumber: 15
                             }, undefined)
                         ]
                     }, index, true, {
                         fileName: "Documents/06-coding/projekte/reading-helper/src/components/panels/Bestseller/Bestseller.jsx",
-                        lineNumber: 172,
+                        lineNumber: 180,
                         columnNumber: 13
                     }, undefined);
                 })
             }, void 0, false, {
                 fileName: "Documents/06-coding/projekte/reading-helper/src/components/panels/Bestseller/Bestseller.jsx",
-                lineNumber: 159,
+                lineNumber: 167,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "Documents/06-coding/projekte/reading-helper/src/components/panels/Bestseller/Bestseller.jsx",
-        lineNumber: 102,
+        lineNumber: 109,
         columnNumber: 5
     }, undefined);
 };
-_s(Bestseller, "qjXMrX8VsxjjKuB6pxVOwB10PTM=");
+_s(Bestseller, "1nYdfvg1o9vR16zvz9s/uw8H7y8=");
 _c = Bestseller;
 exports.default = Bestseller;
 var _c;
@@ -88068,7 +88070,7 @@ $RefreshReg$(_c, "Bestseller");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"9mtkd","@mui/material":"gwPRJ","@mui/icons-material/ArrowDropDownCircle":"l48FS","react":"1NR0Z","@parcel/transformer-js/src/esmodule-helpers.js":"jFY65","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"by7nT","../../../helpers/apis":"fx3u2"}],"l48FS":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"9mtkd","@mui/material":"gwPRJ","@mui/icons-material/ArrowDropDownCircle":"l48FS","react":"1NR0Z","@parcel/transformer-js/src/esmodule-helpers.js":"jFY65","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"by7nT","../../../helpers/apis":"fx3u2","../../../helpers/findListsIndex":"aeIql"}],"l48FS":[function(require,module,exports) {
 "use strict";
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 Object.defineProperty(exports, "__esModule", {
@@ -88100,6 +88102,16 @@ const APIs = {
     }
 };
 exports.default = APIs;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jFY65"}],"aeIql":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+const findListsIndex = (list, listName)=>{
+    for(let i = 0; i < list.length; i = i + 1){
+        if (listName === list[i].list_name) return i;
+    }
+};
+exports.default = findListsIndex;
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"jFY65"}],"3ZuAO":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$2597 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");

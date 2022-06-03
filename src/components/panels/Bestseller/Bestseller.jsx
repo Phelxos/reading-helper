@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import ArrowDropDownCircleIcon from "@mui/icons-material/ArrowDropDownCircle";
 import APIs from "../../../helpers/apis";
+import findListsIndex from "../../../helpers/findListsIndex";
 
 const Bestseller = () => {
   const [bestsellersCategoriesList, setBestsellersCategoriesList] = useState(
@@ -21,7 +22,6 @@ const Bestseller = () => {
     "Combined Print and E-Book Fiction"
   );
   const [bestsellersList, setBestsellersList] = useState([]);
-  const [toBeFetchedListName, setToBeFetchedListName] = useState(0);
 
   /* EVENT HANDLERS */
   const handleMenuClick = (e) => {
@@ -73,7 +73,14 @@ const Bestseller = () => {
         setBestsellersCategoriesList(
           json.results.lists.map((list) => list.list_name)
         );
-        const fetchedBookList = json.results.lists[toBeFetchedListName].books;
+        console.log(
+          "find list's index",
+          findListsIndex(json.results.lists, currentlySelectedMenuItem)
+        );
+        const fetchedBookList =
+          json.results.lists[
+            findListsIndex(json.results.lists, currentlySelectedMenuItem)
+          ].books;
         const promises = fetchedBookList.map(async (item) => {
           const linkCover = await fetchCoversLinks(item.primary_isbn13).catch(
             (e) => {
@@ -96,7 +103,7 @@ const Bestseller = () => {
       .catch((e) => {
         console.log("useEffect(), fetch(): Something went wrong", e);
       });
-  }, [toBeFetchedListName]);
+  }, [currentlySelectedMenuItem]);
 
   return (
     <Card
@@ -141,7 +148,7 @@ const Bestseller = () => {
           onClose={handleMenuClose}
           sx={{ display: "flex", flexFlow: "row nowrap" }}
         >
-          {bestsellersCategoriesList.map((category) => {
+          {bestsellersCategoriesList.map((category, index) => {
             return (
               <MenuItem
                 selected={category === currentlySelectedMenuItem}
@@ -149,6 +156,7 @@ const Bestseller = () => {
                 onClick={(e) => {
                   handleMenuItemClick(e);
                 }}
+                key={index}
               >
                 {category}
               </MenuItem>
