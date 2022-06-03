@@ -24989,7 +24989,6 @@ var _bookListsDefault = parcelHelpers.interopDefault(_bookLists);
 var _material = require("@mui/material");
 var _styles = require("../../styles/styles");
 function App() {
-    console.log(_styles.theme);
     return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_jsxDevRuntime.Fragment, {
         children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.ThemeProvider, {
             theme: _styles.theme,
@@ -25007,12 +25006,12 @@ function App() {
                             xs: 12,
                             children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_currentBooksDefault.default, {}, void 0, false, {
                                 fileName: "Documents/06-coding/projekte/reading-helper/src/components/App.jsx",
-                                lineNumber: 16,
+                                lineNumber: 15,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "Documents/06-coding/projekte/reading-helper/src/components/App.jsx",
-                            lineNumber: 15,
+                            lineNumber: 14,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Grid, {
@@ -25021,26 +25020,26 @@ function App() {
                             xs: 12,
                             children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_bookListsDefault.default, {}, void 0, false, {
                                 fileName: "Documents/06-coding/projekte/reading-helper/src/components/App.jsx",
-                                lineNumber: 19,
+                                lineNumber: 18,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "Documents/06-coding/projekte/reading-helper/src/components/App.jsx",
-                            lineNumber: 18,
+                            lineNumber: 17,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Grid, {
                             item: true,
-                            lg: 8,
+                            lg: 6,
                             xs: 12,
                             children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_bestsellerDefault.default, {}, void 0, false, {
                                 fileName: "Documents/06-coding/projekte/reading-helper/src/components/App.jsx",
-                                lineNumber: 22,
+                                lineNumber: 21,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "Documents/06-coding/projekte/reading-helper/src/components/App.jsx",
-                            lineNumber: 21,
+                            lineNumber: 20,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Grid, {
@@ -25049,29 +25048,29 @@ function App() {
                             xs: 12,
                             children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_daysWQDefault.default, {}, void 0, false, {
                                 fileName: "Documents/06-coding/projekte/reading-helper/src/components/App.jsx",
-                                lineNumber: 25,
+                                lineNumber: 24,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "Documents/06-coding/projekte/reading-helper/src/components/App.jsx",
-                            lineNumber: 24,
+                            lineNumber: 23,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "Documents/06-coding/projekte/reading-helper/src/components/App.jsx",
-                    lineNumber: 14,
+                    lineNumber: 13,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_focusModeButtonDefault.default, {}, void 0, false, {
                     fileName: "Documents/06-coding/projekte/reading-helper/src/components/App.jsx",
-                    lineNumber: 28,
+                    lineNumber: 27,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "Documents/06-coding/projekte/reading-helper/src/components/App.jsx",
-            lineNumber: 13,
+            lineNumber: 12,
             columnNumber: 7
         }, this)
     }, void 0, false);
@@ -87795,6 +87794,9 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
+var _styles = require("../../../../styles/styles");
+var _useMediaQuery = require("@mui/material/useMediaQuery");
+var _useMediaQueryDefault = parcelHelpers.interopDefault(_useMediaQuery);
 var _material = require("@mui/material");
 var _arrowDropDownCircle = require("@mui/icons-material/ArrowDropDownCircle");
 var _arrowDropDownCircleDefault = parcelHelpers.interopDefault(_arrowDropDownCircle);
@@ -87804,6 +87806,8 @@ var _apis = require("../../../helpers/apis");
 var _apisDefault = parcelHelpers.interopDefault(_apis);
 var _findListsIndex = require("../../../helpers/findListsIndex");
 var _findListsIndexDefault = parcelHelpers.interopDefault(_findListsIndex);
+var _dimensions = require("../../../helpers/dimensions");
+var _dimensionsDefault = parcelHelpers.interopDefault(_dimensions);
 var _s = $RefreshSig$();
 const Bestseller = ()=>{
     _s();
@@ -87813,6 +87817,8 @@ const Bestseller = ()=>{
     const [currentlySelectedMenuItem, setCurrentlySelectedItem] = _react.useState("Combined Print and E-Book Fiction");
     const [bestsellersList, setBestsellersList] = _react.useState([]);
     const [isLoading, setIsLoading] = _react.useState(true);
+    const breakpointMd = _useMediaQueryDefault.default(_styles.theme.breakpoints.up("md"));
+    const breakpointXs = _useMediaQueryDefault.default(_styles.theme.breakpoints.up("xs"));
     /* EVENT HANDLERS */ const handleMenuClick = (e)=>{
         setAnchorEl(e.currentTarget);
         setIsMenuOpen(true);
@@ -87825,7 +87831,6 @@ const Bestseller = ()=>{
         setIsMenuOpen(false);
         setIsLoading(true);
     };
-    console.log(currentlySelectedMenuItem);
     /* handles the display of the books' covers */ const defaultCoverLink = "https://images.unsplash.com/photo-1528459105426-b9548367069b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=728&q=80";
     const fetchCoversLinks = async (isbn)=>{
         const res = await fetch(_apisDefault.default.google.link(isbn)).catch((e)=>{
@@ -87869,60 +87874,52 @@ const Bestseller = ()=>{
     }, [
         currentlySelectedMenuItem
     ]);
-    return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Card, {
+    return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Grid, {
+        container: true,
         sx: {
-            display: "flex",
-            flexFlow: "row nowrap",
-            justifyContent: "space-between",
-            alignItems: "center",
-            padding: "2rem",
+            padding: "1rem",
             backgroundColor: "currentBookLists.cardBgr",
-            borderRadius: "1rem"
+            borderRadius: "1rem",
+            minHeight: `${breakpointMd ? _dimensionsDefault.default.bestsellersLists.grid.container.height.md : _dimensionsDefault.default.bestsellersLists.grid.container.height.xs}`,
+            maxHeight: `${breakpointMd ? _dimensionsDefault.default.bestsellersLists.grid.container.height.md : _dimensionsDefault.default.bestsellersLists.grid.container.height.xs}`
         },
         children: [
-            /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
+            /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Grid, {
+                item: true,
+                xs: 12,
+                md: 3,
                 sx: {
                     display: "flex",
                     flexFlow: "row nowrap",
-                    justifyContent: "space-between",
+                    justifyContent: `${breakpointMd ? "center" : "start"}`,
                     alignItems: "center",
-                    padding: "1rem",
-                    flexGrow: 1
+                    padding: "0.75rem",
+                    borderRadius: "1rem"
                 },
                 children: [
-                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
-                        sx: {
-                            display: "flex",
-                            flexFlow: "row nowrap",
-                            justifyContent: "space-between",
-                            alignItems: "center"
-                        },
-                        children: [
-                            /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Typography, {
-                                component: "h2",
-                                variant: "h3",
-                                children: "Bestseller"
-                            }, void 0, false, {
-                                fileName: "Documents/06-coding/projekte/reading-helper/src/components/panels/Bestseller/Bestseller.jsx",
-                                lineNumber: 145,
-                                columnNumber: 11
-                            }, undefined),
-                            /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.IconButton, {
-                                onClick: handleMenuClick,
-                                children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_arrowDropDownCircleDefault.default, {}, void 0, false, {
-                                    fileName: "Documents/06-coding/projekte/reading-helper/src/components/panels/Bestseller/Bestseller.jsx",
-                                    lineNumber: 149,
-                                    columnNumber: 13
-                                }, undefined)
-                            }, void 0, false, {
-                                fileName: "Documents/06-coding/projekte/reading-helper/src/components/panels/Bestseller/Bestseller.jsx",
-                                lineNumber: 148,
-                                columnNumber: 11
-                            }, undefined)
-                        ]
-                    }, void 0, true, {
+                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Typography, {
+                        variant: "h4",
+                        component: "h2",
+                        children: "Bestseller"
+                    }, void 0, false, {
                         fileName: "Documents/06-coding/projekte/reading-helper/src/components/panels/Bestseller/Bestseller.jsx",
-                        lineNumber: 137,
+                        lineNumber: 149,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.IconButton, {
+                        onClick: handleMenuClick,
+                        children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_arrowDropDownCircleDefault.default, {
+                            sx: {
+                                fontSize: "3rem"
+                            }
+                        }, void 0, false, {
+                            fileName: "Documents/06-coding/projekte/reading-helper/src/components/panels/Bestseller/Bestseller.jsx",
+                            lineNumber: 153,
+                            columnNumber: 11
+                        }, undefined)
+                    }, void 0, false, {
+                        fileName: "Documents/06-coding/projekte/reading-helper/src/components/panels/Bestseller/Bestseller.jsx",
+                        lineNumber: 152,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Menu, {
@@ -87943,61 +87940,73 @@ const Bestseller = ()=>{
                                 children: category
                             }, index, false, {
                                 fileName: "Documents/06-coding/projekte/reading-helper/src/components/panels/Bestseller/Bestseller.jsx",
-                                lineNumber: 160,
+                                lineNumber: 163,
                                 columnNumber: 15
                             }, undefined);
                         })
                     }, void 0, false, {
                         fileName: "Documents/06-coding/projekte/reading-helper/src/components/panels/Bestseller/Bestseller.jsx",
-                        lineNumber: 152,
+                        lineNumber: 155,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "Documents/06-coding/projekte/reading-helper/src/components/panels/Bestseller/Bestseller.jsx",
-                lineNumber: 127,
+                lineNumber: 136,
                 columnNumber: 7
             }, undefined),
-            /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
+            /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Grid, {
+                item: true,
+                xs: 12,
+                md: 9,
                 sx: {
                     display: "flex",
                     flexFlow: "row nowrap",
                     justifyContent: "space-between",
                     alignItems: "center",
-                    overflowY: "hidden",
-                    flexGrow: 1,
-                    padding: "1rem"
+                    overflowY: "hidden"
                 },
                 children: isLoading ? /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
                     sx: {
                         display: "flex",
                         flexFlow: "row nowrap",
-                        justifyContent: "space-between",
-                        alignItems: "stretch",
+                        justifyContent: "center",
+                        alignItems: "center",
                         margin: "1rem",
                         padding: "1rem",
-                        minWidth: "fit-content",
                         backgroundColor: "currentBookLists.cardDark",
                         borderRadius: "1rem",
-                        color: "snow"
+                        color: "snow",
+                        minHeight: `${breakpointMd ? _dimensionsDefault.default.bestsellersLists.grid.item.height.md : _dimensionsDefault.default.bestsellersLists.grid.item.height.xs}`,
+                        maxHeight: `${breakpointMd ? _dimensionsDefault.default.bestsellersLists.grid.item.height.md : _dimensionsDefault.default.bestsellersLists.grid.item.height.xs}`,
+                        width: "100%",
+                        opacity: 0.75
                     },
                     children: [
-                        /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_hourglassEmptyDefault.default, {}, void 0, false, {
+                        /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_hourglassEmptyDefault.default, {
+                            sx: {
+                                fontSize: "6rem"
+                            }
+                        }, void 0, false, {
                             fileName: "Documents/06-coding/projekte/reading-helper/src/components/panels/Bestseller/Bestseller.jsx",
-                            lineNumber: 200,
+                            lineNumber: 215,
                             columnNumber: 13
                         }, undefined),
                         /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Typography, {
-                            children: "The daata is loading."
+                            sx: {
+                                fontSize: "3rem",
+                                marginLeft: "1rem"
+                            },
+                            children: "The data is loading."
                         }, void 0, false, {
                             fileName: "Documents/06-coding/projekte/reading-helper/src/components/panels/Bestseller/Bestseller.jsx",
-                            lineNumber: 201,
+                            lineNumber: 216,
                             columnNumber: 13
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "Documents/06-coding/projekte/reading-helper/src/components/panels/Bestseller/Bestseller.jsx",
-                    lineNumber: 186,
+                    lineNumber: 190,
                     columnNumber: 11
                 }, undefined) : bestsellersList.map((book, index)=>{
                     return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
@@ -88008,10 +88017,12 @@ const Bestseller = ()=>{
                             alignItems: "stretch",
                             margin: "1rem",
                             padding: "1rem",
-                            minWidth: "fit-content",
                             backgroundColor: "currentBookLists.cardDark",
                             borderRadius: "1rem",
-                            color: "snow"
+                            color: "snow",
+                            minWidth: "fit-content",
+                            minHeight: `${breakpointMd ? _dimensionsDefault.default.bestsellersLists.grid.item.height.md : _dimensionsDefault.default.bestsellersLists.grid.item.height.xs}`,
+                            maxHeight: `${breakpointMd ? _dimensionsDefault.default.bestsellersLists.grid.item.height.md : _dimensionsDefault.default.bestsellersLists.grid.item.height.xs}`
                         },
                         children: [
                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Typography, {
@@ -88023,7 +88034,7 @@ const Bestseller = ()=>{
                                 children: book.ranking
                             }, void 0, false, {
                                 fileName: "Documents/06-coding/projekte/reading-helper/src/components/panels/Bestseller/Bestseller.jsx",
-                                lineNumber: 221,
+                                lineNumber: 248,
                                 columnNumber: 17
                             }, undefined),
                             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Box, {
@@ -88045,7 +88056,7 @@ const Bestseller = ()=>{
                                         children: book.title
                                     }, void 0, false, {
                                         fileName: "Documents/06-coding/projekte/reading-helper/src/components/panels/Bestseller/Bestseller.jsx",
-                                        lineNumber: 238,
+                                        lineNumber: 265,
                                         columnNumber: 19
                                     }, undefined),
                                     /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.Typography, {
@@ -88057,46 +88068,50 @@ const Bestseller = ()=>{
                                         children: book.authors
                                     }, void 0, false, {
                                         fileName: "Documents/06-coding/projekte/reading-helper/src/components/panels/Bestseller/Bestseller.jsx",
-                                        lineNumber: 247,
+                                        lineNumber: 274,
                                         columnNumber: 19
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "Documents/06-coding/projekte/reading-helper/src/components/panels/Bestseller/Bestseller.jsx",
-                                lineNumber: 228,
+                                lineNumber: 255,
                                 columnNumber: 17
                             }, undefined),
-                            /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_material.CardMedia, {
-                                component: "img",
-                                image: book.cover || defaultCoverLink,
+                            /*#__PURE__*/ _jsxDevRuntime.jsxDEV("img", {
+                                src: book.cover || defaultCoverLink,
                                 sx: {
-                                    width: "50px"
+                                    width: 50
                                 }
                             }, void 0, false, {
                                 fileName: "Documents/06-coding/projekte/reading-helper/src/components/panels/Bestseller/Bestseller.jsx",
-                                lineNumber: 254,
+                                lineNumber: 281,
                                 columnNumber: 17
                             }, undefined)
                         ]
                     }, index, true, {
                         fileName: "Documents/06-coding/projekte/reading-helper/src/components/panels/Bestseller/Bestseller.jsx",
-                        lineNumber: 206,
+                        lineNumber: 223,
                         columnNumber: 15
                     }, undefined);
                 })
             }, void 0, false, {
                 fileName: "Documents/06-coding/projekte/reading-helper/src/components/panels/Bestseller/Bestseller.jsx",
-                lineNumber: 174,
+                lineNumber: 177,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "Documents/06-coding/projekte/reading-helper/src/components/panels/Bestseller/Bestseller.jsx",
-        lineNumber: 116,
+        lineNumber: 118,
         columnNumber: 5
     }, undefined);
 };
-_s(Bestseller, "n0kYO6fbUYgCiOC5L9GcAJXTlYU=");
+_s(Bestseller, "ZV3sKGC0Mpdxp9utR7btO6F3dkI=", false, function() {
+    return [
+        _useMediaQueryDefault.default,
+        _useMediaQueryDefault.default
+    ];
+});
 _c = Bestseller;
 exports.default = Bestseller;
 var _c;
@@ -88107,7 +88122,7 @@ $RefreshReg$(_c, "Bestseller");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"9mtkd","@mui/material":"gwPRJ","@mui/icons-material/ArrowDropDownCircle":"l48FS","react":"1NR0Z","@parcel/transformer-js/src/esmodule-helpers.js":"jFY65","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"by7nT","../../../helpers/apis":"fx3u2","../../../helpers/findListsIndex":"aeIql","@mui/icons-material/HourglassEmpty":"7NPza"}],"l48FS":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"9mtkd","@mui/material":"gwPRJ","@mui/icons-material/ArrowDropDownCircle":"l48FS","react":"1NR0Z","@parcel/transformer-js/src/esmodule-helpers.js":"jFY65","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"by7nT","../../../helpers/apis":"fx3u2","../../../helpers/findListsIndex":"aeIql","@mui/icons-material/HourglassEmpty":"7NPza","../../../helpers/dimensions":"gQmZQ","@mui/material/useMediaQuery":"imfJ8","../../../../styles/styles":"foY5e"}],"l48FS":[function(require,module,exports) {
 "use strict";
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 Object.defineProperty(exports, "__esModule", {
@@ -88164,7 +88179,73 @@ var _default = (0, _createSvgIcon.default)(/*#__PURE__*/ (0, _jsxRuntime.jsx)("p
 }), 'HourglassEmpty');
 exports.default = _default;
 
-},{"@babel/runtime/helpers/interopRequireDefault":"c8slK","./utils/createSvgIcon":"cDNAL","react/jsx-runtime":"bqQW4"}],"3ZuAO":[function(require,module,exports) {
+},{"@babel/runtime/helpers/interopRequireDefault":"c8slK","./utils/createSvgIcon":"cDNAL","react/jsx-runtime":"bqQW4"}],"gQmZQ":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+const dimensions = {
+    bestsellersLists: {
+        grid: {
+            container: {
+                height: {
+                    xs: "30vh",
+                    md: "20vh"
+                }
+            },
+            item: {
+                height: {
+                    xs: "15vh",
+                    md: "15vh"
+                }
+            }
+        }
+    }
+};
+exports.default = dimensions;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jFY65"}],"foY5e":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "theme", ()=>theme
+);
+var _material = require("@mui/material");
+const theme = _material.createTheme({
+    breakpoints: {
+        values: {
+            xs: 0,
+            sm: 375,
+            md: 768,
+            lg: 1024,
+            xl: 2560
+        }
+    },
+    palette: {
+        currentBookLists: {
+            cardBgr: "#C2B29A",
+            cardLight: "#978974",
+            cardDark: "#675C4E",
+            cardLukelight: "#857A68",
+            cardGrey: "#918F86",
+            formBlueGrey: "#77959E"
+        },
+        wqofd: {
+            cardBgr: "#9c9c94",
+            fontGreen: "#3b8082",
+            fontRed: "#890F0D",
+            font: "snow"
+        },
+        bookLists: {
+            cardBgr: "#847868",
+            cardTitle: "#FFF",
+            listBgr: "#665C4F",
+            listItemBgr: "#9B9B93",
+            listItemTitle: "#FFF",
+            listItemAuthors: "#575151",
+            listItemYear: "#FFF"
+        }
+    }
+});
+
+},{"@mui/material":"gwPRJ","@parcel/transformer-js/src/esmodule-helpers.js":"jFY65"}],"3ZuAO":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$2597 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -88425,40 +88506,6 @@ $RefreshReg$(_c, "BookList");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"9mtkd","@mui/material":"gwPRJ","@parcel/transformer-js/src/esmodule-helpers.js":"jFY65","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"by7nT"}],"foY5e":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "theme", ()=>theme
-);
-var _material = require("@mui/material");
-const theme = _material.createTheme({
-    palette: {
-        currentBookLists: {
-            cardBgr: "#C2B29A",
-            cardLight: "#978974",
-            cardDark: "#675C4E",
-            cardLukelight: "#857A68",
-            cardGrey: "#918F86",
-            formBlueGrey: "#77959E"
-        },
-        wqofd: {
-            cardBgr: "#9c9c94",
-            fontGreen: "#3b8082",
-            fontRed: "#890F0D",
-            font: "snow"
-        },
-        bookLists: {
-            cardBgr: "#847868",
-            cardTitle: "#FFF",
-            listBgr: "#665C4F",
-            listItemBgr: "#9B9B93",
-            listItemTitle: "#FFF",
-            listItemAuthors: "#575151",
-            listItemYear: "#FFF"
-        }
-    }
-});
-
-},{"@mui/material":"gwPRJ","@parcel/transformer-js/src/esmodule-helpers.js":"jFY65"}]},["2D3Cg","gkOBu","0DcCg"], "0DcCg", "parcelRequire94c2")
+},{"react/jsx-dev-runtime":"9mtkd","@mui/material":"gwPRJ","@parcel/transformer-js/src/esmodule-helpers.js":"jFY65","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"by7nT"}]},["2D3Cg","gkOBu","0DcCg"], "0DcCg", "parcelRequire94c2")
 
 //# sourceMappingURL=index.16f389a2.js.map

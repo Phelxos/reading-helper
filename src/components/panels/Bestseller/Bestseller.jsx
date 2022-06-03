@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
+import { theme } from "../../../../styles/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import {
+  Grid,
   Box,
-  Card,
-  CardMedia,
-  Icon,
   IconButton,
   Menu,
   MenuItem,
@@ -13,6 +13,7 @@ import ArrowDropDownCircleIcon from "@mui/icons-material/ArrowDropDownCircle";
 import HourglassEmptyIcon from "@mui/icons-material/HourglassEmpty";
 import APIs from "../../../helpers/apis";
 import findListsIndex from "../../../helpers/findListsIndex";
+import dimensions from "../../../helpers/dimensions";
 
 const Bestseller = () => {
   const [bestsellersCategoriesList, setBestsellersCategoriesList] = useState(
@@ -25,6 +26,8 @@ const Bestseller = () => {
   );
   const [bestsellersList, setBestsellersList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const breakpointMd = useMediaQuery(theme.breakpoints.up("md"));
+  const breakpointXs = useMediaQuery(theme.breakpoints.up("xs"));
 
   /* EVENT HANDLERS */
   const handleMenuClick = (e) => {
@@ -42,8 +45,6 @@ const Bestseller = () => {
     setIsMenuOpen(false);
     setIsLoading(true);
   };
-
-  console.log(currentlySelectedMenuItem);
 
   /* handles the display of the books' covers */
   const defaultCoverLink =
@@ -113,42 +114,43 @@ const Bestseller = () => {
   }, [currentlySelectedMenuItem]);
 
   return (
-    <Card
+    <Grid
+      container
       sx={{
-        display: "flex",
-        flexFlow: "row nowrap",
-        justifyContent: "space-between",
-        alignItems: "center",
-        padding: "2rem",
+        padding: "1rem",
         backgroundColor: "currentBookLists.cardBgr",
         borderRadius: "1rem",
+        minHeight: `${
+          breakpointMd
+            ? dimensions.bestsellersLists.grid.container.height.md
+            : dimensions.bestsellersLists.grid.container.height.xs
+        }`,
+        maxHeight: `${
+          breakpointMd
+            ? dimensions.bestsellersLists.grid.container.height.md
+            : dimensions.bestsellersLists.grid.container.height.xs
+        }`,
       }}
     >
-      <Box
+      <Grid
+        item
+        xs={12}
+        md={3}
         sx={{
           display: "flex",
           flexFlow: "row nowrap",
-          justifyContent: "space-between",
+          justifyContent: `${breakpointMd ? "center" : "start"}`,
           alignItems: "center",
-          padding: "1rem",
-          flexGrow: 1,
+          padding: "0.75rem",
+          borderRadius: "1rem",
         }}
       >
-        <Box
-          sx={{
-            display: "flex",
-            flexFlow: "row nowrap",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <Typography component="h2" variant="h3">
-            Bestseller
-          </Typography>
-          <IconButton onClick={handleMenuClick}>
-            <ArrowDropDownCircleIcon />
-          </IconButton>
-        </Box>
+        <Typography variant="h4" component="h2">
+          Bestseller
+        </Typography>
+        <IconButton onClick={handleMenuClick}>
+          <ArrowDropDownCircleIcon sx={{ fontSize: "3rem" }} />
+        </IconButton>
         <Menu
           anchorEl={anchorEl}
           open={isMenuOpen}
@@ -170,16 +172,17 @@ const Bestseller = () => {
             );
           })}
         </Menu>
-      </Box>
-      <Box
+      </Grid>
+      <Grid
+        item
+        xs={12}
+        md={9}
         sx={{
           display: "flex",
           flexFlow: "row nowrap",
           justifyContent: "space-between",
           alignItems: "center",
           overflowY: "hidden",
-          flexGrow: 1,
-          padding: "1rem",
         }}
       >
         {isLoading ? (
@@ -187,18 +190,31 @@ const Bestseller = () => {
             sx={{
               display: "flex",
               flexFlow: "row nowrap",
-              justifyContent: "space-between",
-              alignItems: "stretch",
+              justifyContent: "center",
+              alignItems: "center",
               margin: "1rem",
               padding: "1rem",
-              minWidth: "fit-content",
               backgroundColor: "currentBookLists.cardDark",
               borderRadius: "1rem",
               color: "snow",
+              minHeight: `${
+                breakpointMd
+                  ? dimensions.bestsellersLists.grid.item.height.md
+                  : dimensions.bestsellersLists.grid.item.height.xs
+              }`,
+              maxHeight: `${
+                breakpointMd
+                  ? dimensions.bestsellersLists.grid.item.height.md
+                  : dimensions.bestsellersLists.grid.item.height.xs
+              }`,
+              width: "100%",
+              opacity: 0.75,
             }}
           >
-            <HourglassEmptyIcon />
-            <Typography>The daata is loading.</Typography>
+            <HourglassEmptyIcon sx={{ fontSize: "6rem" }} />
+            <Typography sx={{ fontSize: "3rem", marginLeft: "1rem" }}>
+              The data is loading.
+            </Typography>
           </Box>
         ) : (
           bestsellersList.map((book, index) => {
@@ -209,13 +225,23 @@ const Bestseller = () => {
                   display: "flex",
                   flexFlow: "row nowrap",
                   justifyContent: "space-between",
-                  alignItems: "stretch",
+                  alignItems: "center",
                   margin: "1rem",
                   padding: "1rem",
-                  minWidth: "fit-content",
                   backgroundColor: "currentBookLists.cardDark",
                   borderRadius: "1rem",
                   color: "snow",
+                  minWidth: "fit-content",
+                  minHeight: `${
+                    breakpointMd
+                      ? dimensions.bestsellersLists.grid.item.height.md
+                      : dimensions.bestsellersLists.grid.item.height.xs
+                  }`,
+                  maxHeight: `${
+                    breakpointMd
+                      ? dimensions.bestsellersLists.grid.item.height.md
+                      : dimensions.bestsellersLists.grid.item.height.xs
+                  }`,
                 }}
               >
                 <Typography
@@ -232,7 +258,7 @@ const Bestseller = () => {
                     justifyContent: "flex-start",
                     alignItems: "flex-end",
                     flexGrow: 1,
-                    padding: "1rem",
+                    padding: "1.5rem",
                   }}
                 >
                   <Typography
@@ -251,17 +277,27 @@ const Bestseller = () => {
                     {book.authors}
                   </Typography>
                 </Box>
-                <CardMedia
+                <Box
                   component="img"
-                  image={book.cover || defaultCoverLink}
-                  sx={{ width: "50px" }}
+                  src={book.cover || defaultCoverLink}
+                  minHeight={
+                    breakpointMd
+                      ? dimensions.bestsellersLists.bookCover.height.md
+                      : dimensions.bestsellersLists.bookCover.height.xs
+                  }
+                  maxHeight={
+                    breakpointMd
+                      ? dimensions.bestsellersLists.bookCover.height.md
+                      : dimensions.bestsellersLists.bookCover.height.xs
+                  }
+                  sx={{ borderRadius: "1rem" }}
                 />
               </Box>
             );
           })
         )}
-      </Box>
-    </Card>
+      </Grid>
+    </Grid>
   );
 };
 

@@ -7,7 +7,6 @@ import { Grid, ThemeProvider } from "@mui/material";
 import { theme } from "../../styles/styles";
 
 function App() {
-  console.log(theme);
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -18,7 +17,7 @@ function App() {
           <Grid item lg={6} xs={12}>
             <BookLists />
           </Grid>
-          <Grid item lg={8} xs={12}>
+          <Grid item lg={6} xs={12}>
             <Bestseller />
           </Grid>
           <Grid item lg={4} xs={12}>
