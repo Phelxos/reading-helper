@@ -12,6 +12,8 @@ import CopyButton from "../../buttons/CopyButton";
 import ReplayIcon from "@mui/icons-material/Replay";
 import { textShadows } from "../../../helpers/shadows";
 import buttonEffects from "../../../helpers/buttonEffects";
+import useFetch from "../../../hooks/useFetch";
+import APIs from "../../../helpers/apis";
 
 const { ts } = textShadows.bottom;
 
@@ -63,6 +65,14 @@ const DaysWQ = () => {
   });
   const [page, setPage] = useState(1);
 
+  const [fetchedRandomWord, setFetchedRandomWord] = useState("");
+  const { get: getRandomWord } = useFetch(
+    "https://random-word-api.herokuapp.com/"
+  );
+  const { get: getRandomWordsDefinition } = useFetch(
+    "https://www.dictionaryapi.com/api/v3/references/collegiate/json/"
+  );
+
   const fetchQofd = () => {
     fetch("https://type.fit/api/quotes")
       .then((res) => res.json())
@@ -97,28 +107,22 @@ const DaysWQ = () => {
     setPage(value);
   };
 
-  const fetchWofd = async () => {
-    await fetch("https://random-word-api.herokuapp.com/word")
-      .then((res) => res.json())
-      .then((randomWord) => randomWord[0])
-      .then((searchTerm) =>
-        fetch(
-          `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${searchTerm}?key=49a4f377-61f9-43e6-9416-aabfbe90942a`
-        )
-          .then((res) => res.json())
-          .then((json) => {
-            dissectFetchedWofd(json);
-          })
-      );
+  const beginFetchingWordOfTheDay = () => {
+    getRandomWord("word")
+      .then((randomWordsArray) => setFetchedRandomWord(randomWordsArray[0]))
+      .catch((e) => console.log("Error: "));
   };
 
   useEffect(() => {
-    fetchWofd();
-    return () => {};
-  }, []);
+    if (fetchedRandomWord === "") return;
+    getRandomWordsDefinition(
+      `${fetchedRandomWord}?key=${APIs.dictionary.key}`
+    ).then((randomWordsEntry) => dissectFetchedWofd(randomWordsEntry));
+  }, [fetchedRandomWord]);
+
   useEffect(() => {
+    beginFetchingWordOfTheDay();
     fetchQofd();
-    return () => {};
   }, []);
 
   return (
@@ -202,7 +206,10 @@ const DaysWQ = () => {
             variant={page === 1 ? "h1" : "h4"}
           >
             {wofd.headword === undefined ? (
-              <LoadingNote fetchWofd={fetchWofd} fetchQofd={fetchQofd} />
+              <LoadingNote
+                fetchWofd={beginFetchingWordOfTheDay}
+                fetchQofd={fetchQofd}
+              />
             ) : page === 1 ? (
               wofd.headword
             ) : (

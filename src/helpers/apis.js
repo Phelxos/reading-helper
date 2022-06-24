@@ -11,6 +11,9 @@ const APIs = {
     },
     key: "VGTHTRB7qDzUPZN73Z5NtZ5Mh06p68xS",
   },
+  dictionary: {
+    key: "49a4f377-61f9-43e6-9416-aabfbe90942a",
+  },
 };
 
 export default APIs;
