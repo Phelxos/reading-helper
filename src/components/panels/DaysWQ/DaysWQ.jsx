@@ -12,10 +12,8 @@ import CopyButton from "../../buttons/CopyButton";
 import ReplayIcon from "@mui/icons-material/Replay";
 import { textShadows } from "../../../helpers/shadows";
 import buttonEffects from "../../../helpers/buttonEffects";
-import useFetch from "../../../hooks/useFetch";
 import APIs from "../../../helpers/apis";
-
-const { ts } = textShadows.bottom;
+import useFetch from "../../../hooks/useFetch";
 
 const LoadingNote = (props) => {
   const [note, setNote] = useState("Loading…");
@@ -33,8 +31,8 @@ const LoadingNote = (props) => {
         sx={hovered}
         onClick={() => {
           setNote("Please wait…");
-          props.fetchWofd();
-          props.fetchQofd();
+          props.fetchwordOfTheDay();
+          props.fetchQuoteOfTheDay();
         }}
       >
         <ReplayIcon
@@ -53,18 +51,19 @@ const LoadingNote = (props) => {
 };
 
 const DaysWQ = () => {
-  const [wofd, setWofd] = useState({
+  const [page, setPage] = useState(1);
+  // general information on the 'Word' and the 'Quote of the Day', respectively
+  const [wordOfTheDay, setWordOfTheDay] = useState({
     heading: "Word",
     reference: "Merriam-Webster",
     website: "https://dictionaryapi.com/",
   });
-  const [qofd, setQofd] = useState({
+  const [quoteOfTheDay, setQuoteOfTheDay] = useState({
     heading: "Quote",
     reference: "Type.fit",
     website: "https://type.fit/api/quotes",
   });
-  const [page, setPage] = useState(1);
-
+  // interim state to save the random word, which is fetched via one API, for the use of another API to fetch the word's defintion
   const [fetchedRandomWord, setFetchedRandomWord] = useState("");
   const { get: getRandomWord } = useFetch(
     "https://random-word-api.herokuapp.com/"
@@ -72,40 +71,7 @@ const DaysWQ = () => {
   const { get: getRandomWordsDefinition } = useFetch(
     "https://www.dictionaryapi.com/api/v3/references/collegiate/json/"
   );
-
-  const fetchQofd = () => {
-    fetch("https://type.fit/api/quotes")
-      .then((res) => res.json())
-      .then((json) => {
-        const randomNum = Math.ceil(Math.random() * 1642);
-        dissectedFetchedQofd(json[randomNum]);
-      });
-  };
-
-  const dissectFetchedWofd = (fetchedWofd) => {
-    const fetch = fetchedWofd[0];
-    const dissectedWofd = {
-      ...wofd,
-      headword: fetch.hwi.hw.split("*").join(""),
-      shortDef: fetch.shortdef[0],
-    };
-    setWofd(dissectedWofd);
-  };
-
-  const dissectedFetchedQofd = (fetchedQofd) => {
-    const fetch = fetchedQofd;
-    const dissectedQofd = {
-      ...qofd,
-      text: fetch.text,
-      author: fetch.author,
-    };
-    setQofd(dissectedQofd);
-  };
-
-  const handlePageChange = (e) => {
-    const value = parseInt(e.target.innerText, 10);
-    setPage(value);
-  };
+  const { get: getRandomQuote } = useFetch("https://type.fit/api/");
 
   const beginFetchingWordOfTheDay = () => {
     getRandomWord("word")
@@ -113,17 +79,54 @@ const DaysWQ = () => {
       .catch((e) => console.log("Error: "));
   };
 
+  const fetchQuoteOfTheDay = () => {
+    getRandomQuote("quotes").then((listOfRandomQuotes) => {
+      const randomNum = Math.ceil(Math.random() * 1642);
+      dissect.quoteOfTheDay(listOfRandomQuotes[randomNum]);
+    });
+  };
+
+  const dissect = {
+    wordOfTheDay: (fetchedWord) => {
+      if (fetchedWord.hwi === undefined) return; // patches an error regarding the property 'hwi', which sometimes contains 'undefined' causing the code to break
+      const dissectedWordOfTheDay = {
+        ...wordOfTheDay,
+        headword: fetchedWord.hwi.hw.split("*").join(""),
+        shortDef: fetchedWord.shortdef[0],
+      };
+      setWordOfTheDay(dissectedWordOfTheDay);
+    },
+    quoteOfTheDay: (fetchedQuote) => {
+      const dissectedQuoteOfTheDay = {
+        ...quoteOfTheDay,
+        text: fetchedQuote.text,
+        author: fetchedQuote.author,
+      };
+      setQuoteOfTheDay(dissectedQuoteOfTheDay);
+    },
+  };
+
+  const handlePageChange = (e) => {
+    const value = parseInt(e.target.innerText, 10);
+    setPage(value);
+  };
+
+  // 1. step of fetching:
+  // initialise the fetching of the 'Word of the Day'
+  // and fetch the 'Quote of the Day'
+  useEffect(() => {
+    beginFetchingWordOfTheDay();
+    fetchQuoteOfTheDay();
+  }, []);
+
+  // 2. step of fetching: once the random word for the 'Word of the Day' has been fetched,
+  // fetch the dictionary's entry for the 'Word of the Day'
   useEffect(() => {
     if (fetchedRandomWord === "") return;
     getRandomWordsDefinition(
       `${fetchedRandomWord}?key=${APIs.dictionary.key}`
-    ).then((randomWordsEntry) => dissectFetchedWofd(randomWordsEntry));
+    ).then((randomWordsEntry) => dissect.wordOfTheDay(randomWordsEntry[0]));
   }, [fetchedRandomWord]);
-
-  useEffect(() => {
-    beginFetchingWordOfTheDay();
-    fetchQofd();
-  }, []);
 
   return (
     <Card
@@ -157,7 +160,7 @@ const DaysWQ = () => {
             }}
             color={page === 1 ? "wqofd.fontGreen" : "wqofd.fontRed"}
           >
-            {page === 1 ? wofd.heading : qofd.heading}
+            {page === 1 ? wordOfTheDay.heading : quoteOfTheDay.heading}
           </Box>{" "}
           of the Day
         </Typography>
@@ -167,8 +170,8 @@ const DaysWQ = () => {
           opacity={page === 1 ? 0.75 : 0.5}
           input={
             page === 1
-              ? { type: "word", searchString: wofd.headword }
-              : { type: "quote", searchString: qofd.text }
+              ? { type: "word", searchString: wordOfTheDay.headword }
+              : { type: "quote", searchString: quoteOfTheDay.text }
           }
         />
       </Box>
@@ -191,29 +194,29 @@ const DaysWQ = () => {
             m: "3rem 0",
           }}
         >
-          {wofd.headword !== undefined ? (
+          {wordOfTheDay.headword !== undefined ? (
             <CopyButton
-              text={page === 1 ? wofd.headword : qofd.text}
+              text={page === 1 ? wordOfTheDay.headword : quoteOfTheDay.text}
               color={"wqofd.font"}
             />
           ) : null}
           <Typography
             sx={{
-              textShadow: `${page === 1 ? ts : ""}`,
+              textShadow: `${page === 1 ? textShadows.bottom.ts : ""}`,
             }}
             align="right"
             component={page === 1 ? "h2" : "p"}
             variant={page === 1 ? "h1" : "h4"}
           >
-            {wofd.headword === undefined ? (
+            {wordOfTheDay.headword === undefined ? (
               <LoadingNote
-                fetchWofd={beginFetchingWordOfTheDay}
-                fetchQofd={fetchQofd}
+                fetchwordOfTheDay={beginFetchingWordOfTheDay}
+                fetchQuoteOfTheDay={fetchQuoteOfTheDay}
               />
             ) : page === 1 ? (
-              wofd.headword
+              wordOfTheDay.headword
             ) : (
-              qofd.text
+              quoteOfTheDay.text
             )}
           </Typography>
         </Box>
@@ -228,12 +231,12 @@ const DaysWQ = () => {
           }}
           variant={page === 1 ? "subtitle1" : "h4"}
         >
-          {wofd.headword === undefined
+          {wordOfTheDay.headword === undefined
             ? null
             : page === 1
-            ? wofd.shortDef
-            : qofd.author !== null
-            ? qofd.author
+            ? wordOfTheDay.shortDef
+            : quoteOfTheDay.author !== null
+            ? quoteOfTheDay.author
             : "Unknown"}
         </Typography>
       </Box>
@@ -246,7 +249,7 @@ const DaysWQ = () => {
         }}
       >
         <Link
-          href={page === 1 ? wofd.website : qofd.website}
+          href={page === 1 ? wordOfTheDay.website : quoteOfTheDay.website}
           target="_blank"
           underline="none"
         >
@@ -255,7 +258,8 @@ const DaysWQ = () => {
             component="p"
             sx={{ opacity: 0.25, color: "black" }}
           >
-            Powered by {page === 1 ? wofd.reference : qofd.reference}
+            Powered by{" "}
+            {page === 1 ? wordOfTheDay.reference : quoteOfTheDay.reference}
           </Typography>
         </Link>
         <Pagination
